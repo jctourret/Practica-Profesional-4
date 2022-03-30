@@ -8,8 +8,6 @@ public class DestroyByCollision : DestructibleComponent
     [Range(0.01f, 20f)]
     [SerializeField] private float fractureLimit = 2.0f;
 
-    float velocity = 0f;
-
     // -------------------------------
 
     void FixedUpdate()

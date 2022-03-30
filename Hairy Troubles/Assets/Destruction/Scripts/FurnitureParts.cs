@@ -20,16 +20,14 @@ public class FurnitureParts : DestructibleComponent
         fixedJoint = GetComponent<FixedJoint>();
     }
 
-    //private void Awake()
-    //{
-    //    fixedJoint = GetComponent<FixedJoint>();
-    //}
+    void FixedUpdate()
+    {
+        velocity = rig.velocity.magnitude;
+    }
 
     public void CollapseComponent()
     {
-        fixedJoint.connectedBody = null;
 
-        //SwapComponent();
     }
 
     // -------------------------------
@@ -38,9 +36,7 @@ public class FurnitureParts : DestructibleComponent
     {
         if (collision.transform.tag == "Player")
         {
-            Destroy(fixedJoint);
-            //fixedJoint.connectedBody = null;
-
+            if (fixedJoint != null) Destroy(fixedJoint);
             SwapComponent();
         }
     }
