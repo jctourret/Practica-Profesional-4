@@ -2301,6 +2301,7 @@ MonoBehaviour:
   fracturedObj: {fileID: 0}
   particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
   destroyByCollision: 1
+  fractureLimit: 0.5
   furnitureComponents:
   - {fileID: 306722435284526464}
   - {fileID: 306722436841115447}

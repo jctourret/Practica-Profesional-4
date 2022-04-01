@@ -6,6 +6,8 @@ public class FurnitureStructure : DestructibleComponent
 {
     [Header("Destroy By Collision")]
     public bool destroyByCollision = false;
+    [Range(0.01f, 20f)]
+    [SerializeField] private float fractureLimit = 1.0f;
 
     public List<GameObject> furnitureComponents;
 
@@ -24,7 +26,7 @@ public class FurnitureStructure : DestructibleComponent
     {
         if (destroyByCollision)
         {
-            if (rig.mass < collision.rigidbody.mass)
+            if (rig.mass < collision.rigidbody.mass && rig.velocity.magnitude >= fractureLimit)
             {
                 if (fixedJoint != null) Destroy(fixedJoint);
                 SwapComponent();
