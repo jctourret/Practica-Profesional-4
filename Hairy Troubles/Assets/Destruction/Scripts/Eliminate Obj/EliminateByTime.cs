@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EliminateByTime : MonoBehaviour
@@ -12,10 +11,10 @@ public class EliminateByTime : MonoBehaviour
 
     [SerializeField] private Type objectType;
 
-    [SerializeField] private float secondsToDestroy = 10f;
+    [SerializeField] private GameObject[] fragments;
 
-    [Range(0.001f, 2f)]
-    [SerializeField] private float speedAnimation = 1f;
+    private float secondsToDestroy = 10f;
+    private float speedAnimation = 1f;
 
     private bool animate = true;
     private float time = 0f;
@@ -39,7 +38,9 @@ public class EliminateByTime : MonoBehaviour
             if (time > secondsToDestroy)
             {
                 animate = true;
-                StartCoroutine(DestroyAnimation());
+
+                if(fragments.Length > 0)
+                    StartCoroutine(DestroyAnimation());
             }
         }
     }
@@ -48,28 +49,34 @@ public class EliminateByTime : MonoBehaviour
     {
         float time = 0f;
 
-        Vector3 initialScale = this.transform.localScale;
+        //Vector3 initialScale = this.transform.localScale;
+        Vector3 oneScale = Vector3.one;
         Vector3 zeroScale = Vector3.zero;
 
         while(time <= 1f)
         {
             time += Time.deltaTime;
 
-            this.transform.localScale = Vector3.Lerp(initialScale, zeroScale, time);
+            for (int i = 0; i < fragments.Length; i++)
+            {
+                fragments[i].transform.localScale = Vector3.Lerp(oneScale, zeroScale, time);
+            }
+
+            //this.transform.localScale = Vector3.Lerp(initialScale, zeroScale, time);
 
             yield return null;
         }
 
-        Destroy(this);
+        Destroy(this.gameObject);
     }
     
     // ------------------------------------
     // Publics Setters / Getters:
     
-    public Type GetType()
-    {
-        return objectType;
-    }
+    //public Type GetType()
+    //{
+    //    return objectType;
+    //}
 
     public void SetSecondsToDestroy(float seconds)
     {

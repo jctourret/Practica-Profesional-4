@@ -6,15 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class Wire_Behaviour : MonoBehaviour
 {
-    [Range(1, 10)]
-    [SerializeField] private int totalRectangles = 1;
-    
-    [Range(0, 10f)]
-    [SerializeField] private float scaleRectangles = 1f;
-
-
-
-
+    //[Range(1, 10)]
+    //[SerializeField] private int totalRectangles = 1;
+    //
+    //[Range(0, 10f)]
+    //[SerializeField] private float scaleRectangles = 1f;
 
     private Mesh mesh;
 

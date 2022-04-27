@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7485317517810266621}
   - component: {fileID: 1626468234937406203}
   - component: {fileID: 3468725679919194931}
-  - component: {fileID: 2679405883842958315}
   m_Layer: 0
   m_Name: PlatoShard2
   m_TagString: Untagged
@@ -114,21 +113,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2679405883842958315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2745356319945342888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 1
-  secondsToDestroy: 10
-  speedAnimation: 1
 --- !u!1 &3925890765604823157
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +126,6 @@ GameObject:
   - component: {fileID: 1091232767617118660}
   - component: {fileID: 5615881519225284810}
   - component: {fileID: 3468725679200995129}
-  - component: {fileID: 7358154315602977053}
   m_Layer: 0
   m_Name: PlatoShard1
   m_TagString: Untagged
@@ -243,21 +226,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7358154315602977053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3925890765604823157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 1
-  secondsToDestroy: 10
-  speedAnimation: 1
 --- !u!1 &4387080468039353033
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4010977588963580019}
+  - component: {fileID: 1418424537}
   m_Layer: 0
   m_Name: PlatoShatter
   m_TagString: Untagged
@@ -293,6 +262,25 @@ Transform:
   m_Father: {fileID: 4010977590102511084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1418424537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387080468039353033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 1
+  fragments:
+  - {fileID: 3925890765604823157}
+  - {fileID: 2745356319945342888}
+  - {fileID: 5740504385227419280}
+  - {fileID: 7745175685470006531}
+  - {fileID: 7495951634685573850}
 --- !u!1 &4387080469182453590
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,7 +309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4387080469182453590}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.053, y: 0.7716852, z: 0.29299998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -421,7 +409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 4387080468039353033}
-  particlePref: {fileID: 0}
+  points: 5
+  particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
   fractureLimit: 0.3
 --- !u!1 &5740504385227419280
 GameObject:
@@ -436,7 +425,6 @@ GameObject:
   - component: {fileID: 3900943281162532984}
   - component: {fileID: 7947612401253807431}
   - component: {fileID: 3468725681019105734}
-  - component: {fileID: 490838782913141640}
   m_Layer: 0
   m_Name: PlatoShard3
   m_TagString: Untagged
@@ -537,21 +525,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &490838782913141640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5740504385227419280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 1
-  secondsToDestroy: 10
-  speedAnimation: 1
 --- !u!1 &7495951634685573850
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +538,6 @@ GameObject:
   - component: {fileID: 1989456217313940921}
   - component: {fileID: 4839353750956848411}
   - component: {fileID: 3468725679694160142}
-  - component: {fileID: 468718757111921658}
   m_Layer: 0
   m_Name: PlatoShard5
   m_TagString: Untagged
@@ -666,21 +638,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &468718757111921658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7495951634685573850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 1
-  secondsToDestroy: 10
-  speedAnimation: 1
 --- !u!1 &7745175685470006531
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,7 +651,6 @@ GameObject:
   - component: {fileID: 310852864521067964}
   - component: {fileID: 9217468300305775422}
   - component: {fileID: 3468725679296664501}
-  - component: {fileID: 2106891078841693250}
   m_Layer: 0
   m_Name: PlatoShard4
   m_TagString: Untagged
@@ -795,18 +751,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2106891078841693250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7745175685470006531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectType: 1
-  secondsToDestroy: 10
-  speedAnimation: 1

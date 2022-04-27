@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyByCollision : DestructibleComponent
@@ -22,5 +20,4 @@ public class DestroyByCollision : DestructibleComponent
             SwapComponent();
         }
     }
-
 }

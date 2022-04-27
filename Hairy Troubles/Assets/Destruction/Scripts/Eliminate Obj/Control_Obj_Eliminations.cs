@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Control_Obj_Eliminations : MB_SingletonDestroy<Control_Obj_Eliminations>
