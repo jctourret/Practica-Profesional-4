@@ -3,7 +3,7 @@ using System;
 
 public class DestructibleComponent : MonoBehaviour
 {
-    public static event Action<int> InScenePoints;
+    //public static event Action<int> InScenePoints;
     public static event Action<int> DestructionPoints;
 
     [Header("Fractured Part")]
@@ -26,8 +26,11 @@ public class DestructibleComponent : MonoBehaviour
         rig = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshCollider = GetComponent<MeshCollider>();
+    }
 
-        InScenePoints?.Invoke(points);
+    private void OnEnable()
+    {
+        GameManager.static_scenePoints += points;
     }
 
     protected void SwapComponent()

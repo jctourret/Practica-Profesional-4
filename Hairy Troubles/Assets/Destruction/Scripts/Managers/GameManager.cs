@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
     public float scenePoints = 0;
     public float actualPoints = 0;
 
-    [Header("UI")]
+    public static float static_scenePoints = 0f;
+
+    [Header("Scene State")]
     [SerializeField] private MissionsState missionsState;
+    [Range(0, 400)]
+    [SerializeField] private int sceneTime = 60;
 
     [Header("Determine Percentage Missions")]
     [Range(0, 100)]
@@ -31,19 +35,43 @@ public class GameManager : MonoBehaviour
 
     private const float PERCENT = 100f;
 
-    private UI_StarPoints_Controller starsController;
+    private UI_Game_Controller starsController;
+
+    private float timer = 0f;
+    private bool playing = true;
 
     // ----------------
 
     private void Awake()
     {
-        starsController = GetComponent<UI_StarPoints_Controller>();
+        starsController = GetComponent<UI_Game_Controller>();
 
         missionsState = MissionsState.none;
+
+        timer = sceneTime;
+
+        scenePoints = 0;
+        actualPoints = 0;
     }
 
+    private void OnEnable()
+    {
+        //DestructibleComponent.InScenePoints += GoalPoints;
+        DestructibleComponent.DestructionPoints += ChargePoints;
+    }
+
+    private void OnDisable()
+    {
+        static_scenePoints = 0;
+
+        //DestructibleComponent.InScenePoints -= GoalPoints;
+        DestructibleComponent.DestructionPoints -= ChargePoints;
+    }
+    
     private void Start()
     {
+        scenePoints = static_scenePoints;
+
         firstGoal = scenePoints * ((float)firstPercentGoal / PERCENT);
         mediumGoal = scenePoints * ((float)mediumPercentGoal / PERCENT);
         finalGoal = scenePoints * ((float)finalPercentGoal / PERCENT);
@@ -53,24 +81,38 @@ public class GameManager : MonoBehaviour
         Debug.Log(finalPercentGoal + "% percent: " + finalGoal);
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        DestructibleComponent.InScenePoints += GoalPoints;
-        DestructibleComponent.DestructionPoints += ChargePoints;
-    }
+        if(playing)
+        {
+            timer -= Time.deltaTime;
 
-    private void OnDisable()
-    {
-        DestructibleComponent.InScenePoints -= GoalPoints;
-        DestructibleComponent.DestructionPoints -= ChargePoints;        
+            if (timer < 0)
+            {
+                timer = 0f;
+
+                playing = false;
+
+                starsController.ActivateMenu(true);
+            }
+
+            starsController.UpdateTimer(timer);
+        }
+        
+        if(missionsState == MissionsState.Final)
+        {
+            playing = false;
+
+            starsController.ActivateMenu(true);
+        }
     }
 
     // ----------------
 
-    public void GoalPoints(int points)
-    {
-        scenePoints += points;
-    }
+    //public void GoalPoints(int points)
+    //{
+    //    scenePoints += points;
+    //}
     
     public void ChargePoints(int points)
     {
@@ -99,5 +141,4 @@ public class GameManager : MonoBehaviour
             missionsState = MissionsState.Final;
         }
     }
-
 }
