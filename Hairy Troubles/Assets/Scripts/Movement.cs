@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
 {
     [SerializeField] float movementSpeed;
     [SerializeField] float rotationSpeed;
+    [SerializeField] float cos;
     [SerializeField] Rigidbody rb;
     float hor;
     float ver;
@@ -31,6 +32,7 @@ public class Movement : MonoBehaviour
         //    Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
         //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
         //}
+
     }
     private void FixedUpdate()
     {
@@ -38,7 +40,7 @@ public class Movement : MonoBehaviour
 
         if (movementDirection != Vector3.zero)
         {
-            Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            Quaternion rotation = Quaternion.LookRotation(movementDirection , Vector3.up);
             rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
     }
