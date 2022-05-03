@@ -15,7 +15,7 @@ public class DestructibleComponent : MonoBehaviour
 
     protected Rigidbody rig;
     protected MeshRenderer meshRenderer;
-    protected MeshCollider meshCollider;
+    protected Collider meshCollider;
 
     protected float velocity;
 
@@ -25,7 +25,7 @@ public class DestructibleComponent : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
         meshRenderer = GetComponent<MeshRenderer>();
-        meshCollider = GetComponent<MeshCollider>();
+        meshCollider = GetComponent<Collider>();
     }
 
     private void OnEnable()
