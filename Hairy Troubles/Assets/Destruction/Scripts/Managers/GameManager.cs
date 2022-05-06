@@ -79,6 +79,9 @@ public class GameManager : MonoBehaviour
         Debug.Log(firstPercentGoal + "% percent: " + firstGoal);
         Debug.Log(mediumPercentGoal + "% percent: " + mediumGoal);
         Debug.Log(finalPercentGoal + "% percent: " + finalGoal);
+
+        // Percentage Bar:
+        starsController.SetMaximumProgress(finalGoal);
     }
 
     private void Update()
@@ -108,17 +111,15 @@ public class GameManager : MonoBehaviour
     }
 
     // ----------------
-
-    //public void GoalPoints(int points)
-    //{
-    //    scenePoints += points;
-    //}
     
     public void ChargePoints(int points)
     {
         actualPoints += points;
 
         CalculatePercentage();
+
+        // Percentage Bar:
+        starsController.UpdateProgressBar(points);
     }
 
     // ----------------
