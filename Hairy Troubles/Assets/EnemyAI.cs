@@ -58,8 +58,8 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         visionLight.range = viewRange;
-        visionLight.innerSpotAngle = viewRadius;
-        visionLight.spotAngle = viewRadius;
+        visionLight.innerSpotAngle = viewRadius*2;
+        visionLight.spotAngle = viewRadius*2;
 
         switch (currentstate)
         {
@@ -142,13 +142,10 @@ public class EnemyAI : MonoBehaviour
             if (Vector3.Angle(eyes.forward, dirToTarget) < viewRadius) // ¿Esta en mi radio de vision?
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
-                if (!Physics.Raycast(eyes.position, dirToTarget, distanceToTarget)) // ¿Algo me lo obstruye?
+                RaycastHit hit;
+                if (Physics.Raycast(eyes.position, dirToTarget, out hit, distanceToTarget)) // ¿Algo me lo obstruye?
                 {
                     visibleObjects.Add(target);
-                    if (target.tag == "Player")
-                    {
-                        Debug.Log("I saw a " + target.name);
-                    }
                 }
             }
         }
@@ -161,7 +158,6 @@ public class EnemyAI : MonoBehaviour
                 {
                     target = visibleObjects[i];
                     currentstate = states.Chase;
-                    Debug.Log("I'm chasing a " + target.name);
                     return;
                 }
             }
@@ -199,18 +195,18 @@ public class EnemyAI : MonoBehaviour
                 if (!Physics.Raycast(eyes.position, dirToTarget, distanceToTarget))
                 {
 
-                    Gizmos.color = Color.red;
+                    Gizmos.color = Color.red; // Dentro de cono de vision, puede verse
                     Gizmos.DrawLine(eyes.position, target.position);
                 }
                 else
                 {
-                    Gizmos.color = Color.yellow;
+                    Gizmos.color = Color.yellow; // Dentro de cono de vision, Obstruido
                     Gizmos.DrawLine(eyes.position, target.position); 
                 }
             }
             else
             {
-                Gizmos.color = Color.blue;
+                Gizmos.color = Color.blue; // Fuera de cono de vision
                 Gizmos.DrawLine(eyes.position, target.position);
             }
         }
