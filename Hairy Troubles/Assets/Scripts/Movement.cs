@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, ICollidable
 
 {
     [SerializeField] float movementSpeed;
@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float pushCooldown;
     [SerializeField] float pushCountdown;
     [SerializeField] Rigidbody rb;
+    [SerializeField] Animator anim;
     public static Action IsPushing;
     //[SerializeField] BoxCollider pushCollider;
     float hor;
@@ -39,8 +40,8 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
         rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
-
         if (movementDirection != Vector3.zero)
         {
             Quaternion rotation = Quaternion.LookRotation(movementDirection , Vector3.up);
