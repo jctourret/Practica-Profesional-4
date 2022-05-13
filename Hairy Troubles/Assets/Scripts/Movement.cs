@@ -67,6 +67,7 @@ public class Movement : MonoBehaviour, ICollidable
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
+            anim.SetTrigger("Jump");
         }
     }
     private void PlayerPushLogic()

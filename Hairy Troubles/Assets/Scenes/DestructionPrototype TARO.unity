@@ -1685,7 +1685,7 @@ Animator:
   m_GameObject: {fileID: 611815709}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5dbd07076603b54ca57303c1cb8ed49, type: 2}
+  m_Controller: {fileID: 9100000, guid: 02675aa36fed43946acb3802cac8f2e2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3943,8 +3943,12 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 611815711}
+    - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
       propertyPath: jumpforce
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
       propertyPath: pushforce
