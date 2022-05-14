@@ -7,9 +7,14 @@ public class DestructibleComponent : MonoBehaviour
     [Header("Fractured Part")]
     [SerializeField] protected GameObject fracturedObj;
 
+    [Header("Particle")]
+    [SerializeField] protected GameObject particlePref;
+
     protected Rigidbody rig;
     protected MeshRenderer meshRenderer;
     protected MeshCollider meshCollider;
+
+    protected float velocity;
 
     protected virtual void Awake()
     {
@@ -25,6 +30,16 @@ public class DestructibleComponent : MonoBehaviour
 
         rig.isKinematic = true;
 
-        fracturedObj.SetActive(true);
+        if (fracturedObj != null)
+        {
+            fracturedObj.SetActive(true);
+        }
+
+        if(particlePref != null)
+        {
+            GameObject go = Instantiate(particlePref, this.transform.position, Quaternion.Euler(Vector3.up));
+
+            Destroy(go, 3f);
+        }
     }
 }
