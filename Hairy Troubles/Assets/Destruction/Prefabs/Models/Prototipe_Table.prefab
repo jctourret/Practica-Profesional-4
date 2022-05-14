@@ -1193,9 +1193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 8000435313987372193}
+  points: 10
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   isDestoyed: 0
-  timeToDestroy: 5
 --- !u!1 &3505681546676867404
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3505681546676867404}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.7499999, y: 0.37020564, z: -0.20193607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1355,6 +1355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6128016799698489301}
+  - component: {fileID: 1271665118}
   m_Layer: 0
   m_Name: Broken_Leg_1
   m_TagString: Untagged
@@ -1381,6 +1382,25 @@ Transform:
   m_Father: {fileID: 222096325619020024}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1271665118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4025722722268286079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 759028894540714863}
+  - {fileID: 6081513649711497849}
+  - {fileID: 5027094313936170146}
+  - {fileID: 1810923995452220308}
+  - {fileID: 8638078181907509117}
 --- !u!1 &4118504499523167458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,8 +2319,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 0}
+  points: 0
   particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
   destroyByCollision: 1
+  fractureLimit: 0.5
   furnitureComponents:
   - {fileID: 306722435284526464}
   - {fileID: 306722436841115447}
@@ -2561,9 +2583,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 6188264607335501622}
+  points: 10
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   isDestoyed: 0
-  timeToDestroy: 5
 --- !u!1 &6188264607335501622
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,6 +2595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6241809417408134816}
+  - component: {fileID: 1838331693}
   m_Layer: 0
   m_Name: Broken_Leg_3
   m_TagString: Untagged
@@ -2598,6 +2621,24 @@ Transform:
   m_Father: {fileID: 3894954496742149802}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838331693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6188264607335501622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 5838315448058561557}
+  - {fileID: 5721368931832177732}
+  - {fileID: 4819390466440076761}
+  - {fileID: 8755573172712227181}
 --- !u!1 &6673500988300363640
 GameObject:
   m_ObjectHideFlags: 0
@@ -2607,6 +2648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2910284391169472091}
+  - component: {fileID: 743799252}
   m_Layer: 0
   m_Name: Broken_Leg_4
   m_TagString: Untagged
@@ -2633,6 +2675,25 @@ Transform:
   m_Father: {fileID: 6826250184077874347}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &743799252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6673500988300363640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 5595174600146866038}
+  - {fileID: 5828787071017824165}
+  - {fileID: 3527821964388817699}
+  - {fileID: 1291386374187005879}
+  - {fileID: 7345978919789803908}
 --- !u!1 &7311399433927589623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,9 +2838,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 6673500988300363640}
+  points: 10
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   isDestoyed: 0
-  timeToDestroy: 5
 --- !u!1 &7345978919789803908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3037,9 +3098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 4025722722268286079}
+  points: 10
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   isDestoyed: 0
-  timeToDestroy: 5
 --- !u!1 &8000435313987372193
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3110,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5547357450493322086}
+  - component: {fileID: 1163771095}
   m_Layer: 0
   m_Name: Broken_Leg_2
   m_TagString: Untagged
@@ -3075,6 +3137,25 @@ Transform:
   m_Father: {fileID: 3588512743345219567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1163771095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000435313987372193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 1442776965835920531}
+  - {fileID: 4118504499523167458}
+  - {fileID: 85775171353926817}
+  - {fileID: 277371750906764578}
+  - {fileID: 1060813696640186735}
 --- !u!1 &8638078181907509117
 GameObject:
   m_ObjectHideFlags: 0
