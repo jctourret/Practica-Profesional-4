@@ -5970,18 +5970,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1333143535}
     m_Modifications:
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: jumpforce
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: movementSpeed
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: rotationSpeed
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 4305059816762700224, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: m_Name
       value: Player_Prototipe
