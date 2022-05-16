@@ -143,7 +143,6 @@ GameObject:
   - component: {fileID: 1582423752194800558}
   - component: {fileID: 2475358640450122763}
   - component: {fileID: 413991246666252481}
-  - component: {fileID: 4439294372231932493}
   m_Layer: 0
   m_Name: Tile_Mesada_Grifo
   m_TagString: Untagged
@@ -158,7 +157,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2215268163422413076}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.55310524, y: 1.0281124, z: -0.3792218}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -217,17 +216,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4439294372231932493
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2215268163422413076}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: -1
-  m_Mesh: {fileID: 2668927488945371158, guid: 9e2ab0e6855bcd640a71ceeab656af76, type: 3}

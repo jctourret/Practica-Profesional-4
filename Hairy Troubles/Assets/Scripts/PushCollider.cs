@@ -1,58 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class PushCollider : MonoBehaviour
 {
-    [SerializeField] float pushTime = 0.25f;
-    [SerializeField] float pushCountdown;
-    [SerializeField] float pushForce;
-    [SerializeField] float upForce;
-    Transform parent;
-    bool canPush = false;
+    private float pushTime = 0.25f;
+    private float frontforce = 1;
+    private float upForce = 1;
+    
+    private Transform parent;
+    private Collider coll;
+
+    private List<Transform> objectsPushed = new List<Transform>();
+
+    // ----------------------
+
+    void Awake()
+    {
+        parent = GetComponentInParent<Transform>();
+        coll = GetComponent<Collider>();
+    }
+
+    private void Start()
+    {
+        coll.enabled = false;
+    }
+
     private void OnEnable()
     {
         Movement.IsPushing += CanPush;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        parent = GetComponentInParent<Transform>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if( pushCountdown >0 )
-        {
-            pushCountdown -= Time.deltaTime;
-        }
-        else
-        {
-            canPush = false;
-        }
-    }
     private void OnDisable()
     {
         Movement.IsPushing -= CanPush;
     }
+
     private void OnTriggerStay(Collider other)
     {
-        if (canPush)
+        Rigidbody rb;
+
+        other.gameObject.TryGetComponent<Rigidbody>(out rb);
+
+        if (rb != null && !objectsPushed.Contains(other.transform))
         {
-            Rigidbody rb;
+            objectsPushed.Add(other.transform);
 
-            other.gameObject.TryGetComponent<Rigidbody>(out rb);
-
-            if (rb != null)
-            {
-                rb.AddForce(new Vector3( parent.forward.x * pushForce, upForce, parent.forward.z * pushForce), ForceMode.Impulse);
-            }
+            rb.AddForce(new Vector3( parent.forward.x * frontforce, upForce, parent.forward.z * frontforce), ForceMode.Impulse);
         }
     }
    
-    void CanPush()
+    private void CanPush(float time, float front, float up)
     {
-        canPush = true;
-        pushCountdown = pushTime;
+        pushTime = time;
+        frontforce = front;
+        upForce = up;
+
+        StartCoroutine(PushCountdown());
+    }
+
+    IEnumerator PushCountdown()
+    {
+        coll.enabled = true;
+
+        yield return new WaitForSeconds(pushTime);
+
+        objectsPushed.Clear();
+        coll.enabled = false;
     }
 }
