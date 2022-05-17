@@ -3946,22 +3946,6 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 611815711}
-    - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
-      propertyPath: jumpforce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
-      propertyPath: pushforce
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
-      propertyPath: movementSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2844194768490676294, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
-      propertyPath: rotationSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 2844194768490676295, guid: 0914785ab32b0c348982a2fb5e623e61, type: 3}
       propertyPath: m_RootOrder
       value: 1
