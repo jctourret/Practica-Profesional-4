@@ -56,16 +56,17 @@ public class PushCollider : MonoBehaviour
         frontforce = front;
         upForce = up;
 
+        IEnumerator PushCountdown()
+        {
+            coll.enabled = true;
+
+            yield return new WaitForSeconds(pushTime);
+
+            objectsPushed.Clear();
+            coll.enabled = false;
+        }
         StartCoroutine(PushCountdown());
     }
 
-    IEnumerator PushCountdown()
-    {
-        coll.enabled = true;
-
-        yield return new WaitForSeconds(pushTime);
-
-        objectsPushed.Clear();
-        coll.enabled = false;
-    }
+   
 }

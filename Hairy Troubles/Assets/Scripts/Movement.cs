@@ -90,6 +90,7 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }
