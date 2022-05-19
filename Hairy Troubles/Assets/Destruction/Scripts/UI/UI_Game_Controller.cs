@@ -7,10 +7,14 @@ public class UI_Game_Controller : MonoBehaviour
 {
     [Header("Stars")]
     [Header("--- STARS ---")]
+    [SerializeField] private GameObject starsBackground;
     [SerializeField] private GameObject[] enableStars;
 
+
+    [Header("--- PROGRESS ---")]
+
+    [SerializeField] private GameObject progressBar;
     [Header("Percentage")]
-    [Header("--- PERCENTAGE ---")]
     [SerializeField] private Image percentageBar;
     [SerializeField] private TextMeshProUGUI percentageText;
     private float currentPercentage = 0f;
@@ -48,7 +52,9 @@ public class UI_Game_Controller : MonoBehaviour
 
     public void ActivateMenu(bool state)
     {
+        starsBackground.SetActive(state);
         menuLayer.SetActive(state);
+        progressBar.SetActive(!state);
         timerObj.SetActive(!state);
     }
 

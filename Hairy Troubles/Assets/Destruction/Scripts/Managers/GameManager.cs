@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
 
                 playing = false;
 
+                CalculatePercentage();
                 starsController.ActivateMenu(true);
             }
 
@@ -115,8 +116,6 @@ public class GameManager : MonoBehaviour
     public void ChargePoints(int points)
     {
         actualPoints += points;
-
-        CalculatePercentage();
 
         // Percentage Bar:
         starsController.UpdateProgressBar(points);
