@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float pushforce;
     [SerializeField] private float pushCooldown;
     [SerializeField] private float pushCountdown;
+    [SerializeField] private float positionY;
     [SerializeField] private Animator anim;
     [Space(10f)]
     [Header("-- Push --")]
@@ -74,12 +75,19 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerJumpLogic()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.X) && canJump)
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
             anim.SetTrigger("Jump");
         }
+
+        if (positionY > transform.position.y)
+        {
+            anim.SetTrigger("Fall");
+        }
+
+        positionY = transform.position.y;
     }
 
     private void PlayerPushLogic()
@@ -88,8 +96,9 @@ public class Movement : MonoBehaviour, ICollidable
         {
             pushCountdown -= Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftShift))
+        else if (Input.GetKeyDown(KeyCode.Z))
         {
+            anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }
