@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float pushforce;
     [SerializeField] private float pushCooldown;
     [SerializeField] private float pushCountdown;
+    [SerializeField] private float positionY;
     [SerializeField] private Animator anim;
     [Space(10f)]
     [Header("-- Push --")]
@@ -80,6 +81,13 @@ public class Movement : MonoBehaviour, ICollidable
             canJump = false;
             anim.SetTrigger("Jump");
         }
+
+        if (positionY > transform.position.y)
+        {
+            anim.SetTrigger("Fall");
+        }
+
+        positionY = transform.position.y;
     }
 
     private void PlayerPushLogic()
