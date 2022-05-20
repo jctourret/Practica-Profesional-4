@@ -30,12 +30,21 @@ public class FurnitureParts : DestructibleComponent
 
     // -------------------------------
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.tag == "Player")
+        if (other.transform.tag == "Player")
         {
             if (fixedJoint != null) Destroy(fixedJoint);
             SwapComponent();
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //if (collision.transform.tag == "Player")
+        //{
+        //    if (fixedJoint != null) Destroy(fixedJoint);
+        //    SwapComponent();
+        //}
     }
 }
