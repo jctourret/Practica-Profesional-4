@@ -15,6 +15,7 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
     [Space(15f)]
     [Header("Features")]
     [SerializeField] private ObjSurface objSurface = ObjSurface.Floor;
+    [SerializeField] private bool destroyByPlayerCollision = false;
 
     // -------------------------------
 
@@ -25,24 +26,31 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(objSurface == ObjSurface.Floor)
+        if (collision.transform.GetComponent<Movement>() && destroyByPlayerCollision)
         {
-            if (velocity <= -fractureLimit)
-            {
-                SwapComponent();
-            }
+            SwapComponent();
         }
-        else if (objSurface == ObjSurface.Wall)
+        else
         {
-            if (collision.transform.GetComponent<ICollidable>() != null)
+            if (objSurface == ObjSurface.Floor)
             {
-                rig.isKinematic = false;
-                objSurface = ObjSurface.Floor;
+                if (velocity <= -fractureLimit)
+                {
+                    SwapComponent();
+                }
             }
-        }
-        else if (objSurface == ObjSurface.Roof)
-        {
+            else if (objSurface == ObjSurface.Wall)
+            {
+                if (collision.transform.GetComponent<ICollidable>() != null)
+                {
+                    rig.isKinematic = false;
+                    objSurface = ObjSurface.Floor;
+                }
+            }
+            else if (objSurface == ObjSurface.Roof)
+            {
 
+            }
         }
     }
 }

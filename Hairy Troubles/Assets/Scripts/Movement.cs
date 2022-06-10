@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerJumpLogic()
     {
-        if (Input.GetKeyDown(KeyCode.X) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
@@ -96,7 +96,7 @@ public class Movement : MonoBehaviour, ICollidable
         {
             pushCountdown -= Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.Z))
+        else if (Input.GetKeyDown(KeyCode.E))
         {
             anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
