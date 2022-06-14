@@ -264,6 +264,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1393144328}
     m_Modifications:
+    - target: {fileID: 1414073047592624245, guid: 1a3c8336457c18d40bfc208626413a8f, type: 3}
+      propertyPath: awakeWithAnimation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1414073047592624248, guid: 1a3c8336457c18d40bfc208626413a8f, type: 3}
       propertyPath: m_Name
       value: Scene Transition
