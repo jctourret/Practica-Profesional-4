@@ -42,7 +42,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305059816762700224}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 0e0787c26c547b74ca7ba1c4fb109164, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.1
@@ -77,12 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23981009b182ff14f87c9725b2dace57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1.2
-  rotationSpeed: 9
-  jumpforce: 12
-  pushforce: 5
+  movementSpeed: 2
+  rotationSpeed: 15
+  jumpforce: 14
+  pushforce: 7
   pushCooldown: 1
   pushCountdown: 0
+  positionY: 0
   anim: {fileID: 4305059818248108055}
   pushTime: 0.25
   frontForce: 20

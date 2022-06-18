@@ -2142,7 +2142,6 @@ GameObject:
   - component: {fileID: 794666047}
   - component: {fileID: 794666046}
   - component: {fileID: 794666049}
-  - component: {fileID: 794666051}
   - component: {fileID: 794666050}
   m_Layer: 0
   m_Name: Main Camera
@@ -2262,20 +2261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1115995709}
-  smoothSpeed: 0.125
+  smoothSpeed: 0.1
   offset: {x: 0, y: 1.5, z: -0.9}
---- !u!114 &794666051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 794666045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84a578acb9bf9ab46b501693a803c90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &801229171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2850,7 +2837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 158.9, y: -48.7}
+  m_AnchoredPosition: {x: 158.8999, y: -48.69995}
   m_SizeDelta: {x: 329.2, y: 340.5421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &995214297
@@ -6124,10 +6111,6 @@ PrefabInstance:
       propertyPath: pushforce
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: rotationSpeed
-      value: 8.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4305059816762700224, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: m_Name
       value: Player_Prototipe
@@ -6175,6 +6158,18 @@ PrefabInstance:
     - target: {fileID: 4305059816762700225, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305059816762700226, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305059816762700226, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 0e0787c26c547b74ca7ba1c4fb109164, type: 2}
+    - target: {fileID: 4305059816860849685, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4305059816860849690, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: m_TagString
