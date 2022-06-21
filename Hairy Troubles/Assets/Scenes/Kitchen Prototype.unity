@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2657,7 +2657,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -2683,13 +2683,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 794666045}
-  m_LocalRotation: {x: -0.29150563, y: -0.0025136173, z: 0.0023382157, w: -0.95656294}
-  m_LocalPosition: {x: -0.48218435, y: 1.4269717, z: -0.91280246}
+  m_LocalRotation: {x: 0.30222887, y: 0.002103387, z: -0.002252783, w: 0.95323044}
+  m_LocalPosition: {x: -0.4, y: 1.62, z: -0.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 35.184, y: 0.186, z: -0.212}
 --- !u!114 &794666049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,7 +2714,7 @@ MonoBehaviour:
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -7716,6 +7716,22 @@ PrefabInstance:
     - target: {fileID: 5341550047687407630, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
       propertyPath: m_Name
       value: Table_Destruction
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: highlightColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: highlightColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: highlightColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: highlightColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}

@@ -5,7 +5,7 @@ using System;
 public class Movement : MonoBehaviour, ICollidable
 {
     public static Action<float, float, float> IsPushing;
-    
+    public static Action onHighlightRequest;
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
@@ -43,8 +43,18 @@ public class Movement : MonoBehaviour, ICollidable
         PlayerMovement();
 
         PlayerJumpLogic();
-        
+
+        PlayerHighlightRequest();
+
         PlayerPushLogic();
+    }
+
+    void PlayerHighlightRequest()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            onHighlightRequest?.Invoke();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
