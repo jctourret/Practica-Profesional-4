@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -15,6 +16,8 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float pushCooldown;
     [SerializeField] private float pushCountdown;
     [SerializeField] private float positionY;
+    [SerializeField] private List<Transform> raycast;
+
     [SerializeField] private Animator anim;
     [Space(10f)]
     [Header("-- Push --")]
@@ -40,13 +43,19 @@ public class Movement : MonoBehaviour, ICollidable
 
     void Update()
     {
-        PlayerMovement();
+        hor = Input.GetAxis("Horizontal");
+        ver = Input.GetAxis("Vertical");
+
+        movementDirection = new Vector3(hor, 0, ver);
+        movementDirection.Normalize();
 
         PlayerJumpLogic();
 
         PlayerHighlightRequest();
 
         PlayerPushLogic();
+
+        //PlayerMovement();
     }
 
     void PlayerHighlightRequest()
@@ -57,27 +66,35 @@ public class Movement : MonoBehaviour, ICollidable
         }
     }
 
+    private void FixedUpdate()
+    {
+        PlayerMovement();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        //TARO: hace la logica para que esto se haga cuando choque con un suelo.
-        canJump = true;
-        //COMENTARIO - TOMAS: No me parece muy copada la forma en la que se chequea la colision despues de un salto usando el "OnCollisionEnter"
+        RaycastHit hit;
+        
+        for(int i = 0; i < raycast.Count; i++)
+        {
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(raycast[i].transform.position, raycast[i].transform.TransformDirection(Vector3.down), out hit, 0.05f))
+            {
+                canJump = true;
+                break;
+            }
+        }
     }
 
     private void PlayerMovement()
     {
-        hor = Input.GetAxis("Horizontal");
-        ver = Input.GetAxis("Vertical");
-
-        movementDirection = new Vector3(hor, 0, ver);
-        movementDirection.Normalize();
-
-        anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
-
         rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
+        
+        anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
 
         if (movementDirection != Vector3.zero)
         {
+
             Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
