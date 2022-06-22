@@ -108,10 +108,8 @@ public class UI_Game_Controller : MonoBehaviour
 
         percentageText.text = "%" + (percentageBar.fillAmount * 100).ToString("0");
     }
-    #endregion
 
-    #region PRIVATE_CALLS
-    private void DisablePause()
+    public void DisablePause()
     {
         pauseState = !pauseState;
 
