@@ -130,9 +130,12 @@ MonoBehaviour:
   fracturedObj: {fileID: 7087419159657263565}
   points: 5
   particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   fractureLimit: 0.3
   objSurface: 0
-  destroyByPlayerCollision: 1
+  destroyByPlayerCollision: 0
 --- !u!1001 &7969959555396668572
 PrefabInstance:
   m_ObjectHideFlags: 0
