@@ -2164,8 +2164,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 1746705048783566935}
-  points: 10
+  points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   isDestoyed: 0
 --- !u!1 &5341550047687407630
 GameObject:
@@ -2190,7 +2193,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5341550047687407630}
-  m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.75, y: 0, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2346,8 +2349,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 1746705048569372892}
-  points: 10
+  points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   isDestoyed: 0
 --- !u!1 &7145866374751190505
 GameObject:
@@ -2493,8 +2499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 1746705048943737698}
-  points: 10
+  points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   isDestoyed: 0
 --- !u!1 &8545406325071190233
 GameObject:
@@ -2753,6 +2762,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fracturedObj: {fileID: 1746705047596772262}
-  points: 10
+  points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   isDestoyed: 0

@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     [Range(0, 100)]
     [SerializeField] private int finalPercentGoal = 100;
 
+    [Header("Player Ref")]
+    [SerializeField] private Movement player = null;
+
     private float firstGoal = 0f;
     private float mediumGoal = 0f;
     private float finalGoal = 0f;
@@ -95,6 +98,7 @@ public class GameManager : MonoBehaviour
                 timer = 0f;
 
                 playing = false;
+                player.StopCharacter(playing);
 
                 CalculatePercentage();
                 starsController.ActivateMenu(true);
@@ -106,6 +110,7 @@ public class GameManager : MonoBehaviour
         if(missionsState == MissionsState.Final)
         {
             playing = false;
+            player.StopCharacter(playing);
 
             starsController.ActivateMenu(true);
         }
@@ -116,6 +121,8 @@ public class GameManager : MonoBehaviour
     public void ChargePoints(int points)
     {
         actualPoints += points;
+
+        CalculatePercentage();
 
         // Percentage Bar:
         starsController.UpdateProgressBar(points);
@@ -130,12 +137,14 @@ public class GameManager : MonoBehaviour
             starsController.ActivateStar(0);
             missionsState = MissionsState.First;
         }
-        else if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
+        
+        if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
         {
             starsController.ActivateStar(1);
             missionsState = MissionsState.Medium;
         }
-        else if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
+        
+        if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
         {
             starsController.ActivateStar(2);
             missionsState = MissionsState.Final;

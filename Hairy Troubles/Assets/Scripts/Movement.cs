@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour, ICollidable
 {
     public static Action<float, float, float> IsPushing;
     public static Action onHighlightRequest;
+
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
@@ -31,6 +32,7 @@ public class Movement : MonoBehaviour, ICollidable
     private float ver;
     private Vector3 movementDirection;
     private bool canJump = false;
+    private bool isMoving = true;
 
     private Rigidbody rb;
 
@@ -43,19 +45,22 @@ public class Movement : MonoBehaviour, ICollidable
 
     void Update()
     {
-        hor = Input.GetAxis("Horizontal");
-        ver = Input.GetAxis("Vertical");
+        if (isMoving)
+        {
+            hor = Input.GetAxis("Horizontal");
+            ver = Input.GetAxis("Vertical");
 
-        movementDirection = new Vector3(hor, 0, ver);
-        movementDirection.Normalize();
+            movementDirection = new Vector3(hor, 0, ver);
+            movementDirection.Normalize();
 
-        PlayerJumpLogic();
+            PlayerJumpLogic();
 
-        PlayerHighlightRequest();
+            PlayerHighlightRequest();
 
-        PlayerPushLogic();
+            PlayerPushLogic();
 
-        //PlayerMovement();
+            //PlayerMovement();
+        }
     }
 
     void PlayerHighlightRequest()
@@ -68,7 +73,10 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void FixedUpdate()
     {
-        PlayerMovement();
+        if (isMoving)
+        {
+            PlayerMovement();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -129,5 +137,12 @@ public class Movement : MonoBehaviour, ICollidable
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }
+    }
+
+    // ------------------------------
+
+    public void StopCharacter(bool state)
+    {
+        isMoving = state;
     }
 }
