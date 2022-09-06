@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class UI_Game_Controller : MonoBehaviour
@@ -39,6 +40,11 @@ public class UI_Game_Controller : MonoBehaviour
     private bool pauseState = true;
     #endregion
 
+    #region Actions
+    public static Action OnPlayButton;
+
+    #endregion
+
     #region UNITY_CALLS
     private void Awake()
     {
@@ -48,7 +54,10 @@ public class UI_Game_Controller : MonoBehaviour
         }
         DisablePause();
     }
-
+    private void Start()
+    {
+        Time.timeScale = 0f;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -68,7 +77,11 @@ public class UI_Game_Controller : MonoBehaviour
     {
         timerText.text = time.ToString("0");
     }
-
+    
+    public void Play()
+    {
+        OnPlayButton?.Invoke();
+    }
     public void ActivateMenu(bool state)
     {
         viewEnd.SetActive(state);
