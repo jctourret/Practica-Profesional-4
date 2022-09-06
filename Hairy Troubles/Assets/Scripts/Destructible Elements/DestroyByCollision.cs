@@ -19,7 +19,7 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
 
     // -------------------------------
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         velocity = rig.velocity.y;
     }

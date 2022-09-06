@@ -1,11 +1,15 @@
-using UnityEngine;
 using System;
 using System.Collections;
+
+using UnityEngine;
+
 public class DestructibleComponent : MonoBehaviour
 {
-    //public static event Action<int> InScenePoints;
+    #region ACTIONS_METHODS
     public static event Action<int> DestructionPoints;
+    #endregion
 
+    #region PUBLIC_METHODS
     [Header("Fractured Part")]
     [SerializeField] protected GameObject fracturedObj;
     [SerializeField] protected int points = 10;
@@ -18,12 +22,13 @@ public class DestructibleComponent : MonoBehaviour
     protected Color startingColor;
     protected Color highlightColor = Color.red;
     [SerializeField] protected float highlightTime = 3f;
-    [SerializeField] protected float highlightTimer=0f;
-
+    [SerializeField] protected float highlightTimer = 0f;
 
     [Header("Destruction")]
     [SerializeField] float destructionTime = 3f;
+    #endregion
 
+    #region PRIVATE_METHODS
     protected Rigidbody rig;
     protected MeshRenderer meshRenderer;
     protected Collider meshCollider;
@@ -31,13 +36,22 @@ public class DestructibleComponent : MonoBehaviour
     protected float velocity;
 
     protected bool isDestroyed = false;
+    #endregion
 
+    #region UNITY_CALLS
     protected virtual void Awake()
     {
-        rig = GetComponent<Rigidbody>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshCollider = GetComponent<Collider>();
         renderer = GetComponent<Renderer>();
+        meshRenderer = GetComponent<MeshRenderer>();
+        
+        if(TryGetComponent(out Rigidbody component))
+        {
+            rig = component;
+        }
+        if(TryGetComponent(out Collider collider))
+        {
+            meshCollider = collider;
+        }
     }
 
     private void OnEnable()
@@ -49,22 +63,23 @@ public class DestructibleComponent : MonoBehaviour
     {
         Movement.onHighlightRequest -= startHighlight;
     }
+    #endregion
 
-    void startHighlight()
-    {
-        startingColor = renderer.material.GetColor("Color_b9a9dcbfa87e4092934e4e9c37497682");
-        renderer.material.SetColor("Color_b9a9dcbfa87e4092934e4e9c37497682",highlightColor);
-        StartCoroutine(HighlightItems());
-    }
-
-    protected void SwapComponent()
+    #region PROTECTED_FIELD
+    public void SwapComponent()
     {
         if (!isDestroyed)
         {
             meshRenderer.enabled = false;
-            meshCollider.enabled = false;
 
-            rig.isKinematic = true;
+            if (meshCollider != null)
+            {
+                meshCollider.enabled = false;
+            }
+            if (rig != null)
+            {
+                rig.isKinematic = true;
+            }
 
             DestructionPoints?.Invoke(points);
             isDestroyed = true;
@@ -82,8 +97,17 @@ public class DestructibleComponent : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    IEnumerator HighlightItems()
+    #region PRIVATE_FIELD
+    private void startHighlight()
+    {
+        startingColor = renderer.material.GetColor("Color_b9a9dcbfa87e4092934e4e9c37497682");
+        renderer.material.SetColor("Color_b9a9dcbfa87e4092934e4e9c37497682",highlightColor);
+        StartCoroutine(HighlightItems());
+    }
+
+    private IEnumerator HighlightItems()
     {
         while (highlightTimer < highlightTime)
         {
@@ -93,4 +117,6 @@ public class DestructibleComponent : MonoBehaviour
         highlightTimer = 0.0f;
         renderer.material.SetColor("Color_b9a9dcbfa87e4092934e4e9c37497682", startingColor);
     }
+    #endregion
+
 }

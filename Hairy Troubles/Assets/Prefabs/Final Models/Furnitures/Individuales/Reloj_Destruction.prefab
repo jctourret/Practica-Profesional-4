@@ -130,8 +130,12 @@ MonoBehaviour:
   fracturedObj: {fileID: 1499069147386365075}
   points: 10
   particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   fractureLimit: 0.3
   objSurface: 1
+  destroyByPlayerCollision: 0
 --- !u!1001 &1732947576165726658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2271524909212399824}
     m_Modifications:
+    - target: {fileID: -8830883506210107844, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -235,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d74bd6888544c464fa101991cc401ee4, type: 2}
+    - target: {fileID: -4139269088619855397, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -3285186715034379545, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -243,9 +255,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d74bd6888544c464fa101991cc401ee4, type: 2}
+    - target: {fileID: -697767250242047717, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -697627214911342943, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_Name
       value: Reloj_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_IsActive
@@ -279,10 +303,18 @@ PrefabInstance:
       propertyPath: m_CookingOptions
       value: 28
       objectReference: {fileID: 0}
+    - target: {fileID: 3474288203790881864, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4335014259027874034, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d74bd6888544c464fa101991cc401ee4, type: 2}
+    - target: {fileID: 5264399344132829744, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5328906193783136514, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -291,6 +323,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d74bd6888544c464fa101991cc401ee4, type: 2}
+    - target: {fileID: 7829595314841609794, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8999061031486509695, guid: b7c97e376e75ae94e909c0662deba488, type: 3}
       propertyPath: m_Convex
       value: 1
