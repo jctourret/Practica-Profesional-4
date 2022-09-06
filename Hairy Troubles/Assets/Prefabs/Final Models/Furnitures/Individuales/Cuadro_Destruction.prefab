@@ -130,8 +130,12 @@ MonoBehaviour:
   fracturedObj: {fileID: 1568760831737638708}
   points: 10
   particlePref: {fileID: 9146935715307509594, guid: 3a74dfdc4cd2a2440911268d2fce5e12, type: 3}
+  highlightTime: 3
+  highlightTimer: 0
+  destructionTime: 3
   fractureLimit: 0.3
   objSurface: 1
+  destroyByPlayerCollision: 0
 --- !u!1001 &1802621258295775845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2201850129142733857}
     m_Modifications:
+    - target: {fileID: -9175275178521868902, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -187,6 +195,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9d1d8e9843f4c44ca19741bd5a96e95, type: 2}
+    - target: {fileID: -6043436930840334332, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -3157523917348899107, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -199,9 +211,17 @@ PrefabInstance:
       propertyPath: m_CookingOptions
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: -551931500797042158, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Name
       value: Cuadro_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_IsActive
@@ -219,6 +239,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9d1d8e9843f4c44ca19741bd5a96e95, type: 2}
+    - target: {fileID: 2856318502859505565, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3329470416993158684, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Convex
       value: 1
@@ -235,10 +259,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9d1d8e9843f4c44ca19741bd5a96e95, type: 2}
+    - target: {fileID: 4601076721791069065, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6080130493493341239, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9d1d8e9843f4c44ca19741bd5a96e95, type: 2}
+    - target: {fileID: 7595206769101428133, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7611763094354035604, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -266,6 +298,10 @@ PrefabInstance:
     - target: {fileID: 8643437946623411640, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_CookingOptions
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114367089618342923, guid: b6440051744464a418d036447da33129, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 9135036730685430704, guid: b6440051744464a418d036447da33129, type: 3}
       propertyPath: m_Convex

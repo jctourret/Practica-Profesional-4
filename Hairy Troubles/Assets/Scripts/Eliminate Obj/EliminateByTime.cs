@@ -45,7 +45,7 @@ public class EliminateByTime : MonoBehaviour
         }
     }
 
-    IEnumerator DestroyAnimation()
+    private IEnumerator DestroyAnimation()
     {
         float time = 0f;
 
