@@ -5,31 +5,25 @@ using UnityEngine;
 
 public class CountdownTimer : MonoBehaviour
 {
-    TMP_Text cdText;
-    Animator animator;
-    float cdTimer = 4;
-    void Start()
-    {
-        cdText = GetComponent<TMP_Text>();
-        animator = GetComponent<Animator>();
-    }
+    #region EXPOSED_METHODS
+    [SerializeField] private TMP_Text cdText = null;
+    [SerializeField] private Animator animator = null;
+    #endregion
 
-    private void OnEnable()
-    {
-        UI_Game_Controller.OnPlayButton += StartCountdown;
-    }
+    #region PRIVATE_METHODS
+    private float cdTimer = 4;
+    #endregion
 
-    private void OnDisable()
-    {
-        UI_Game_Controller.OnPlayButton -= StartCountdown;
-    }
-
+    #region PUBLIC_CALLS
     public void StartCountdown()
     {
         animator.SetTrigger("cdNow");
         StartCoroutine(Countdown());
     }
-    IEnumerator Countdown()
+    #endregion
+
+    #region PRIVATE_CALLS
+    private IEnumerator Countdown()
     {
         while(cdTimer > 0)
         {
@@ -52,4 +46,5 @@ public class CountdownTimer : MonoBehaviour
         }
         Time.timeScale = 1f;
     }
+    #endregion
 }

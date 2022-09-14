@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    #region PUBLIC_METHODS
     public enum MissionsState
     {
-        none,
-        First,
-        Medium,
-        Final
+        none, First, Medium, Final
     }
-
+    
     [Header("Scene Points")]
     public float scenePoints = 0;
     public float actualPoints = 0;
-
-    public static float static_scenePoints = 0f;
 
     [Header("Scene State")]
     [SerializeField] private MissionsState missionsState;
@@ -32,23 +28,27 @@ public class GameManager : MonoBehaviour
     [Header("Player Ref")]
     [SerializeField] private Movement player = null;
 
+    [Header("UI")]
+    [SerializeField] private UI_Game_Controller uiGameController;
+    #endregion
+
+    #region PRIVATE_METHODS
     private float firstGoal = 0f;
     private float mediumGoal = 0f;
     private float finalGoal = 0f;
 
-    private const float PERCENT = 100f;
-
-    private UI_Game_Controller starsController;
-
     private float timer = 0f;
     private bool playing = true;
+    #endregion
 
-    // ----------------
+    #region STATIC_CONST_METHODS
+    public static float static_scenePoints = 0f;
+    private const float PERCENT = 100f;
+    #endregion
 
+    #region UNITY_CALLS
     private void Awake()
     {
-        starsController = GetComponent<UI_Game_Controller>();
-
         missionsState = MissionsState.none;
 
         timer = sceneTime;
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
         Debug.Log(finalPercentGoal + "% percent: " + finalGoal);
 
         // Percentage Bar:
-        starsController.SetMaximumProgress(finalGoal);
+        uiGameController.SetMaximumProgress(finalGoal);
     }
 
     private void Update()
@@ -101,10 +101,10 @@ public class GameManager : MonoBehaviour
                 player.StopCharacter(playing);
 
                 CalculatePercentage();
-                starsController.ActivateMenu(true);
+                uiGameController.ActivateMenu(true);
             }
 
-            starsController.UpdateTimer(timer);
+            uiGameController.UpdateTimer(timer);
         }
         
         if(missionsState == MissionsState.Final)
@@ -112,12 +112,12 @@ public class GameManager : MonoBehaviour
             playing = false;
             player.StopCharacter(playing);
 
-            starsController.ActivateMenu(true);
+            uiGameController.ActivateMenu(true);
         }
     }
+    #endregion
 
-    // ----------------
-    
+    #region PUBLIC_CALLS
     public void ChargePoints(int points)
     {
         actualPoints += points;
@@ -125,29 +125,30 @@ public class GameManager : MonoBehaviour
         CalculatePercentage();
 
         // Percentage Bar:
-        starsController.UpdateProgressBar(points);
+        uiGameController.UpdateProgressBar(points);
     }
+    #endregion
 
-    // ----------------
-
+    #region PRIVATE_CALLS
     private void CalculatePercentage()
     {
         if (actualPoints >= firstGoal && missionsState == MissionsState.none)
         {
-            starsController.ActivateStar(0);
+            uiGameController.ActivateStar(0);
             missionsState = MissionsState.First;
         }
         
         if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
         {
-            starsController.ActivateStar(1);
+            uiGameController.ActivateStar(1);
             missionsState = MissionsState.Medium;
         }
         
         if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
         {
-            starsController.ActivateStar(2);
+            uiGameController.ActivateStar(2);
             missionsState = MissionsState.Final;
         }
     }
+    #endregion
 }

@@ -8,41 +8,42 @@ public class UI_Game_Controller : MonoBehaviour
 {
     #region EXPOSED_FIELD
     [Header("Stars")]
-    [Header("--- STARS ---")]
-    [SerializeField] private GameObject[] enableStars;
+    [SerializeField] private GameObject[] enableStars = null;
 
-    [Header("--- PROGRESS ---")]
+    [Header("Progress")]
+    [SerializeField] private GameObject progressBar = null;
 
-    [SerializeField] private GameObject progressBar;
     [Header("Percentage")]
-    [SerializeField] private Image percentageBar;
-    [SerializeField] private TextMeshProUGUI percentageText;
+    [SerializeField] private Image percentageBar = null;
+    [SerializeField] private TextMeshProUGUI percentageText = null;
 
-    [Space(15)]
     [Header("Timer")]
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText = null;
 
     [Header("Screens")]
-    [SerializeField] private GameObject viewEnd;
-    [SerializeField] private GameObject viewPause;
-    [SerializeField] private GameObject timerObj;
-
     [SerializeField] private string sceneMenu = "MainMenu";
+    [SerializeField] private GameObject viewEnd = null;
+    [SerializeField] private GameObject viewPause = null;
+    [SerializeField] private GameObject timerObj = null;
+
+    [Header("Class")]
+    [SerializeField] private ObjectivesWindow objectivesWindow = null;
+    [SerializeField] private CountdownTimer countdownTimer= null;
+    [SerializeField] private PauseBehaviour pauseBehaviour = null;
+    [SerializeField] private EndScreenBehaviour endScreenBehaviour = null;
 
     [Header("Transitioner")]
-    [SerializeField] private SceneTransition transitioner;
+    [SerializeField] private SceneTransition transitioner = null;
     #endregion
 
     #region PRIVATE_FIELD
     private float currentPercentage = 0f;
     private float maxPercentage = 100f;
-
     private bool pauseState = true;
     #endregion
 
-    #region Actions
-    public static Action OnPlayButton;
-
+    #region ACTIONS
+    public Action OnPlayButton;
     #endregion
 
     #region UNITY_CALLS
@@ -53,11 +54,29 @@ public class UI_Game_Controller : MonoBehaviour
             enableStars[i].SetActive(false);
         }
         DisablePause();
+
+        objectivesWindow.Initialize(OnPlay);
+        pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
+        endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
     }
+
+    private void OnEnable()
+    {
+        OnPlayButton += objectivesWindow.playAnimation;
+        OnPlayButton += countdownTimer.StartCountdown;
+    }
+
+    private void OnDisable()
+    {
+        OnPlayButton -= objectivesWindow.playAnimation;
+        OnPlayButton -= countdownTimer.StartCountdown;
+    }
+
     private void Start()
     {
         Time.timeScale = 0f;
     }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -77,36 +96,12 @@ public class UI_Game_Controller : MonoBehaviour
     {
         timerText.text = time.ToString("0");
     }
-    
-    public void Play()
-    {
-        OnPlayButton?.Invoke();
-    }
+
     public void ActivateMenu(bool state)
     {
         viewEnd.SetActive(state);
         progressBar.SetActive(!state);
         timerObj.SetActive(!state);
-    }
-
-    public void OnRestartScene(bool isPause)
-    {
-        if(isPause) DisablePause();
-
-        transitioner.ChangeAnimation(1, ()=> 
-        { 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        });
-    }
-    
-    public void OnGoToScene(bool isPause)
-    {
-        if(isPause) DisablePause();
-
-        transitioner.ChangeAnimation(1, () =>
-        {
-            SceneManager.LoadScene(sceneMenu);
-        });
     }
 
     public void SetMaximumProgress(float value)
@@ -121,8 +116,10 @@ public class UI_Game_Controller : MonoBehaviour
 
         percentageText.text = "%" + (percentageBar.fillAmount * 100).ToString("0");
     }
+    #endregion
 
-    public void DisablePause()
+    #region PRIVATE_CALLS
+    private void DisablePause()
     {
         pauseState = !pauseState;
 
@@ -136,6 +133,31 @@ public class UI_Game_Controller : MonoBehaviour
         }
 
         viewPause.SetActive(pauseState);
+    }
+
+    private void OnPlay()
+    {
+        OnPlayButton?.Invoke();
+    }
+
+    private void OnRestartScene()
+    {
+        if (pauseState) DisablePause();
+
+        transitioner.ChangeAnimation(1, () =>
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        });
+    }
+
+    private void OnGoToScene()
+    {
+        if (pauseState) DisablePause();
+
+        transitioner.ChangeAnimation(1, () =>
+        {
+            SceneManager.LoadScene(sceneMenu);
+        });
     }
     #endregion
 }
