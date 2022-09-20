@@ -1,7 +1,11 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static Action OnComboBarFull;
+
     public enum MissionsState
     {
         none,
@@ -32,6 +36,9 @@ public class GameManager : MonoBehaviour
     [Header("Player Ref")]
     [SerializeField] private Movement player = null;
 
+    [Header("--- COMBO ---")]
+    [SerializeField] private int targetDestructibles;
+
     private float firstGoal = 0f;
     private float mediumGoal = 0f;
     private float finalGoal = 0f;
@@ -60,7 +67,9 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         //DestructibleComponent.InScenePoints += GoalPoints;
-        DestructibleComponent.DestructionPoints += ChargePoints;
+        DestructibleComponent.OnDestruction += ChargePoints;
+        DestructibleComponent.OnDestruction += ChargeComboBar;
+        Movement.OnBerserkModeEnd += UnlockComboBar;
     }
 
     private void OnDisable()
@@ -68,9 +77,11 @@ public class GameManager : MonoBehaviour
         static_scenePoints = 0;
 
         //DestructibleComponent.InScenePoints -= GoalPoints;
-        DestructibleComponent.DestructionPoints -= ChargePoints;
+        DestructibleComponent.OnDestruction -= ChargePoints;
+        DestructibleComponent.OnDestruction -= ChargeComboBar;
+        Movement.OnBerserkModeEnd -= UnlockComboBar;
     }
-    
+
     private void Start()
     {
         scenePoints = static_scenePoints;
@@ -106,7 +117,13 @@ public class GameManager : MonoBehaviour
 
             starsController.UpdateTimer(timer);
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Q)&&starsController.CheckComboBar())
+        {
+            OnComboBarFull?.Invoke();
+            starsController.SetDeclineLock(false);
+        }
+
         if(missionsState == MissionsState.Final)
         {
             playing = false;
@@ -129,6 +146,16 @@ public class GameManager : MonoBehaviour
     }
 
     // ----------------
+
+    private void ChargeComboBar(int i)
+    {
+        starsController.ChargeComboBar(targetDestructibles);
+    }
+
+    private void UnlockComboBar()
+    {
+        starsController.SetGrowthLock(false);
+    }
 
     private void CalculatePercentage()
     {

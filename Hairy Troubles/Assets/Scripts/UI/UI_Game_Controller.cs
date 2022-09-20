@@ -17,6 +17,12 @@ public class UI_Game_Controller : MonoBehaviour
     [SerializeField] private Image percentageBar;
     [SerializeField] private TextMeshProUGUI percentageText;
 
+    [Header("--- COMBO ---")]
+    [SerializeField] private Slider comboBar;
+    [SerializeField] private float depleteRate;
+    private bool growthLock;
+    private bool declineLock;
+
     [Space(15)]
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timerText;
@@ -55,10 +61,51 @@ public class UI_Game_Controller : MonoBehaviour
         {
             DisablePause();
         }
+        if(comboBar.value > 0.0f && !declineLock)
+        {
+            comboBar.value -= Time.deltaTime * depleteRate;
+        }
+        else if (growthLock)
+        {
+            SetGrowthLock(false);
+        }
     }
     #endregion
 
     #region PUBLIC_CALLS
+    
+    public void ChargeComboBar(int targetDestructibles)
+    {
+        if(!growthLock)
+        {
+            comboBar.value += comboBar.maxValue / targetDestructibles;
+        }
+        if(comboBar.value >= comboBar.maxValue)
+        {
+            SetGrowthLock(true);
+            SetDeclineLock(true);
+        }
+    }
+    public bool CheckComboBar()
+    {
+        if(comboBar.value >= comboBar.maxValue)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void SetGrowthLock(bool value)
+    {
+        growthLock = value;
+    }
+
+    public void SetDeclineLock(bool value)
+    {
+        declineLock = value;
+    }
     public void ActivateStar(int i)
     {
         enableStars[i].SetActive(true);
