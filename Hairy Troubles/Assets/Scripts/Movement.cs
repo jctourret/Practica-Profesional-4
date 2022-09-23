@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour, ICollidable
 {
     public static Action<float, float, float> IsPushing;
     public static Action onHighlightRequest;
+    public static Action OnBerserkModeEnd;
 
     [Space(10f)]
     [Header("-- Movement --")]
@@ -28,6 +29,16 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float frontForce = 1;
     [SerializeField] private float upForce = 1;
 
+    [Header("-- Berserk Mode --")]
+    [SerializeField] private Renderer bodyRend;
+    [SerializeField] private Renderer eyesRend;
+    [SerializeField] private float duration;
+    [SerializeField] private float upForceBuffRate = 1;
+    [SerializeField] private float scaling = 2;
+    [SerializeField] private float scalingSpeed = 1;
+    [SerializeField] private Color tint;
+    [SerializeField] private float tintChangeDelay = 1;
+
     private float hor;
     private float ver;
     private Vector3 movementDirection;
@@ -43,6 +54,16 @@ public class Movement : MonoBehaviour, ICollidable
         rb = GetComponent<Rigidbody>();
     }
 
+
+    private void OnEnable()
+    {
+        GameManager.OnComboBarFull += EnterBerserkMode;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnComboBarFull -= EnterBerserkMode;
+    }
     void Update()
     {
         if (isMoving)
@@ -139,10 +160,44 @@ public class Movement : MonoBehaviour, ICollidable
         }
     }
 
+    private void EnterBerserkMode()
+    {
+        StartCoroutine(BerserkMode());
+    }
+
     // ------------------------------
+
 
     public void StopCharacter(bool state)
     {
         isMoving = state;
     }
+
+
+    IEnumerator BerserkMode()
+    {
+        float timer = 0;
+        Color startColor = bodyRend.material.GetColor("_MainColor");
+        Vector3 startScale = transform.localScale;
+        upForce += upForceBuffRate;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            bodyRend.material.SetColor("_MainColor", Color.Lerp(bodyRend.material.GetColor("_MainColor"), tint, timer / duration));
+            transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale * 1.5f, Time.deltaTime / duration);
+            yield return null;
+        }
+        OnBerserkModeEnd?.Invoke();
+        upForce -= upForceBuffRate;
+        timer = 0;
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            bodyRend.material.SetColor("_MainColor", Color.Lerp(bodyRend.material.GetColor("_MainColor"), startColor, timer / duration));
+            transform.localScale = Vector3.Lerp(transform.localScale, startScale, Time.deltaTime / duration);
+            yield return null;
+        }
+    }
+
+
 }

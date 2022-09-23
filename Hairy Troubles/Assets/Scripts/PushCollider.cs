@@ -10,9 +10,11 @@ public class PushCollider : MonoBehaviour
     
     private Transform parent;
     private Collider coll;
+    [Header("-- Berserk Mode --")]
+    private float duration = 5;
+    [SerializeField] private float scaleMultiplier = 2;
 
     private List<Transform> objectsPushed = new List<Transform>();
-
     // ----------------------
 
     void Awake()
@@ -29,11 +31,15 @@ public class PushCollider : MonoBehaviour
     private void OnEnable()
     {
         Movement.IsPushing += CanPush;
+        Movement.OnBerserkModeEnd += shrinkColliderSize;
+        GameManager.OnComboBarFull += enlargeColliderSize;
     }
 
     private void OnDisable()
     {
         Movement.IsPushing -= CanPush;
+        Movement.OnBerserkModeEnd -= shrinkColliderSize;
+        GameManager.OnComboBarFull -= enlargeColliderSize;
     }
 
     private void OnTriggerStay(Collider other)
@@ -50,6 +56,15 @@ public class PushCollider : MonoBehaviour
         }
     }
    
+    private void enlargeColliderSize()
+    {
+        transform.localScale *= scaleMultiplier;
+    }
+    private void shrinkColliderSize()
+    {
+        transform.localScale /= scaleMultiplier;
+    }
+
     private void CanPush(float time, float front, float up)
     {
         pushTime = time;

@@ -6,7 +6,7 @@ using UnityEngine;
 public class DestructibleComponent : MonoBehaviour
 {
     #region ACTIONS_METHODS
-    public static event Action<int> DestructionPoints;
+    public static event Action<int> OnDestruction;
     #endregion
 
     #region PUBLIC_METHODS
@@ -81,7 +81,7 @@ public class DestructibleComponent : MonoBehaviour
                 rig.isKinematic = true;
             }
 
-            DestructionPoints?.Invoke(points);
+            OnDestruction?.Invoke(points);
             isDestroyed = true;
             
             if (fracturedObj != null)
