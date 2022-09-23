@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Movement player = null;
 
     [Header("UI")]
-    [SerializeField] private UI_Game_Controller uiGameController;
+    [SerializeField] private UiGameController uiGameController;
     #endregion
 
     #region PRIVATE_METHODS
@@ -55,19 +55,18 @@ public class GameManager : MonoBehaviour
 
         scenePoints = 0;
         actualPoints = 0;
+
+        uiGameController.Initialize();
     }
 
     private void OnEnable()
     {
-        //DestructibleComponent.InScenePoints += GoalPoints;
         DestructibleComponent.DestructionPoints += ChargePoints;
     }
 
     private void OnDisable()
     {
         static_scenePoints = 0;
-
-        //DestructibleComponent.InScenePoints -= GoalPoints;
         DestructibleComponent.DestructionPoints -= ChargePoints;
     }
     
@@ -83,8 +82,8 @@ public class GameManager : MonoBehaviour
         Debug.Log(mediumPercentGoal + "% percent: " + mediumGoal);
         Debug.Log(finalPercentGoal + "% percent: " + finalGoal);
 
-        // Percentage Bar:
-        uiGameController.SetMaximumProgress(finalGoal);
+        // UI:
+        uiGameController.SetValues(finalGoal, ((float)firstPercentGoal / PERCENT), ((float)mediumPercentGoal / PERCENT), ((float)finalPercentGoal / PERCENT));
     }
 
     private void Update()
@@ -134,19 +133,19 @@ public class GameManager : MonoBehaviour
     {
         if (actualPoints >= firstGoal && missionsState == MissionsState.none)
         {
-            uiGameController.ActivateStar(0);
+            uiGameController.ActivateFinalStar(0);
             missionsState = MissionsState.First;
         }
         
         if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
         {
-            uiGameController.ActivateStar(1);
+            uiGameController.ActivateFinalStar(1);
             missionsState = MissionsState.Medium;
         }
         
         if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
         {
-            uiGameController.ActivateStar(2);
+            uiGameController.ActivateFinalStar(2);
             missionsState = MissionsState.Final;
         }
     }

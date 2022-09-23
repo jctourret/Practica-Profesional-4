@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,9 +13,18 @@ public class CountdownTimer : MonoBehaviour
     private float cdTimer = 4;
     #endregion
 
+    #region UNITY_CALLS
+    private void Awake()
+    {
+       this.gameObject.SetActive(false);
+    }
+    #endregion
+
     #region PUBLIC_CALLS
     public void StartCountdown()
     {
+        this.gameObject.SetActive(true);
+
         animator.SetTrigger("cdNow");
         StartCoroutine(Countdown());
     }
@@ -25,10 +33,12 @@ public class CountdownTimer : MonoBehaviour
     #region PRIVATE_CALLS
     private IEnumerator Countdown()
     {
+        string cdString;
+        
         while(cdTimer > 0)
         {
-            string cdString;
             cdTimer -= Time.unscaledDeltaTime;
+            
             if (cdTimer >= 3)
             {
                 cdString = "3";
@@ -41,7 +51,9 @@ public class CountdownTimer : MonoBehaviour
             {
                 cdString = cdTimer.ToString("F0");
             }
+
             cdText.text = cdString;
+            
             yield return null;
         }
         Time.timeScale = 1f;

@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using TMPro;
 
-public class UI_Game_Controller : MonoBehaviour
+public class UiGameController : MonoBehaviour
 {
     #region EXPOSED_FIELD
     [Header("Stars")]
@@ -31,6 +31,7 @@ public class UI_Game_Controller : MonoBehaviour
     [SerializeField] private CountdownTimer countdownTimer= null;
     [SerializeField] private PauseBehaviour pauseBehaviour = null;
     [SerializeField] private EndScreenBehaviour endScreenBehaviour = null;
+    [SerializeField] private PercentageStarsHolder percentageStarsHolder = null;
 
     [Header("Transitioner")]
     [SerializeField] private SceneTransition transitioner = null;
@@ -49,26 +50,24 @@ public class UI_Game_Controller : MonoBehaviour
     #region UNITY_CALLS
     private void Awake()
     {
-        for (int i = 0; i < enableStars.Length; i++)
-        {
-            enableStars[i].SetActive(false);
-        }
-        DisablePause();
-
-        objectivesWindow.Initialize(OnPlay);
-        pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
-        endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
+        //for (int i = 0; i < enableStars.Length; i++)
+        //{
+        //    enableStars[i].SetActive(false);
+        //}
+        //DisablePause();
+        //
+        //objectivesWindow.Initialize(() => { OnPlayButton?.Invoke(); });
+        //pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
+        //endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
     }
 
     private void OnEnable()
     {
-        OnPlayButton += objectivesWindow.playAnimation;
         OnPlayButton += countdownTimer.StartCountdown;
     }
 
     private void OnDisable()
     {
-        OnPlayButton -= objectivesWindow.playAnimation;
         OnPlayButton -= countdownTimer.StartCountdown;
     }
 
@@ -87,7 +86,26 @@ public class UI_Game_Controller : MonoBehaviour
     #endregion
 
     #region PUBLIC_CALLS
-    public void ActivateStar(int i)
+    public void Initialize()
+    {
+        for (int i = 0; i < enableStars.Length; i++)
+        {
+            enableStars[i].SetActive(false);
+        }
+        DisablePause();
+
+        objectivesWindow.Initialize(() => { OnPlayButton?.Invoke(); });
+        pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
+        endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
+    }
+
+    public void SetValues(float finalGoal, float firstPercentGoal, float mediumPercentGoal, float finalPercentGoal)
+    {
+        SetMaximumProgress(finalGoal);
+        percentageStarsHolder.Initialize(firstPercentGoal, mediumPercentGoal, finalPercentGoal);
+    }
+
+    public void ActivateFinalStar(int i)
     {
         enableStars[i].SetActive(true);
     }
@@ -133,11 +151,6 @@ public class UI_Game_Controller : MonoBehaviour
         }
 
         viewPause.SetActive(pauseState);
-    }
-
-    private void OnPlay()
-    {
-        OnPlayButton?.Invoke();
     }
 
     private void OnRestartScene()
