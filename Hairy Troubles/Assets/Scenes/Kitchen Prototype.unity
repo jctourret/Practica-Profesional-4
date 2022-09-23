@@ -1038,6 +1038,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: destroyByPlayerCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes (3)
@@ -2833,6 +2837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: destroyByPlayerCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes (4)
@@ -4963,6 +4971,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: destroyByPlayerCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes (5)
@@ -5925,6 +5937,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: destroyByPlayerCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes

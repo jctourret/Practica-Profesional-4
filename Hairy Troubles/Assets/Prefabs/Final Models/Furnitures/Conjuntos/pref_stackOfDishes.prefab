@@ -81,7 +81,7 @@ MonoBehaviour:
   - {fileID: 6184255984562198667}
   - {fileID: 6929272006663590779}
   - {fileID: 6929272005202599967}
-  destroyByPlayerCollision: 0
+  destroyByPlayerCollision: 1
   fractureLimit: 0.3
 --- !u!1001 &176249522581647466
 PrefabInstance:
