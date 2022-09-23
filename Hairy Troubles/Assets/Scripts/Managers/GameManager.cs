@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && uiGameController.CheckComboBar())
         {
             OnComboBarFull?.Invoke();
-            uiGameController.SetDeclineLock(false);
         }
 
         if(missionsState == MissionsState.Final)
@@ -146,11 +145,11 @@ public class GameManager : MonoBehaviour
         // Percentage Bar:
         uiGameController.UpdateProgressBar(points);
     }
+
     #endregion
 
     #region PRIVATE_CALLS
     // ----------------
-
     private void ChargeComboBar(int i)
     {
         uiGameController.ChargeComboBar(targetDestructibles);
@@ -158,7 +157,7 @@ public class GameManager : MonoBehaviour
 
     private void UnlockComboBar()
     {
-        uiGameController.SetGrowthLock(false);
+        uiGameController.SetDeclineLock(false);
     }
 
     private void CalculatePercentage()

@@ -80,7 +80,7 @@ public class UiGameController : MonoBehaviour
         {
             comboBar.value -= Time.deltaTime * depleteRate;
         }
-        else if (growthLock)
+        else if (growthLock && comboBar.value <= 0.0f)
         {
             SetGrowthLock(false);
         }
