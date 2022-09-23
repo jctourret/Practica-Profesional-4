@@ -48,19 +48,6 @@ public class UiGameController : MonoBehaviour
     #endregion
 
     #region UNITY_CALLS
-    private void Awake()
-    {
-        //for (int i = 0; i < enableStars.Length; i++)
-        //{
-        //    enableStars[i].SetActive(false);
-        //}
-        //DisablePause();
-        //
-        //objectivesWindow.Initialize(() => { OnPlayButton?.Invoke(); });
-        //pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
-        //endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
-    }
-
     private void OnEnable()
     {
         OnPlayButton += countdownTimer.StartCountdown;

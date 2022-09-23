@@ -351,8 +351,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Exit
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
-  m_sharedMaterial: {fileID: -4310166873182327191, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
+  m_sharedMaterial: {fileID: 7200414444145535742, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -964,7 +964,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xA1Perdiste!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
   m_sharedMaterial: {fileID: -4310166873182327191, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &8110552217997807829
@@ -1477,8 +1477,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\xA1The Game is Over!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
-  m_sharedMaterial: {fileID: -4310166873182327191, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
+  m_sharedMaterial: {fileID: 7200414444145535742, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1611,8 +1611,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
-  m_sharedMaterial: {fileID: -4310166873182327191, guid: 653e9189f3d776842ae2b6234fca6af5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
+  m_sharedMaterial: {fileID: 7200414444145535742, guid: 68c394ac0b78d834383b6b58c2ffdc4f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
