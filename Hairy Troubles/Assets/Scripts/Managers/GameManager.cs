@@ -120,10 +120,10 @@ public class GameManager : MonoBehaviour
             uiGameController.UpdateTimer(timer);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)&&starsController.CheckComboBar())
+        if (Input.GetKeyDown(KeyCode.Q) && uiGameController.CheckComboBar())
         {
             OnComboBarFull?.Invoke();
-            starsController.SetDeclineLock(false);
+            uiGameController.SetDeclineLock(false);
         }
 
         if(missionsState == MissionsState.Final)
@@ -153,12 +153,12 @@ public class GameManager : MonoBehaviour
 
     private void ChargeComboBar(int i)
     {
-        starsController.ChargeComboBar(targetDestructibles);
+        uiGameController.ChargeComboBar(targetDestructibles);
     }
 
     private void UnlockComboBar()
     {
-        starsController.SetGrowthLock(false);
+        uiGameController.SetGrowthLock(false);
     }
 
     private void CalculatePercentage()

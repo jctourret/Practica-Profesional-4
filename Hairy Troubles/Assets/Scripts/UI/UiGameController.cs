@@ -17,6 +17,10 @@ public class UiGameController : MonoBehaviour
     [SerializeField] private Image percentageBar = null;
     [SerializeField] private TextMeshProUGUI percentageText = null;
 
+    [Header("Combo")]
+    [SerializeField] private Slider comboBar;
+    [SerializeField] private float depleteRate;
+
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timerText = null;
 
@@ -41,6 +45,8 @@ public class UiGameController : MonoBehaviour
     private float currentPercentage = 0f;
     private float maxPercentage = 100f;
     private bool pauseState = true;
+    private bool growthLock = false;
+    private bool declineLock = false;
     #endregion
 
     #region ACTIONS
@@ -68,6 +74,15 @@ public class UiGameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             DisablePause();
+        }
+
+        if (comboBar.value > 0.0f && !declineLock)
+        {
+            comboBar.value -= Time.deltaTime * depleteRate;
+        }
+        else if (growthLock)
+        {
+            SetGrowthLock(false);
         }
     }
     #endregion
@@ -120,6 +135,41 @@ public class UiGameController : MonoBehaviour
         percentageBar.fillAmount = currentPercentage / maxPercentage;
 
         percentageText.text = "%" + (percentageBar.fillAmount * 100).ToString("0");
+    }
+
+    public void ChargeComboBar(int targetDestructibles)
+    {
+        if (!growthLock)
+        {
+            comboBar.value += comboBar.maxValue / targetDestructibles;
+        }
+        if (comboBar.value >= comboBar.maxValue)
+        {
+            SetGrowthLock(true);
+            SetDeclineLock(true);
+        }
+    }
+
+    public bool CheckComboBar()
+    {
+        if (comboBar.value >= comboBar.maxValue)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    public void SetGrowthLock(bool value)
+    {
+        growthLock = value;
+    }
+
+    public void SetDeclineLock(bool value)
+    {
+        declineLock = value;
     }
     #endregion
 
