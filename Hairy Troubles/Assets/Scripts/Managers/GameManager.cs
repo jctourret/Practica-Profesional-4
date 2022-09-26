@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Ref")]
     [SerializeField] private Movement player = null;
+    [SerializeField] private ComboBarPlayer comboBarPlayer = null;
 
     [Header("--- COMBO ---")]
     [SerializeField] private int targetDestructibles;
@@ -68,7 +69,6 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //DestructibleComponent.InScenePoints += GoalPoints;
         DestructibleComponent.OnDestruction += ChargePoints;
         DestructibleComponent.OnDestruction += ChargeComboBar;
         Movement.OnBerserkModeEnd += UnlockComboBar;
@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
     {
         static_scenePoints = 0;
 
-        //DestructibleComponent.InScenePoints -= GoalPoints;
         DestructibleComponent.OnDestruction -= ChargePoints;
         DestructibleComponent.OnDestruction -= ChargeComboBar;
         Movement.OnBerserkModeEnd -= UnlockComboBar;
@@ -117,10 +116,12 @@ public class GameManager : MonoBehaviour
                 uiGameController.ActivateMenu(true);
             }
 
+            uiGameController.PauseInput();
+            comboBarPlayer.UpdateGrownState();
             uiGameController.UpdateTimer(timer);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && uiGameController.CheckComboBar())
+        if (Input.GetKeyDown(KeyCode.Q) && comboBarPlayer.CheckComboBar())
         {
             OnComboBarFull?.Invoke();
         }
@@ -142,41 +143,39 @@ public class GameManager : MonoBehaviour
 
         CalculatePercentage();
 
-        // Percentage Bar:
         uiGameController.UpdateProgressBar(points);
     }
 
     #endregion
 
     #region PRIVATE_CALLS
-    // ----------------
     private void ChargeComboBar(int i)
     {
-        uiGameController.ChargeComboBar(targetDestructibles);
+        comboBarPlayer.ChargeComboBar(targetDestructibles);
     }
 
     private void UnlockComboBar()
     {
-        uiGameController.SetDeclineLock(false);
+        comboBarPlayer.SetDeclineLock(false);
     }
 
     private void CalculatePercentage()
     {
         if (actualPoints >= firstGoal && missionsState == MissionsState.none)
         {
-            uiGameController.ActivateFinalStar(0);
+            uiGameController.OnActivateStar?.Invoke(0);
             missionsState = MissionsState.First;
         }
         
         if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
         {
-            uiGameController.ActivateFinalStar(1);
+            uiGameController.OnActivateStar?.Invoke(1);
             missionsState = MissionsState.Medium;
         }
         
         if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
         {
-            uiGameController.ActivateFinalStar(2);
+            uiGameController.OnActivateStar?.Invoke(2);
             missionsState = MissionsState.Final;
         }
     }

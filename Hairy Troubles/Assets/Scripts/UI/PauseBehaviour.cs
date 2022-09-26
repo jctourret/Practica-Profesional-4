@@ -17,5 +17,10 @@ public class PauseBehaviour : MonoBehaviour
         btnRestart.onClick.AddListener(() => { onRestart(); });
         btnExit.onClick.AddListener(() => { onExit(); });
     }
+
+    public void SetActive(bool state)
+    {
+        this.gameObject.SetActive(state);
+    }
     #endregion
 }

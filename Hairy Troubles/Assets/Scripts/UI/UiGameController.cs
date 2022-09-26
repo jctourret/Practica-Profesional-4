@@ -7,9 +7,6 @@ using TMPro;
 public class UiGameController : MonoBehaviour
 {
     #region EXPOSED_FIELD
-    [Header("Stars")]
-    [SerializeField] private GameObject[] enableStars = null;
-
     [Header("Progress")]
     [SerializeField] private GameObject progressBar = null;
 
@@ -17,18 +14,12 @@ public class UiGameController : MonoBehaviour
     [SerializeField] private Image percentageBar = null;
     [SerializeField] private TextMeshProUGUI percentageText = null;
 
-    [Header("Combo")]
-    [SerializeField] private Slider comboBar;
-    [SerializeField] private float depleteRate;
-
     [Header("Timer")]
     [SerializeField] private TextMeshProUGUI timerText = null;
 
     [Header("Screens")]
     [SerializeField] private string sceneMenu = "MainMenu";
-    [SerializeField] private GameObject viewEnd = null;
-    [SerializeField] private GameObject viewPause = null;
-    [SerializeField] private GameObject timerObj = null;
+    [SerializeField] private GameObject hubGame = null;
 
     [Header("Class")]
     [SerializeField] private ObjectivesWindow objectivesWindow = null;
@@ -45,58 +36,47 @@ public class UiGameController : MonoBehaviour
     private float currentPercentage = 0f;
     private float maxPercentage = 100f;
     private bool pauseState = true;
-    private bool growthLock = false;
-    private bool declineLock = false;
+    #endregion
+
+    #region PROPERTIES
+
     #endregion
 
     #region ACTIONS
-    public Action OnPlayButton;
+    public Action OnPlayButton = null;
+    public Action<int> OnActivateStar = null;
     #endregion
 
     #region UNITY_CALLS
     private void OnEnable()
     {
         OnPlayButton += countdownTimer.StartCountdown;
+        OnActivateStar += endScreenBehaviour.ActivateFinalStars;
     }
 
     private void OnDisable()
     {
         OnPlayButton -= countdownTimer.StartCountdown;
+        OnActivateStar -= endScreenBehaviour.ActivateFinalStars;
     }
 
     private void Start()
     {
         Time.timeScale = 0f;
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            DisablePause();
-        }
-
-        if (comboBar.value > 0.0f && !declineLock)
-        {
-            comboBar.value -= Time.deltaTime * depleteRate;
-        }
-        else if (growthLock && comboBar.value <= 0.0f)
-        {
-            SetGrowthLock(false);
-        }
-    }
     #endregion
 
     #region PUBLIC_CALLS
     public void Initialize()
     {
-        for (int i = 0; i < enableStars.Length; i++)
-        {
-            enableStars[i].SetActive(false);
-        }
         DisablePause();
 
-        objectivesWindow.Initialize(() => { OnPlayButton?.Invoke(); });
+        hubGame.SetActive(false);
+
+        objectivesWindow.Initialize(() => { 
+            OnPlayButton?.Invoke();
+            hubGame.SetActive(true);
+        });
         pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
         endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
     }
@@ -107,9 +87,12 @@ public class UiGameController : MonoBehaviour
         percentageStarsHolder.Initialize(firstPercentGoal, mediumPercentGoal, finalPercentGoal);
     }
 
-    public void ActivateFinalStar(int i)
+    public void PauseInput()
     {
-        enableStars[i].SetActive(true);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DisablePause();
+        }
     }
 
     public void UpdateTimer(float time)
@@ -119,9 +102,8 @@ public class UiGameController : MonoBehaviour
 
     public void ActivateMenu(bool state)
     {
-        viewEnd.SetActive(state);
-        progressBar.SetActive(!state);
-        timerObj.SetActive(!state);
+        endScreenBehaviour.SetActive(state);
+        hubGame.SetActive(!state);
     }
 
     public void SetMaximumProgress(float value)
@@ -135,41 +117,8 @@ public class UiGameController : MonoBehaviour
         percentageBar.fillAmount = currentPercentage / maxPercentage;
 
         percentageText.text = "%" + (percentageBar.fillAmount * 100).ToString("0");
-    }
 
-    public void ChargeComboBar(int targetDestructibles)
-    {
-        if (!growthLock)
-        {
-            comboBar.value += comboBar.maxValue / targetDestructibles;
-        }
-        if (comboBar.value >= comboBar.maxValue)
-        {
-            SetGrowthLock(true);
-            SetDeclineLock(true);
-        }
-    }
-
-    public bool CheckComboBar()
-    {
-        if (comboBar.value >= comboBar.maxValue)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    public void SetGrowthLock(bool value)
-    {
-        growthLock = value;
-    }
-
-    public void SetDeclineLock(bool value)
-    {
-        declineLock = value;
+        endScreenBehaviour.SetFinalPercentage(percentageText.text);
     }
     #endregion
 
@@ -187,7 +136,7 @@ public class UiGameController : MonoBehaviour
             Time.timeScale = 0f;
         }
 
-        viewPause.SetActive(pauseState);
+        pauseBehaviour.SetActive(pauseState);
     }
 
     private void OnRestartScene()
