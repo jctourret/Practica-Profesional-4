@@ -9,7 +9,10 @@ public class DestructibleComponent : MonoBehaviour
     public static event Action<int> OnDestruction;
     #endregion
 
-    #region PUBLIC_METHODS
+    #region EXPOSED_FIELD
+    [Header("Mesh To Off")]
+    [SerializeField] protected MeshRenderer meshRenderer;
+
     [Header("Fractured Part")]
     [SerializeField] protected GameObject fracturedObj;
     [SerializeField] protected int points = 10;
@@ -25,14 +28,14 @@ public class DestructibleComponent : MonoBehaviour
     [SerializeField] protected float highlightTimer = 0f;
 
     [Header("Destruction")]
-    [SerializeField] float destructionTime = 3f;
+    [SerializeField] private float destructionTime = 3f;
+    [SerializeField] private bool disableColliderWhenDestroy = true;
+    [SerializeField] private bool disableRigidbodyWhenDestroy = true;
     #endregion
 
-    #region PRIVATE_METHODS
+    #region PRIVATE_FIELD
     protected Rigidbody rig;
-    protected MeshRenderer meshRenderer;
     protected Collider meshCollider;
-
     protected float velocity;
 
     protected bool isDestroyed = false;
@@ -42,7 +45,6 @@ public class DestructibleComponent : MonoBehaviour
     protected virtual void Awake()
     {
         renderer = GetComponent<Renderer>();
-        meshRenderer = GetComponent<MeshRenderer>();
         
         if(TryGetComponent(out Rigidbody component))
         {
@@ -70,13 +72,15 @@ public class DestructibleComponent : MonoBehaviour
     {
         if (!isDestroyed)
         {
-            meshRenderer.enabled = false;
-
-            if (meshCollider != null)
+            if (meshRenderer != null)
+            {
+                meshRenderer.enabled = false;
+            }
+            if (meshCollider != null && disableColliderWhenDestroy)
             {
                 meshCollider.enabled = false;
             }
-            if (rig != null)
+            if (rig != null && disableRigidbodyWhenDestroy)
             {
                 rig.isKinematic = true;
             }

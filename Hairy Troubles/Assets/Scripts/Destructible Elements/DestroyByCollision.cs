@@ -9,16 +9,18 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
         Roof
     }
 
+    #region EXPOSED_METHODS
     [Header("Particular Object")]
     [Range(0.01f, 20f)]
     [SerializeField] private float fractureLimit = 2.0f;
     [Space(15f)]
+
     [Header("Features")]
     [SerializeField] private ObjSurface objSurface = ObjSurface.Floor;
     [SerializeField] private bool destroyByPlayerCollision = false;
+    #endregion
 
-    // -------------------------------
-
+    #region UNITY_CALLS
     private void FixedUpdate()
     {
         velocity = rig.velocity.y;
@@ -53,4 +55,5 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
             }
         }
     }
+    #endregion
 }
