@@ -977,6 +977,8 @@ MonoBehaviour:
   - {fileID: 4250621789604317644}
   - {fileID: 6794622625632149184}
   - {fileID: 1368158371990899162}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &788057855999432892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,6 +1502,8 @@ MonoBehaviour:
   - {fileID: 3343029311624287169}
   - {fileID: 6715750749506625712}
   - {fileID: 386650796019502191}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1094329559151313561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1579,8 @@ MonoBehaviour:
   - {fileID: 6117254073241163349}
   - {fileID: 7814949097092641005}
   - {fileID: 7681318716612052658}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1166807732516857185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1957,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &1634135372045138658
 GameObject:
@@ -4057,6 +4065,8 @@ MonoBehaviour:
   - {fileID: 299612381692509501}
   - {fileID: 4566933359726130908}
   - {fileID: 237331121449727066}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &4071758912119906885
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,6 +5268,8 @@ MonoBehaviour:
   - {fileID: 18424215242154941}
   - {fileID: 4755497762229903426}
   - {fileID: 900882010894592652}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &5832274911137859853
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5533,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &5869866954555135721
 GameObject:
@@ -6463,6 +6477,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &6702171661187873881
 GameObject:
@@ -7082,6 +7098,8 @@ MonoBehaviour:
   - {fileID: 7006476179539670899}
   - {fileID: 1789409751987109122}
   - {fileID: 3732764100433955213}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &6940824143491646258
 GameObject:
   m_ObjectHideFlags: 0
@@ -7670,7 +7688,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7145399400050013358}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.25356588, y: 0.00014871359, z: 0.46719253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7826,13 +7844,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 5687822643150865968}
   fracturedObj: {fileID: 1076663212778339433}
   points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &7474633875310690486
 GameObject:
@@ -8542,13 +8562,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 4654229143644275497}
   fracturedObj: {fileID: 3911671602974005372}
   points: 0
   particlePref: {fileID: 9146935715307509594, guid: 8f42bd2d05cab6e438c8697126d5a163, type: 3}
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &7908655322497257963
 GameObject:
@@ -9249,6 +9271,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &9026380480078691333
 GameObject:
