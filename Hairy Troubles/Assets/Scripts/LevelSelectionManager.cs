@@ -10,9 +10,14 @@ public class LevelSelectionManager : MonoBehaviour
     public static Action<SO_Level> OnLevelSelection;
     public static Action<SO_Level> OnLevelchange;
 
+    [Header("Transitioner")]
+    [SerializeField] private SceneTransition sceneTransition;
+
+    [Header("Currents")]
     [SerializeField] private int currentStars;
     [SerializeField] private int currentLevel;
 
+    [Header("Levels")]
     [SerializeField] private List<SO_Level> listOfLevels;
 
     private void Start()
@@ -38,11 +43,15 @@ public class LevelSelectionManager : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadSceneAsync(listOfLevels[currentLevel].sceneIndex);
+        sceneTransition.ChangeAnimation(1, () => {
+            ScenesLoaderHandler.LoadScene(listOfLevels[currentLevel].levelName);
+        });
     }
 
     public void MenuButton()
     {
-        SceneManager.LoadSceneAsync(0);
+        sceneTransition.ChangeAnimation(1, () => {
+            ScenesLoaderHandler.LoadScene("MainMenu");
+        });
     }
 }
