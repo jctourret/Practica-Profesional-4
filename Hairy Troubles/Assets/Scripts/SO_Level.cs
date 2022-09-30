@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Level", menuName = "Level")]
 public class SO_Level : ScriptableObject
 {
-    [SerializeField] private new string name;
+    [SerializeField] public string levelName;
     public int sceneIndex;
     [SerializeField] private int starsAchieved;
     public int starsRequired;
