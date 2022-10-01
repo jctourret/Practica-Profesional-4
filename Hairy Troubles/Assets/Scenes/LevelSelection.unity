@@ -343,9 +343,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSelectionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820675910613038, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1477,9 +1497,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelSelectionManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820675910613038, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

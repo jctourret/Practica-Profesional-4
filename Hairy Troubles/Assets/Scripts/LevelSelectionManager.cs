@@ -28,7 +28,11 @@ public class LevelSelectionManager : MonoBehaviour
     {
         if(currentStars >= listOfLevels[(currentLevel--) % listOfLevels.Count].starsRequired)
         {
-            currentLevel = (currentLevel--) % listOfLevels.Count;
+            currentLevel = currentLevel-- % listOfLevels.Count;
+            if (currentLevel < 0)
+            {
+                currentLevel = 0;
+            }
             OnLevelchange?.Invoke(listOfLevels[currentLevel]);
         }
     }
@@ -36,7 +40,11 @@ public class LevelSelectionManager : MonoBehaviour
     {
         if (currentStars >= listOfLevels[(currentLevel++) % listOfLevels.Count].starsRequired)
         {
-            currentLevel = (currentLevel++) % listOfLevels.Count;
+            currentLevel = currentLevel++ % listOfLevels.Count;
+            if (currentLevel < 0)
+            {
+                currentLevel = 0;
+            }
             OnLevelchange?.Invoke(listOfLevels[currentLevel]);
         }
     }

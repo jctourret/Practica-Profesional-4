@@ -33,7 +33,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private Renderer bodyRend;
     [SerializeField] private Renderer eyesRend;
     [SerializeField] private float duration;
-    [SerializeField] private float upForceBuffRate = 1;
+    [SerializeField] private float jumpForceBuff = 1;
     [SerializeField] private float scaling = 2;
     [SerializeField] private float scalingSpeed = 1;
     [SerializeField] private Color tint;
@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour, ICollidable
     private Vector3 movementDirection;
     private bool canJump = false;
     private bool isMoving = true;
+    private bool berserkMode;
 
     private Rigidbody rb;
 
@@ -107,7 +108,7 @@ public class Movement : MonoBehaviour, ICollidable
         for(int i = 0; i < raycast.Count; i++)
         {
             // Does the ray intersect any objects excluding the player layer
-            if (Physics.Raycast(raycast[i].transform.position, raycast[i].transform.TransformDirection(Vector3.down), out hit, 0.05f))
+            if (Physics.Raycast(raycast[i].transform.position, raycast[i].transform.TransformDirection(Vector3.down), out hit, transform.localScale.y / 20.0f))
             {
                 canJump = true;
                 break;
@@ -162,7 +163,11 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void EnterBerserkMode()
     {
-        StartCoroutine(BerserkMode());
+        if (!berserkMode)
+        {
+            berserkMode = true;
+            StartCoroutine(BerserkMode());
+        }
     }
 
     // ------------------------------
@@ -179,25 +184,25 @@ public class Movement : MonoBehaviour, ICollidable
         float timer = 0;
         Color startColor = bodyRend.material.GetColor("_MainColor");
         Vector3 startScale = transform.localScale;
-        upForce += upForceBuffRate;
+        Vector3 endScale = transform.localScale*2.0f;
+        jumpforce += jumpForceBuff;
         while (timer < duration)
         {
             timer += Time.deltaTime;
             bodyRend.material.SetColor("_MainColor", Color.Lerp(bodyRend.material.GetColor("_MainColor"), tint, timer / duration));
-            transform.localScale = Vector3.Lerp(transform.localScale, transform.localScale * 1.5f, Time.deltaTime / duration);
+            transform.localScale = Vector3.Lerp(transform.localScale, endScale, timer / duration);
             yield return null;
         }
         OnBerserkModeEnd?.Invoke();
-        upForce -= upForceBuffRate;
+        jumpforce -= jumpForceBuff;
         timer = 0;
         while (timer < duration)
         {
             timer += Time.deltaTime;
             bodyRend.material.SetColor("_MainColor", Color.Lerp(bodyRend.material.GetColor("_MainColor"), startColor, timer / duration));
-            transform.localScale = Vector3.Lerp(transform.localScale, startScale, Time.deltaTime / duration);
+            transform.localScale = Vector3.Lerp(transform.localScale, startScale, timer / duration);
             yield return null;
         }
+        berserkMode = false;
     }
-
-
 }
