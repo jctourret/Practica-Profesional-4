@@ -5,10 +5,7 @@ using System;
 
 public class Movement : MonoBehaviour, ICollidable
 {
-    public static Action<float, float, float> IsPushing;
-    public static Action onHighlightRequest;
-    public static Action OnBerserkModeEnd;
-
+    #region EXPOSED_METHODS
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
@@ -39,22 +36,34 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private Color tint;
     [SerializeField] private float tintChangeDelay = 1;
 
-    private float hor;
-    private float ver;
-    private Vector3 movementDirection;
-    private bool canJump = false;
-    private bool isMoving = true;
-    private bool berserkMode;
+    [Header("-- Particles --")]
+    [SerializeField] private ParticleSystem dustTrail = null;
+    [SerializeField] private ParticleSystem slamDustTrail = null;
+    #endregion
 
+    #region PRIVATE_METHODS
     private Rigidbody rb;
 
-    // ----------------------
+    private Vector3 movementDirection;
+    private float hor;
+    private float ver;
+    
+    private bool canJump = true;
+    private bool isMoving = true;
+    private bool berserkMode;
+    #endregion
 
+    #region ACTIONS
+    public static Action<float, float, float> IsPushing;
+    public static Action onHighlightRequest;
+    public static Action OnBerserkModeEnd;
+    #endregion
+
+    #region UNITY_CALLS
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-
 
     private void OnEnable()
     {
@@ -65,6 +74,7 @@ public class Movement : MonoBehaviour, ICollidable
     {
         GameManager.OnComboBarFull -= EnterBerserkMode;
     }
+
     void Update()
     {
         if (isMoving)
@@ -80,24 +90,31 @@ public class Movement : MonoBehaviour, ICollidable
             PlayerHighlightRequest();
 
             PlayerPushLogic();
-
-            //PlayerMovement();
         }
     }
-
-    void PlayerHighlightRequest()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            onHighlightRequest?.Invoke();
-        }
-    }
-
+    
     private void FixedUpdate()
     {
         if (isMoving)
         {
             PlayerMovement();
+        }
+    }
+    #endregion
+
+    #region PUBLIC_CALLS
+    public void StopCharacter(bool state)
+    {
+        isMoving = state;
+    }
+    #endregion
+
+    #region PRIVATE_CALLS
+    private void PlayerHighlightRequest()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            onHighlightRequest?.Invoke();
         }
     }
 
@@ -110,6 +127,11 @@ public class Movement : MonoBehaviour, ICollidable
             // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(raycast[i].transform.position, raycast[i].transform.TransformDirection(Vector3.down), out hit, transform.localScale.y / 20.0f))
             {
+                if(!canJump)
+                {
+                    slamDustTrail.Play();//.gameObject.SetActive(true);
+                }
+
                 canJump = true;
                 break;
             }
@@ -118,15 +140,19 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerMovement()
     {
-        rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
-        
+        rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);        
         anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
 
         if (movementDirection != Vector3.zero)
         {
+            dustTrail.gameObject.SetActive(true);
 
             Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+        }
+        else
+        {
+            dustTrail.gameObject.SetActive(false);
         }
     }
 
@@ -136,6 +162,7 @@ public class Movement : MonoBehaviour, ICollidable
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
+            //slamDustTrail.gameObject.SetActive(canJump);
             anim.SetTrigger("Jump");
         }
 
@@ -170,21 +197,12 @@ public class Movement : MonoBehaviour, ICollidable
         }
     }
 
-    // ------------------------------
-
-
-    public void StopCharacter(bool state)
-    {
-        isMoving = state;
-    }
-
-
-    IEnumerator BerserkMode()
+    private IEnumerator BerserkMode()
     {
         float timer = 0;
         Color startColor = bodyRend.material.GetColor("_MainColor");
         Vector3 startScale = transform.localScale;
-        Vector3 endScale = transform.localScale*2.0f;
+        Vector3 endScale = transform.localScale * 2.0f;
         jumpforce += jumpForceBuff;
         while (timer < duration)
         {
@@ -205,4 +223,5 @@ public class Movement : MonoBehaviour, ICollidable
         }
         berserkMode = false;
     }
+    #endregion    
 }
