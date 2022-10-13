@@ -133,6 +133,7 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  SFXaudio: {fileID: 0}
   fractureLimit: 0.3
   objSurface: 0
   destroyByPlayerCollision: 0

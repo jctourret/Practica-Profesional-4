@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DestroyByCollision : DestructibleComponent, ICollidable
 {
+    public AudioSource SFXaudio;
     public enum ObjSurface
     {
         Floor,
@@ -29,6 +30,10 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
         if (collision.transform.GetComponent<Movement>() && destroyByPlayerCollision)
         {
             SwapComponent();
+            if(SFXaudio != null)
+            {
+                SFXaudio.Play();
+            }
         }
         else
         {
@@ -37,6 +42,10 @@ public class DestroyByCollision : DestructibleComponent, ICollidable
                 if (velocity <= -fractureLimit)
                 {
                     SwapComponent();
+                    if (SFXaudio != null)
+                    {
+                        SFXaudio.Play();
+                    }
                 }
             }
             else if (objSurface == ObjSurface.Wall)

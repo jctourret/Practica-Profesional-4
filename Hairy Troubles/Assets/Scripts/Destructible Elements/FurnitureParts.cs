@@ -6,7 +6,6 @@ public class FurnitureParts : DestructibleComponent
     public bool isDestoyed = false;
     [Range(1, 20)]
     //[SerializeField] private float timeToDestroy = 5f;
-
     private FixedJoint fixedJoint;
 
     // -------------------------------

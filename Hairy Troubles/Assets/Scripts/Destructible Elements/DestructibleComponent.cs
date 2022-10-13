@@ -9,6 +9,7 @@ public class DestructibleComponent : MonoBehaviour
     public static event Action<int> OnDestruction;
     #endregion
 
+    [SerializeField] AudioSource SFXAudio;
     #region PUBLIC_METHODS
     [Header("Fractured Part")]
     [SerializeField] protected GameObject fracturedObj;
@@ -71,7 +72,10 @@ public class DestructibleComponent : MonoBehaviour
         if (!isDestroyed)
         {
             meshRenderer.enabled = false;
-
+            if(SFXAudio!= null)
+            {
+                SFXAudio.Play();
+            }
             if (meshCollider != null)
             {
                 meshCollider.enabled = false;
