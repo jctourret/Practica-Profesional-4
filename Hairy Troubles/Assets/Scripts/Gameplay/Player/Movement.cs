@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour, ICollidable
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float smoothRotation;
     [SerializeField] private float jumpforce;
     [SerializeField] private float pushforce;
     [SerializeField] private float pushCooldown;
@@ -47,6 +47,7 @@ public class Movement : MonoBehaviour, ICollidable
     private Vector3 movementDirection;
     private float hor;
     private float ver;
+    private float yVelocity;
     
     private bool canJump = true;
     private bool isMoving = true;
@@ -146,9 +147,11 @@ public class Movement : MonoBehaviour, ICollidable
         if (movementDirection != Vector3.zero)
         {
             dustTrail.gameObject.SetActive(true);
-
-            Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
+            rb.rotation = Quaternion.Euler(0f,angle,0f);
+            //Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            //rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
         else
         {
