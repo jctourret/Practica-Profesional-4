@@ -866,6 +866,11 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!82 &214623144 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+  m_PrefabInstance: {fileID: 1528183977}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &238602472 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7087419158644604882, guid: df6ac8154284eea47b43856d7e754ed3, type: 3}
@@ -1116,6 +1121,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 709459198}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes (1)
@@ -1240,6 +1249,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 100112512}
     - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: destroyByPlayerCollision
       value: 1
@@ -1863,6 +1876,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &627954146 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3189639290974567761, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+  m_PrefabInstance: {fileID: 1970120553}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &640237207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1427084740686327352, guid: 6c650e13e9385ed4dadc2b051404aa1a, type: 3}
@@ -2292,6 +2310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 100112512}
     - target: {fileID: 4001859632265146909, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: m_Name
       value: pref_stackOfDishes (2)
@@ -2728,6 +2750,107 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1002318856879461924, guid: 09f65b5b2a947584686130c44a930c10, type: 3}
   m_PrefabInstance: {fileID: 864718920}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &896624795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5341550047687407630, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+  m_PrefabInstance: {fileID: 1746705049276316372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &896624796
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896624795}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0b81e4eefd0e65145bdaf9f8b18e4716, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &908930221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3217,10 +3340,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441225672024385053, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
+    - target: {fileID: 5856196966998716900, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
+    - target: {fileID: 6673451929887933244, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
     - target: {fileID: 7145399400050013358, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_Name
       value: Silla_Destruction (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7221798829475064277, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
     - target: {fileID: 7521677999061954068, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_RootOrder
       value: 18
@@ -3265,6 +3408,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7846617947980795511, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
+    - target: {fileID: 8063949345986710008, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 1713166414}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
 --- !u!4 &1006321751 stripped
@@ -3571,6 +3722,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 100112512}
     - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: destroyByPlayerCollision
       value: 1
@@ -4252,10 +4407,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441225672024385053, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
+    - target: {fileID: 5856196966998716900, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
+    - target: {fileID: 6673451929887933244, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
     - target: {fileID: 7145399400050013358, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_Name
       value: Silla_Destruction (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7221798829475064277, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
     - target: {fileID: 7521677999061954068, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -4300,6 +4475,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7846617947980795511, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
+    - target: {fileID: 8063949345986710008, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 214623144}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
 --- !u!4 &1528183978 stripped
@@ -4696,6 +4879,11 @@ MonoBehaviour:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3833882533412638707, guid: 2e28150ae32a9fe4bb0f67825a2feb27, type: 3}
   m_PrefabInstance: {fileID: 3833882531875974705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1713166414 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+  m_PrefabInstance: {fileID: 1006321750}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1718062569
 PrefabInstance:
@@ -5546,6 +5734,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 3942187362731554626, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 627954146}
     - target: {fileID: 4713914053369569972, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -5594,6 +5786,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_Destruction (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6473822044709631109, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 627954146}
+    - target: {fileID: 7015637042541851263, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015637042541851263, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145866374751190420, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 627954146}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 627954146}
     - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
       propertyPath: highlightColor.a
       value: 1
@@ -5721,6 +5933,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8110552217239821124, guid: 1f509bc427a93f34cb739836e066cb15, type: 3}
   m_PrefabInstance: {fileID: 8110552218190494206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2039542086 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+  m_PrefabInstance: {fileID: 8063949347625842229}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2065102923
 PrefabInstance:
@@ -5907,6 +6124,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 100112512}
     - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: destroyByPlayerCollision
       value: 1
@@ -6589,6 +6810,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 3942187362731554626, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 896624796}
     - target: {fileID: 4713914053369569972, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6637,6 +6862,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_Destruction
       objectReference: {fileID: 0}
+    - target: {fileID: 6473822044709631109, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 896624796}
+    - target: {fileID: 7145866374751190420, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 896624796}
+    - target: {fileID: 8555462026113116160, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 896624796}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0c643bdfa9aca94ab1a62b2ca4f6d67, type: 3}
 --- !u!4 &1786186277266182390 stripped
@@ -6969,6 +7206,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
+      propertyPath: SFXaudio
+      value: 
+      objectReference: {fileID: 100112512}
     - target: {fileID: 4001859632265146904, guid: c4579e3985120e44d8eb845cb6c3e4bb, type: 3}
       propertyPath: destroyByPlayerCollision
       value: 1
@@ -7495,10 +7736,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808456597}
     m_Modifications:
+    - target: {fileID: 837236637534522144, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441225672024385053, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
+    - target: {fileID: 5856196966998716900, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
+    - target: {fileID: 6673451929887933244, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
     - target: {fileID: 7145399400050013358, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_Name
       value: Silla_Destruction
       objectReference: {fileID: 0}
+    - target: {fileID: 7221798829475064277, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
     - target: {fileID: 7521677999061954068, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -7543,6 +7804,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7846617947980795511, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
+    - target: {fileID: 8063949345986710008, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
+      propertyPath: SFXAudio
+      value: 
+      objectReference: {fileID: 2039542086}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef17eca79ff9f6048880c728c68e08f3, type: 3}
 --- !u!1001 &8110552218190494206

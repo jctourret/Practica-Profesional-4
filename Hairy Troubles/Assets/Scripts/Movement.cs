@@ -8,7 +8,8 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action<float, float, float> IsPushing;
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
-
+    [SerializeField] private List<AudioClip> audioClips;
+    [SerializeField] private AudioSource SFX;
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
@@ -74,6 +75,14 @@ public class Movement : MonoBehaviour, ICollidable
             movementDirection = new Vector3(hor, 0, ver);
             movementDirection.Normalize();
 
+            if(movementDirection != Vector3.zero)
+            {
+                if(!SFX.isPlaying)
+                    SFX.Play();
+            }
+            else 
+                SFX.Stop();
+
             PlayerJumpLogic();
 
             PlayerHighlightRequest();
@@ -123,7 +132,6 @@ public class Movement : MonoBehaviour, ICollidable
 
         if (movementDirection != Vector3.zero)
         {
-
             Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
