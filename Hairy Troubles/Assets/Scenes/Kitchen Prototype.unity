@@ -5840,6 +5840,7 @@ GameObject:
   - component: {fileID: 2019710062}
   - component: {fileID: 2019710061}
   - component: {fileID: 2019710060}
+  - component: {fileID: 2019710059}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -5847,6 +5848,102 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!82 &2019710059
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019710058}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2019710060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5877,8 +5974,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenePoints: 0
   actualPoints: 0
+  audio: {fileID: 2019710059}
+  finishMusic:
+  - {fileID: 8300000, guid: 7e485f88682826c44af3ec225ff063ef, type: 3}
+  - {fileID: 8300000, guid: 6535b53d5308d14438a8eb47c7b307df, type: 3}
   missionsState: 0
-  sceneTime: 60
+  sceneTime: 14
   firstPercentGoal: 30
   mediumPercentGoal: 60
   finalPercentGoal: 100
@@ -7304,20 +7405,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1966235782}
     - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: jumpforce
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
-      propertyPath: pushforce
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: raycastForward
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: upForceBuffRate
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4305059816762700220, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: raycast.Array.data[0]

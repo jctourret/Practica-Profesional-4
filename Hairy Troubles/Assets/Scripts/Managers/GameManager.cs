@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,6 +16,10 @@ public class GameManager : MonoBehaviour
     [Header("Scene Points")]
     public float scenePoints = 0;
     public float actualPoints = 0;
+
+    [Header("Audio")]
+    [SerializeField] AudioSource audio;
+    [SerializeField] private List<AudioClip> finishMusic;
 
     [Header("Scene State")]
     [SerializeField] private MissionsState missionsState;
@@ -166,18 +171,22 @@ public class GameManager : MonoBehaviour
         {
             uiGameController.ActivateFinalStar(0);
             missionsState = MissionsState.First;
+            audio.Play();
+            audio.PlayOneShot(finishMusic[0]);
         }
         
         if (actualPoints >= mediumGoal && missionsState == MissionsState.First)
         {
             uiGameController.ActivateFinalStar(1);
             missionsState = MissionsState.Medium;
+            audio.PlayOneShot(finishMusic[1]);
         }
         
         if (actualPoints >= finalGoal && missionsState == MissionsState.Medium)
         {
             uiGameController.ActivateFinalStar(2);
             missionsState = MissionsState.Final;
+            audio.PlayOneShot(finishMusic[1]);
         }
     }
     #endregion
