@@ -9,6 +9,13 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
     [SerializeField] private List<AudioClip> audioClips;
+    enum PlayerAction
+    {
+        push,
+        jump
+    }
+    PlayerAction playerAction;
+    [SerializeField] private AudioSource footstepsSFX;
     [SerializeField] private AudioSource SFX;
     [Space(10f)]
     [Header("-- Movement --")]
@@ -77,11 +84,11 @@ public class Movement : MonoBehaviour, ICollidable
 
             if(movementDirection != Vector3.zero)
             {
-                if(!SFX.isPlaying)
-                    SFX.Play();
+                if (!footstepsSFX.isPlaying)
+                    footstepsSFX.Play();
             }
-            else 
-                SFX.Stop();
+            else
+                footstepsSFX.Stop();
 
             PlayerJumpLogic();
 
@@ -143,7 +150,9 @@ public class Movement : MonoBehaviour, ICollidable
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
+            footstepsSFX.Stop();
             anim.SetTrigger("Jump");
+            SFX.PlayOneShot(audioClips[(int)PlayerAction.jump]);
         }
 
         if (positionY > transform.position.y)
@@ -163,6 +172,7 @@ public class Movement : MonoBehaviour, ICollidable
         else if (Input.GetKeyDown(KeyCode.E))
         {
             anim.SetTrigger("Push");
+            SFX.PlayOneShot(audioClips[(int)PlayerAction.push]);
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }
