@@ -26,7 +26,11 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float pushTime = 0.25f;
     [SerializeField] private float frontForce = 1;
     [SerializeField] private float upForce = 1;
+    [Space(10f)]
+    [Header("-- Push --")]
+    [SerializeField] private bool isHidden;
 
+    [Space(10f)]
     [Header("-- Berserk Mode --")]
     [SerializeField] private Renderer bodyRend = null;
     [SerializeField] private Renderer eyesRend = null;
@@ -221,6 +225,17 @@ public class Movement : MonoBehaviour, ICollidable
         positionY = transform.position.y;
     }
 
+    private void PlayerHideLogic()
+    {
+        if (!isHidden)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+
+            }
+        }
+    }
+
     private void PlayerPushLogic()
     {
         if (pushCountdown >= 0)
@@ -229,6 +244,7 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
+
             anim.SetTrigger("Push");
             SFX.PlayOneShot(audioClips[(int)PlayerAction.push]);
             IsPushing?.Invoke(pushTime, frontForce, upForce);
