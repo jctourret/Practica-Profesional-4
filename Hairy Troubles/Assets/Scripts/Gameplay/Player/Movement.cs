@@ -179,9 +179,11 @@ public class Movement : MonoBehaviour, ICollidable
         if (movementDirection != Vector3.zero)
         {
             dustTrail.gameObject.SetActive(true);
-
-            Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
+            rb.rotation = Quaternion.Euler(0f,angle,0f);
+            //Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            //rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
         else
         {
