@@ -1,3 +1,4 @@
+using EZCameraController;
 using System;
 using System.Collections;
 
@@ -87,7 +88,9 @@ public class DestructibleComponent : MonoBehaviour
 
             OnDestruction?.Invoke(points);
             isDestroyed = true;
-            
+
+            CameraController.Instance.ShakeOnce();
+
             if (fracturedObj != null)
             {
                 fracturedObj.SetActive(true);
