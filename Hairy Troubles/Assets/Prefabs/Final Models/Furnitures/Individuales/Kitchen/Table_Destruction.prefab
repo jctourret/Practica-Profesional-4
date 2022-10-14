@@ -53,6 +53,8 @@ MonoBehaviour:
   - {fileID: 1746705049223462511}
   - {fileID: 1746705048298985550}
   - {fileID: 1746705047847984503}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1746705047608922184
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +901,8 @@ MonoBehaviour:
   - {fileID: 1746705048780983263}
   - {fileID: 1746705049490459085}
   - {fileID: 1746705047898094262}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1746705048709916726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1180,8 @@ MonoBehaviour:
   - {fileID: 1746705049185841202}
   - {fileID: 1746705047608922184}
   - {fileID: 1746705049111999441}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1746705048907482555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1348,8 @@ MonoBehaviour:
   - {fileID: 1746705048495417646}
   - {fileID: 1746705049444484761}
   - {fileID: 1746705048709916726}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1746705049111999441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,6 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 4453620980170219418}
   meshRenderer: {fileID: 2708466760273085141}
   fracturedObj: {fileID: 1746705048783566935}
   points: 0
@@ -2170,6 +2179,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &5341550047687407630
 GameObject:
@@ -2180,6 +2191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4713914053369569972}
+  - component: {fileID: 4453620980170219418}
   m_Layer: 0
   m_Name: Table_Destruction
   m_TagString: Untagged
@@ -2206,6 +2218,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!82 &4453620980170219418
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5341550047687407630}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0b81e4eefd0e65145bdaf9f8b18e4716, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &6473822044709631130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 4453620980170219418}
   meshRenderer: {fileID: 5573828081084365043}
   fracturedObj: {fileID: 1746705048569372892}
   points: 0
@@ -2356,6 +2465,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &7145866374751190505
 GameObject:
@@ -2500,6 +2611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 4453620980170219418}
   meshRenderer: {fileID: 8819046129268274692}
   fracturedObj: {fileID: 1746705048943737698}
   points: 0
@@ -2507,6 +2619,8 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
 --- !u!1 &8545406325071190233
 GameObject:
@@ -2764,6 +2878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 4453620980170219418}
   meshRenderer: {fileID: 7428670113882268110}
   fracturedObj: {fileID: 1746705047596772262}
   points: 0
@@ -2771,4 +2886,6 @@ MonoBehaviour:
   highlightTime: 3
   highlightTimer: 0
   destructionTime: 3
+  disableColliderWhenDestroy: 1
+  disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
