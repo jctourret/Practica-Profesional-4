@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 4305059816762700227}
   - component: {fileID: 4305059816762700220}
   m_Layer: 3
-  m_Name: Player_Prototipe
+  m_Name: pref_Player_Prototipe
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,6 +665,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1647471908156319991, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647471908156319991, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
       propertyPath: ShapeModule.type
       value: 10
       objectReference: {fileID: 0}
@@ -822,7 +826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1647471908156319994, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public enum MissionsState
     {
-        none, First, Medium, Final
+        None, First, Medium, Final
     }
     
     [Header("Scene Points")]
@@ -17,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float actualPoints = 0;
 
     [Header("Scene State")]
-    [SerializeField] private MissionsState missionsState;
+    [SerializeField] private MissionsState missionsState = MissionsState.None;
     [Range(0, 400)]
     [SerializeField] private int sceneTime = 60;
 
@@ -31,13 +30,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Player Ref")]
     [SerializeField] private Movement player = null;
-    [SerializeField] private ComboBarPlayer comboBarPlayer = null;
 
-    [Header("--- COMBO ---")]
-    [SerializeField] private int targetDestructibles;
+    [Header("Combo")]
+    [SerializeField] private int targetDestructibles = 7;
 
     [Header("UI")]
-    [SerializeField] private UiGameController uiGameController;
+    [SerializeField] private UiGameController uiGameController = null;
     #endregion
 
     #region PRIVATE_METHODS
@@ -57,7 +55,7 @@ public class GameManager : MonoBehaviour
     #region UNITY_CALLS
     private void Awake()
     {
-        missionsState = MissionsState.none;
+        missionsState = MissionsState.None;
 
         timer = sceneTime;
 
@@ -117,11 +115,11 @@ public class GameManager : MonoBehaviour
             }
 
             uiGameController.PauseInput();
-            comboBarPlayer.UpdateGrownState();
+            uiGameController.ComboBarPlayer.UpdateGrownState();
             uiGameController.UpdateTimer(timer);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && comboBarPlayer.CheckComboBar())
+        if (Input.GetKeyDown(KeyCode.Q) && uiGameController.ComboBarPlayer.CheckComboBar())
         {
             OnComboBarFull?.Invoke();
         }
@@ -151,17 +149,17 @@ public class GameManager : MonoBehaviour
     #region PRIVATE_CALLS
     private void ChargeComboBar(int i)
     {
-        comboBarPlayer.ChargeComboBar(targetDestructibles);
+        uiGameController.ComboBarPlayer.ChargeComboBar(targetDestructibles);
     }
 
     private void UnlockComboBar()
     {
-        comboBarPlayer.SetDeclineLock(false);
+        uiGameController.ComboBarPlayer.SetDeclineLock(false);
     }
 
     private void CalculatePercentage()
     {
-        if (actualPoints >= firstGoal && missionsState == MissionsState.none)
+        if (actualPoints >= firstGoal && missionsState == MissionsState.None)
         {
             uiGameController.OnActivateStar?.Invoke(0);
             missionsState = MissionsState.First;

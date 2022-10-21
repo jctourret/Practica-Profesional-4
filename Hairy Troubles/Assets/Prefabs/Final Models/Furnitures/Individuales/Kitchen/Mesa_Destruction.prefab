@@ -2181,7 +2181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4713914053369569972}
   m_Layer: 0
-  m_Name: Table_Destruction
+  m_Name: Mesa_Destruction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
