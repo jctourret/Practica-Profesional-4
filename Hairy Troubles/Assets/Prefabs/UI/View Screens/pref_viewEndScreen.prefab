@@ -121,9 +121,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_Game_Controller, Assembly-CSharp
-        m_MethodName: OnRestartScene
-        m_Mode: 6
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -329,9 +329,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI_Game_Controller, Assembly-CSharp
-        m_MethodName: OnGoToScene
-        m_Mode: 6
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -393,6 +393,9 @@ MonoBehaviour:
   - {fileID: 3755165457275509085}
   - {fileID: 3755165457261966766}
   - {fileID: 3755165456831561138}
+  finalFrame: {fileID: 0}
+  txtFinalPercentage: {fileID: 0}
+  typesOfFrames: []
   btnRestart: {fileID: 3755165455550917492}
   btnExit: {fileID: 3755165456210490194}
 --- !u!1 &3755165456831561138
