@@ -9,34 +9,33 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private AudioSource footstepsSFX;
     [SerializeField] private AudioSource SFX;
+    [SerializeField] private Animator anim = null;
     [Space(10f)]
     [Header("-- Movement --")]
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float jumpforce;
-    [SerializeField] private float pushforce;
-    [SerializeField] private float pushCooldown;
-    [SerializeField] private float pushCountdown;
-    [SerializeField] private float positionY;
+    [SerializeField] private float movementSpeed = 1.75f;
+    [SerializeField] private float rotationSpeed = 15;
+    [SerializeField] private float jumpforce = 14;
+    [SerializeField] private float pushforce = 7;
+    [SerializeField] private float pushCooldown = 1;
+    [SerializeField] private float pushCountdown = 0;
+    [SerializeField] private float positionY = 0;
     [SerializeField] private List<Transform> raycast;
 
-    [SerializeField] private Animator anim;
-    [Space(10f)]
     [Header("-- Push --")]
-    [Space(20f)]
     [Range(0.01f, 1f)]
     [SerializeField] private float pushTime = 0.25f;
     [SerializeField] private float frontForce = 1;
     [SerializeField] private float upForce = 1;
 
     [Header("-- Berserk Mode --")]
-    [SerializeField] private Renderer bodyRend;
-    [SerializeField] private Renderer eyesRend;
-    [SerializeField] private float duration;
-    [SerializeField] private float jumpForceBuff = 1;
+    [SerializeField] private Renderer bodyRend = null;
+    [SerializeField] private Renderer eyesRend = null;
+
+    [SerializeField] private float duration = 10;
+    [SerializeField] private float jumpForceBuff = 10.5f;
     [SerializeField] private float scaling = 2;
     [SerializeField] private float scalingSpeed = 1;
-    [SerializeField] private Color tint;
+    [SerializeField] private Color tint = Color.red;
     [SerializeField] private float tintChangeDelay = 1;
 
     [Header("-- Particles --")]
@@ -45,21 +44,28 @@ public class Movement : MonoBehaviour, ICollidable
     #endregion
 
     #region PRIVATE_METHODS
-    private Rigidbody rb;
+    private Rigidbody rb = null;
 
-    private Vector3 movementDirection;
-    private float hor;
-    private float ver;
+    private Vector3 movementDirection = Vector3.zero;
+    private float hor = 0;
+    private float ver = 0;
     
     private bool canJump = true;
     private bool isMoving = true;
-    private bool berserkMode;
     enum PlayerAction
     {
         push,
         jump
     }
     PlayerAction playerAction;
+    private bool isDirectionBlocked = false;
+    private bool berserkMode = false;
+    #endregion
+
+    #region PROPERTIES
+    public bool CanJump { get => canJump; set => canJump = value; }
+    public bool IsMoving { get => isMoving; set => isMoving = value; }
+    public bool IsDirectionBlocked { get => isDirectionBlocked; set => isDirectionBlocked = value; }
     #endregion
 
     #region ACTIONS
@@ -115,13 +121,22 @@ public class Movement : MonoBehaviour, ICollidable
         {
             PlayerMovement();
         }
+        else if (isDirectionBlocked)
+        {
+            BlockedMovement();
+        }
     }
     #endregion
 
     #region PUBLIC_CALLS
-    public void StopCharacter(bool state)
+    public void StopPlayerInertia()
     {
-        isMoving = state;
+        rb.velocity = Vector3.zero;
+    }
+
+    public void BlockMovement()
+    {
+
     }
     #endregion
 
@@ -172,9 +187,20 @@ public class Movement : MonoBehaviour, ICollidable
         }
     }
 
+    private void BlockedMovement()
+    {
+        dustTrail.gameObject.SetActive(true);
+
+        rb.velocity = new Vector3(transform.forward.x * movementSpeed, rb.velocity.y, transform.forward.z * movementSpeed);
+        anim.SetInteger("MovementVector", (int)transform.forward.magnitude);
+
+        Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+        rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+    }
+
     private void PlayerJumpLogic()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump && isMoving)
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
