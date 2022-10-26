@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4305059816762700226}
   - component: {fileID: 4305059816762700227}
   - component: {fileID: 4305059816762700220}
+  - component: {fileID: 1666987121}
   m_Layer: 3
   m_Name: pref_Player_Prototipe
   m_TagString: Player
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23981009b182ff14f87c9725b2dace57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 4305059818248108055}
   movementSpeed: 1.75
   rotationSpeed: 15
   jumpforce: 14
@@ -214,7 +216,6 @@ MonoBehaviour:
   - {fileID: 682434737}
   - {fileID: 66273684}
   - {fileID: 2026970080}
-  anim: {fileID: 4305059818248108055}
   pushTime: 0.25
   frontForce: 20
   upForce: 30
@@ -228,6 +229,19 @@ MonoBehaviour:
   tintChangeDelay: 1
   dustTrail: {fileID: 8505957655360820320}
   slamDustTrail: {fileID: 7723734285624369140}
+--- !u!114 &1666987121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305059816762700224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5edb7d19c87914e9c5a2d83ebeb3f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 4305059816762700220}
 --- !u!1 &4305059816860849690
 GameObject:
   m_ObjectHideFlags: 0
