@@ -50,9 +50,31 @@ public class PushCollider : MonoBehaviour
 
         if (rb != null && !objectsPushed.Contains(other.transform))
         {
+<<<<<<< main
             objectsPushed.Add(other.transform);
 
             rb.AddForce(new Vector3( parent.forward.x * frontforce, upForce, parent.forward.z * frontforce), ForceMode.Impulse);
+=======
+            if (rb != null && !objectsPushed.Contains(other.transform))
+            {
+                objectsPushed.Add(other.transform);
+                rb.AddForce(new Vector3(parent.forward.x * frontforce, upForce, parent.forward.z * frontforce), ForceMode.Impulse);
+            }
+        }
+        else if (grabbing)
+        {
+            Debug.Log("Attempting grab");
+            if(rb != null)
+            {
+                Debug.Log("Found Grabbable");
+                OnObjectGrabbed?.Invoke(rb);
+            }
+            else
+            {
+                Debug.Log("Failed Grab");
+            }
+            coll.enabled = false;
+>>>>>>> Fixes to Grab and Push
         }
     }
    
