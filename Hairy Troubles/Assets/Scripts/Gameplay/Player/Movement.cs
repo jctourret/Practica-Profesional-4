@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private AudioSource footstepsSFX;
     [SerializeField] private AudioSource SFX;
     [SerializeField] private Animator anim = null;
+    [SerializeField] private Animator anim = null;
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed = 1.75f;
@@ -58,6 +59,8 @@ public class Movement : MonoBehaviour, ICollidable
         jump
     }
     PlayerAction playerAction;
+    private bool isDirectionBlocked = false;
+    private bool berserkMode = false;
     private bool isDirectionBlocked = false;
     private bool berserkMode = false;
     #endregion
