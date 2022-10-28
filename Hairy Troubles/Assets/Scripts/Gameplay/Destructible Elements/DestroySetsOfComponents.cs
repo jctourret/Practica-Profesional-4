@@ -15,6 +15,7 @@ public class DestroySetsOfComponents : MonoBehaviour
     [SerializeField] private bool destroyByPlayerCollision = true;
     [Range(0.01f, 20f)]
     [SerializeField] private float fractureLimit = 2.0f;
+    public bool groupDestroyed =false;
     #endregion
 
     #region PRIVATE_METHODS
@@ -47,6 +48,7 @@ public class DestroySetsOfComponents : MonoBehaviour
                 }
                 item.SwapComponent();
             }
+            groupDestroyed = true;
         }
         else
         {
@@ -60,6 +62,7 @@ public class DestroySetsOfComponents : MonoBehaviour
                     }
                     item.SwapComponent();
                 }
+                groupDestroyed = true;
             }
         }
     }
