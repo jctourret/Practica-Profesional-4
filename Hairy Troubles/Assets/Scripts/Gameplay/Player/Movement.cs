@@ -57,6 +57,7 @@ public class Movement : MonoBehaviour, ICollidable
     public bool CanJump { get => canJump; set => canJump = value; }
     public bool IsMoving { get => isMoving; set => isMoving = value; }
     public bool IsDirectionBlocked { get => isDirectionBlocked; set => isDirectionBlocked = value; }
+    public Rigidbody Rb { get => rb; }
     #endregion
 
     #region ACTIONS
