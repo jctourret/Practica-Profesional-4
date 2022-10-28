@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3219638903107841598}
   m_Layer: 0
-  m_Name: Pref_hazardHorno
+  m_Name: pref_ovenHazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,8 +138,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31226856, y: 0.293364, z: 0.3705075}
-  m_Center: {x: 0, y: 0.13933858, z: 0}
+  m_Size: {x: 0.31226856, y: 0.0885446, z: 0.3705075}
+  m_Center: {x: 0, y: 0.03692889, z: 0}
 --- !u!114 &3219638903711882160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,11 +149,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2593685619853579272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6577f6a39d123c48a8df1e31c29c60b, type: 3}
+  m_Script: {fileID: 11500000, guid: 39e6a918b787eef408ef9d4b633b546c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hazardCollider: {fileID: 3219638903711882161}
   timerEffect: 3
+  activeTime: 3
+  timeToActivate: 3
+  ovenParticles: []
 --- !u!65 &1877080356
 BoxCollider:
   m_ObjectHideFlags: 0
