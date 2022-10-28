@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 4305059816762700226}
   - component: {fileID: 4305059816762700227}
   - component: {fileID: 4305059816762700220}
+  - component: {fileID: 4255798525402559232}
   m_Layer: 3
   m_Name: Player_Prototipe
   m_TagString: Player
@@ -203,8 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23981009b182ff14f87c9725b2dace57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1.75
-  rotationSpeed: 15
+  movementSpeed: 1.5
+  smoothRotation: 0.25
   jumpforce: 14
   pushforce: 7
   pushCooldown: 1
@@ -218,6 +219,7 @@ MonoBehaviour:
   pushTime: 0.25
   frontForce: 20
   upForce: 30
+  joint: {fileID: 4255798525402559232}
   bodyRend: {fileID: 1361754192919939445}
   eyesRend: {fileID: 8026191061745865092}
   duration: 10
@@ -228,6 +230,30 @@ MonoBehaviour:
   tintChangeDelay: 1
   dustTrail: {fileID: 8505957655360820320}
   slamDustTrail: {fileID: 7723734285624369140}
+--- !u!145 &4255798525402559232
+SpringJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4305059816762700224}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0.076, z: 0.2315}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: -2.5, y: 0.076, z: 1.2315}
+  serializedVersion: 2
+  m_Spring: 10
+  m_Damper: 0.2
+  m_MinDistance: 0
+  m_MaxDistance: 0
+  m_Tolerance: 0.025
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &4305059816860849690
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +691,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1647471908156319991, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647471908156319991, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
       propertyPath: ShapeModule.type
       value: 10
       objectReference: {fileID: 0}
@@ -822,7 +852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1647471908156319994, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4224a74233da6bb48be79406cadf8c21, type: 3}

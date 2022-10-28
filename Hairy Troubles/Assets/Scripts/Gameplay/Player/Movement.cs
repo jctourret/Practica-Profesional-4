@@ -26,8 +26,11 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private float frontForce = 1;
     [SerializeField] private float upForce = 1;
     [Space(10f)]
-    [Header("-- Push --")]
-    [SerializeField] private bool isHidden;
+    [Header("-- Grab --")]
+    [SerializeField] private float springForce = 1000;
+    [SerializeField] private float pushDragThreshold=20f;
+    [SerializeField] private Transform anchorPoint;
+    bool invertMovement;
 
     [Space(10f)]
     [Header("-- Berserk Mode --")]
@@ -35,10 +38,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private Renderer eyesRend;
     [SerializeField] private float duration;
     [SerializeField] private float jumpForceBuff = 1;
-    [SerializeField] private float scaling = 2;
-    [SerializeField] private float scalingSpeed = 1;
     [SerializeField] private Color tint;
-    [SerializeField] private float tintChangeDelay = 1;
 
     [Header("-- Particles --")]
     [SerializeField] private ParticleSystem dustTrail = null;
@@ -60,6 +60,7 @@ public class Movement : MonoBehaviour, ICollidable
 
     #region ACTIONS
     public static Action<float, float, float> IsPushing;
+    public static Action OnGrab;
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
     #endregion
@@ -73,11 +74,13 @@ public class Movement : MonoBehaviour, ICollidable
     private void OnEnable()
     {
         GameManager.OnComboBarFull += EnterBerserkMode;
+        PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
         GameManager.OnComboBarFull -= EnterBerserkMode;
+        PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
     void Update()
@@ -93,6 +96,8 @@ public class Movement : MonoBehaviour, ICollidable
             PlayerJumpLogic();
 
             PlayerHighlightRequest();
+
+            PlayerGrabLogic();
 
             PlayerPushLogic();
         }
@@ -145,7 +150,15 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerMovement()
     {
-        rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);        
+
+        if (invertMovement)
+        {
+            rb.velocity = new Vector3(-hor * movementSpeed, rb.velocity.y, -ver * movementSpeed);
+        }
+        else
+        {
+            rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
+        }  
         anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
 
         if (movementDirection != Vector3.zero)
@@ -181,15 +194,48 @@ public class Movement : MonoBehaviour, ICollidable
         positionY = transform.position.y;
     }
 
-    private void PlayerHideLogic()
+    private void PlayerGrabLogic()
     {
-        if (!isHidden)
+        SpringJoint joint;
+        gameObject.TryGetComponent<SpringJoint>(out joint);
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if(joint == null)
             {
-
+                OnGrab?.Invoke();
+            }
+            else
+            {
+                if (joint != null)
+                {
+                    Rigidbody grabbed = joint.connectedBody;
+                    Destroy(joint);
+                    Debug.Log("Throwing Grabbed Object");
+                    grabbed.AddForce(new Vector3(transform.forward.x * frontForce, upForce, transform.forward.z * frontForce), ForceMode.Impulse);
+                }
             }
         }
+    }
+
+    private void RecieveGrabbed(Rigidbody grabbedObject)
+    {
+        if (!gameObject.GetComponent<SpringJoint>())
+        {
+            SpringJoint joint = gameObject.AddComponent<SpringJoint>();
+            joint.anchor = transform.InverseTransformPoint(anchorPoint.position);
+            joint.spring = springForce;
+           
+            joint.connectedBody = grabbedObject;
+            if (grabbedObject.mass >= pushDragThreshold)
+            {
+                invertMovement = true;
+            }
+            else
+            {
+                invertMovement = false;
+            }
+        }
+        Debug.Log("Recieved grabbable");
     }
 
     private void PlayerPushLogic()

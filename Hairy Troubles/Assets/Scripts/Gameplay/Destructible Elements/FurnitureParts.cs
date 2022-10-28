@@ -7,7 +7,7 @@ public class FurnitureParts : DestructibleComponent
     [Range(1, 20)]
     //[SerializeField] private float timeToDestroy = 5f;
 
-    private FixedJoint fixedJoint;
+    public FixedJoint fixedJoint;
 
     // -------------------------------
 
@@ -32,7 +32,9 @@ public class FurnitureParts : DestructibleComponent
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Player")
+        other.gameObject.TryGetComponent<PushCollider>(out PushCollider collider);
+
+        if(collider !=null && collider.pushing)
         {
             if (fixedJoint != null) Destroy(fixedJoint);
             SwapComponent();
