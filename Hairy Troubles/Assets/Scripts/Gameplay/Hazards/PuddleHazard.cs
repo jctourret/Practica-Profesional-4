@@ -5,8 +5,8 @@ using UnityEngine;
 public class PuddleHazard : Hazard
 {
     #region EXPOSED_FIELD
-    [SerializeField] [Range(0, 180)] private float throwAngleX = 45;
-    [SerializeField] private float throwForce = 10;
+    [SerializeField] [Range(0, 180)] private float throwAngleX = 70;
+    [SerializeField] private float throwForce = 130;
     #endregion
 
     #region PRIVATE_FIELD

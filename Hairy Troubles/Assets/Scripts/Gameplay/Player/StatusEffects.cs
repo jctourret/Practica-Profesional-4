@@ -14,21 +14,34 @@ public class StatusEffects : MonoBehaviour
     #region EXPOSED_FIELD
     [SerializeField] private Movement playerMovement = null;
     #endregion
+    
+    #region PRIVATE_FIELD
+    private bool isBurning = false;
+    #endregion
 
     #region PUBLIC_CALLS
     public void BurningState(float time)
     {
+        if(isBurning)
+        {
+            return;
+        }
+
         StartCoroutine(State(time,
         () =>
         {
             playerMovement.IsMoving = false;
             playerMovement.IsDirectionBlocked = true;
+
+            isBurning = true;
         },
         (t) => { },
         () =>
         {
             playerMovement.IsMoving = true;
             playerMovement.IsDirectionBlocked = false;
+
+            isBurning = false;
         }));
     }
 
