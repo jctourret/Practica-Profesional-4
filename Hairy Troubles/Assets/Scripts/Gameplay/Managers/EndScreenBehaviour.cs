@@ -41,7 +41,7 @@ public class EndScreenBehaviour : MonoBehaviour
     {
         enableStars[i].SetActive(true);
         finalFrame.sprite = typesOfFrames[i];
-        Debug.Log("HOLI");
+
         if( i < 1)
         {
             endgameSFX.clip =soundClips[0];

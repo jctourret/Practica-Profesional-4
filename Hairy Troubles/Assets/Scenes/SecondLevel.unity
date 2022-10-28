@@ -8394,6 +8394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pref_hazardHorno
       objectReference: {fileID: 0}
+    - target: {fileID: 3219638903107841569, guid: e46fb0e597437cc4b8b660c262806cd5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3219638903107841598, guid: e46fb0e597437cc4b8b660c262806cd5, type: 3}
       propertyPath: m_RootOrder
       value: 10
