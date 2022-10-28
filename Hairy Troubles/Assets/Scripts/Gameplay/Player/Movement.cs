@@ -6,6 +6,9 @@ using System;
 public class Movement : MonoBehaviour, ICollidable
 {
     #region EXPOSED_METHODS
+    [SerializeField] private List<AudioClip> audioClips;
+    [SerializeField] private AudioSource footstepsSFX;
+    [SerializeField] private AudioSource SFX;
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed;
@@ -51,6 +54,12 @@ public class Movement : MonoBehaviour, ICollidable
     private bool canJump = true;
     private bool isMoving = true;
     private bool berserkMode;
+    enum PlayerAction
+    {
+        push,
+        jump
+    }
+    PlayerAction playerAction;
     #endregion
 
     #region ACTIONS
@@ -85,6 +94,13 @@ public class Movement : MonoBehaviour, ICollidable
             movementDirection = new Vector3(hor, 0, ver);
             movementDirection.Normalize();
 
+            if (movementDirection != Vector3.zero)
+            {
+                if (!footstepsSFX.isPlaying)
+                    footstepsSFX.Play();
+            }
+            else
+                footstepsSFX.Stop();
             PlayerJumpLogic();
 
             PlayerHighlightRequest();
@@ -162,6 +178,7 @@ public class Movement : MonoBehaviour, ICollidable
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
+            SFX.PlayOneShot(audioClips[(int)PlayerAction.jump]);
             //slamDustTrail.gameObject.SetActive(canJump);
             anim.SetTrigger("Jump");
         }
@@ -183,6 +200,7 @@ public class Movement : MonoBehaviour, ICollidable
         else if (Input.GetKeyDown(KeyCode.E))
         {
             anim.SetTrigger("Push");
+            SFX.PlayOneShot(audioClips[(int)PlayerAction.push]);
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }

@@ -11,6 +11,7 @@ public class DestructibleComponent : MonoBehaviour
     #endregion
 
     #region EXPOSED_FIELD
+    [SerializeField] AudioSource SFXAudio;
     [Header("Mesh To Off")]
     [SerializeField] protected MeshRenderer meshRenderer;
 
@@ -73,6 +74,10 @@ public class DestructibleComponent : MonoBehaviour
     {
         if (!isDestroyed)
         {
+            if (SFXAudio != null)
+            {
+                SFXAudio.Play();
+            }
             if (meshRenderer != null)
             {
                 meshRenderer.enabled = false;
