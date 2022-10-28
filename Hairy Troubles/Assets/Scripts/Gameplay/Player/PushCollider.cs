@@ -62,7 +62,6 @@ public class PushCollider : MonoBehaviour
             {
                 objectsPushed.Add(other.transform);
                 rb.AddForce(new Vector3(parent.forward.x * frontforce, upForce, parent.forward.z * frontforce), ForceMode.Impulse);
-                
             }
         }
         else if (grabbing)

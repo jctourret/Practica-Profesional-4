@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour, ICollidable
     [Space(10f)]
     [Header("-- Grab --")]
     [SerializeField] private float springForce = 1000;
-    [SerializeField] private float pushDragThreshold=20f;
+    [SerializeField] private float pushDragThreshold = 20f;
     [SerializeField] private Transform anchorPoint;
     bool invertMovement;
 
@@ -198,6 +198,15 @@ public class Movement : MonoBehaviour, ICollidable
     {
         SpringJoint joint;
         gameObject.TryGetComponent<SpringJoint>(out joint);
+        if(joint != null)
+        {
+            joint.connectedBody.gameObject.TryGetComponent<DestroySetsOfComponents>(out DestroySetsOfComponents sets);
+            joint.connectedBody.gameObject.TryGetComponent<MeshCollider>(out MeshCollider mesh);
+            if ((mesh !=null &&!mesh.enabled) || joint.connectedBody == null || (sets!=null && sets.groupDestroyed))
+            {
+                Destroy(joint);
+            }
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
             if(joint == null)
@@ -212,6 +221,7 @@ public class Movement : MonoBehaviour, ICollidable
                     Destroy(joint);
                     Debug.Log("Throwing Grabbed Object");
                     grabbed.AddForce(new Vector3(transform.forward.x * frontForce, upForce, transform.forward.z * frontForce), ForceMode.Impulse);
+                    invertMovement = false;
                 }
             }
         }
