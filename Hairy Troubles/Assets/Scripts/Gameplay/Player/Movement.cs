@@ -55,6 +55,7 @@ public class Movement : MonoBehaviour, ICollidable
     
     private bool canJump = true;
     private bool isMoving = true;
+    private bool isDirectionBlocked = true;
     private bool berserkMode;
     #endregion
 
@@ -63,6 +64,13 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action OnGrab;
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
+
+    #endregion
+
+    #region PROPERTIES
+    public bool IsMoving { get => isMoving; set => isMoving = value; }
+    public bool IsDirectionBlocked { get => isDirectionBlocked; set => isDirectionBlocked = value; }
+    public Rigidbody Rb { get => rb; }
     #endregion
 
     #region UNITY_CALLS
@@ -297,6 +305,11 @@ public class Movement : MonoBehaviour, ICollidable
             yield return null;
         }
         berserkMode = false;
+    }
+
+    public void StopPlayerInertia()
+    {
+        rb.velocity = Vector3.zero;
     }
     #endregion    
 }
