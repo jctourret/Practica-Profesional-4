@@ -24,10 +24,7 @@ public class StatusEffects : MonoBehaviour
             playerMovement.IsMoving = false;
             playerMovement.IsDirectionBlocked = true;
         },
-        (time) =>
-        {
-            Debug.Log("BURNING");
-        },
+        (t) => { },
         () =>
         {
             playerMovement.IsMoving = true;
@@ -35,15 +32,19 @@ public class StatusEffects : MonoBehaviour
         }));
     }
 
-    public void UpsideDownState(float time)
+    public void UpsideDownState(float force, Vector3 direction, float time)
     {
-        IEnumerator UpsideDown()
+        StartCoroutine(State(time,
+        () =>
         {
-            Debug.Log("UPSIDE DOWN");
-            yield return null;
-        }
-
-        StartCoroutine(UpsideDown());
+            playerMovement.IsMoving = false;
+            PlayerThrow(force, direction);
+        },
+        (t) => { },
+        () =>
+        {
+            playerMovement.IsMoving = true;
+        }));
     }
 
     public void TrappedState(float time)
@@ -54,10 +55,7 @@ public class StatusEffects : MonoBehaviour
             playerMovement.StopPlayerInertia();
             playerMovement.IsMoving = false;
         },
-        (time) =>
-        { 
-            Debug.Log("TRAPPED");
-        }, 
+        (t) => { }, 
         () => 
         {
             playerMovement.IsMoving = true;            
@@ -81,6 +79,12 @@ public class StatusEffects : MonoBehaviour
         }
 
         end?.Invoke();
+    }
+
+    private void PlayerThrow(float force, Vector3 direction)
+    {
+        playerMovement.Rb.velocity = Vector3.zero;
+        playerMovement.Rb.AddForce(direction * force, ForceMode.Acceleration);
     }
     #endregion
 }
