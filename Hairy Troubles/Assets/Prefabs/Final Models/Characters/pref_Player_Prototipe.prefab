@@ -136,9 +136,12 @@ GameObject:
   - component: {fileID: 4305059816762700227}
   - component: {fileID: 4305059816762700220}
   - component: {fileID: 1666987121}
+<<<<<<< HEAD
   - component: {fileID: 1666987121}
   - component: {fileID: 7800421489075261846}
   - component: {fileID: 6063676549986786472}
+=======
+>>>>>>> Hazards
   m_Layer: 3
   m_Name: pref_Player_Prototipe
   m_TagString: Player
@@ -208,12 +211,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4305059818248108055}
+<<<<<<< HEAD
   anim: {fileID: 4305059818248108055}
   audioClips:
   - {fileID: 8300000, guid: be793431d0b89c440a411d54f7d1cfb6, type: 3}
   - {fileID: 8300000, guid: b0e9810365d4cf448977d178e3c81832, type: 3}
   footstepsSFX: {fileID: 7800421489075261846}
   SFX: {fileID: 6063676549986786472}
+=======
+>>>>>>> Hazards
   movementSpeed: 1.75
   rotationSpeed: 15
   jumpforce: 14
@@ -251,6 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 4305059816762700220}
+<<<<<<< HEAD
 --- !u!114 &1666987121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,6 +463,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+>>>>>>> Hazards
 --- !u!1 &4305059816860849690
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,10 +6,13 @@ using System;
 public class Movement : MonoBehaviour, ICollidable
 {
     #region EXPOSED_METHODS
+<<<<<<< HEAD
     [SerializeField] private List<AudioClip> audioClips;
     [SerializeField] private AudioSource footstepsSFX;
     [SerializeField] private AudioSource SFX;
     [SerializeField] private Animator anim = null;
+=======
+>>>>>>> Hazards
     [SerializeField] private Animator anim = null;
     [Space(10f)]
     [Header("-- Movement --")]
@@ -53,6 +56,7 @@ public class Movement : MonoBehaviour, ICollidable
     
     private bool canJump = true;
     private bool isMoving = true;
+<<<<<<< HEAD
     enum PlayerAction
     {
         push,
@@ -61,6 +65,8 @@ public class Movement : MonoBehaviour, ICollidable
     PlayerAction playerAction;
     private bool isDirectionBlocked = false;
     private bool berserkMode = false;
+=======
+>>>>>>> Hazards
     private bool isDirectionBlocked = false;
     private bool berserkMode = false;
     #endregion
