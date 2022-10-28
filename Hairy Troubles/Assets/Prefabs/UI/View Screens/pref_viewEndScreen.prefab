@@ -389,13 +389,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275ff791f26fa6a4884890aad59cd0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endgameSFX: {fileID: 0}
+  soundClips:
+  - {fileID: 8300000, guid: 7e485f88682826c44af3ec225ff063ef, type: 3}
+  - {fileID: 8300000, guid: 6535b53d5308d14438a8eb47c7b307df, type: 3}
   enableStars:
   - {fileID: 3755165457275509085}
   - {fileID: 3755165457261966766}
   - {fileID: 3755165456831561138}
-  finalFrame: {fileID: 0}
-  txtFinalPercentage: {fileID: 0}
-  typesOfFrames: []
+  finalFrame: {fileID: 3755165456127530287}
+  txtFinalPercentage: {fileID: 3755165457322035129}
+  typesOfFrames:
+  - {fileID: 21300000, guid: 693e0fce4bdd8e14292fdd1cebaadafe, type: 3}
+  - {fileID: 21300000, guid: cd3aee2f9f322fc43b525062f5527aa9, type: 3}
+  - {fileID: 21300000, guid: 12b17515e08eee646a838243cbbbe6bb, type: 3}
   btnRestart: {fileID: 3755165455550917492}
   btnExit: {fileID: 3755165456210490194}
 --- !u!1 &3755165456831561138
