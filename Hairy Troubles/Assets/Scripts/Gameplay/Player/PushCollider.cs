@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,19 @@ public class PushCollider : MonoBehaviour
     private float pushTime = 0.25f;
     private float frontforce = 1;
     private float upForce = 1;
-    
+
+    public bool pushing;
+    public bool grabbing;
+
     private Transform parent;
     private Collider coll;
+
     [Header("-- Berserk Mode --")]
-    private float duration = 5;
     [SerializeField] private float scaleMultiplier = 2;
 
     private List<Transform> objectsPushed = new List<Transform>();
+
+    public static Action<Rigidbody> OnObjectGrabbed;
     // ----------------------
 
     void Awake()
@@ -31,6 +37,7 @@ public class PushCollider : MonoBehaviour
     private void OnEnable()
     {
         Movement.IsPushing += CanPush;
+        Movement.OnGrab += CanGrab;
         Movement.OnBerserkModeEnd += shrinkColliderSize;
         GameManager.OnComboBarFull += enlargeColliderSize;
     }
@@ -38,6 +45,7 @@ public class PushCollider : MonoBehaviour
     private void OnDisable()
     {
         Movement.IsPushing -= CanPush;
+        Movement.OnGrab -= CanGrab;
         Movement.OnBerserkModeEnd -= shrinkColliderSize;
         GameManager.OnComboBarFull -= enlargeColliderSize;
     }
@@ -48,13 +56,8 @@ public class PushCollider : MonoBehaviour
 
         other.gameObject.TryGetComponent<Rigidbody>(out rb);
 
-        if (rb != null && !objectsPushed.Contains(other.transform))
+        if (pushing)
         {
-<<<<<<< main
-            objectsPushed.Add(other.transform);
-
-            rb.AddForce(new Vector3( parent.forward.x * frontforce, upForce, parent.forward.z * frontforce), ForceMode.Impulse);
-=======
             if (rb != null && !objectsPushed.Contains(other.transform))
             {
                 objectsPushed.Add(other.transform);
@@ -74,8 +77,8 @@ public class PushCollider : MonoBehaviour
                 Debug.Log("Failed Grab");
             }
             coll.enabled = false;
->>>>>>> Fixes to Grab and Push
         }
+        
     }
    
     private void enlargeColliderSize()
@@ -87,11 +90,23 @@ public class PushCollider : MonoBehaviour
         transform.localScale /= scaleMultiplier;
     }
 
+    private void CanGrab()
+    {
+        Debug.Log("Init grab");
+        grabbing = true;
+        pushing = false;
+
+        coll.enabled = true;
+    }
+
     private void CanPush(float time, float front, float up)
     {
         pushTime = time;
         frontforce = front;
         upForce = up;
+
+        grabbing = false;
+        pushing = true;
 
         StartCoroutine(PushCountdown());
     }
