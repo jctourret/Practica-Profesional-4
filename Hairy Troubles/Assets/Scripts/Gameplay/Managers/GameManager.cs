@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                 timer = 0f;
 
                 playing = false;
-                player.StopCharacter(playing);
+                player.IsMoving = playing;
 
                 CalculatePercentage();
                 uiGameController.ActivateMenu(true);
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         if(missionsState == MissionsState.Final)
         {
             playing = false;
-            player.StopCharacter(playing);
+            player.IsMoving = playing;
 
             uiGameController.ActivateMenu(true);
         }

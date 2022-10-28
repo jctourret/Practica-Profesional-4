@@ -10,6 +10,7 @@ public class DestroySetsOfComponents : MonoBehaviour
     }
 
     #region PUBLIC_METHODS
+    [SerializeField] AudioSource SFXaudio;
     [SerializeField] private DestructibleComponent[] destructibleComponents;
     [SerializeField] private bool destroyByPlayerCollision = true;
     [Range(0.01f, 20f)]
@@ -40,6 +41,10 @@ public class DestroySetsOfComponents : MonoBehaviour
         {
             foreach (DestructibleComponent item in destructibleComponents)
             {
+                if (SFXaudio != null)
+                {
+                    SFXaudio.Play();
+                }
                 item.SwapComponent();
             }
         }
@@ -49,6 +54,10 @@ public class DestroySetsOfComponents : MonoBehaviour
             {
                 foreach (DestructibleComponent item in destructibleComponents)
                 {
+                    if (SFXaudio != null)
+                    {
+                        SFXaudio.Play();
+                    }
                     item.SwapComponent();
                 }
             }
