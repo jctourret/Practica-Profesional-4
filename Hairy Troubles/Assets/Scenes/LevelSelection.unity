@@ -350,6 +350,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820674421687618, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820674841593980, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -386,6 +390,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820675910613038, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820675993750332, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1617,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820674421687618, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820675715959412, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1649,6 +1661,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 955609547}
+    - target: {fileID: 8854820675910613038, guid: 968599767f61556428c8d277846d86d0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 8854820676145077464, guid: 968599767f61556428c8d277846d86d0, type: 3}
       propertyPath: m_Name
       value: UiDeNivel
@@ -1741,5 +1757,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 968599767f61556428c8d277846d86d0, type: 3}
