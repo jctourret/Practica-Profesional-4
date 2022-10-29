@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
         actualPoints = 0;
 
         uiGameController.Initialize();
+
+        player.Init(() => { return uiGameController.ComboBarPlayer.CheckComboBar(); });
     }
 
     private void OnEnable()
@@ -111,26 +113,25 @@ public class GameManager : MonoBehaviour
                 player.IsMoving = playing;
 
                 CalculatePercentage();
-                uiGameController.ActivateMenu(true);
             }
 
             uiGameController.PauseInput();
             uiGameController.ComboBarPlayer.UpdateGrownState();
             uiGameController.UpdateTimer(timer);
+            
+            if(missionsState == MissionsState.Final)
+            {
+                playing = false;
+                player.IsMoving = playing;
+
+                uiGameController.ActivateMenu(true);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && uiGameController.ComboBarPlayer.CheckComboBar())
-        {
-            OnComboBarFull?.Invoke();
-        }
-
-        if(missionsState == MissionsState.Final)
-        {
-            playing = false;
-            player.IsMoving = playing;
-
-            uiGameController.ActivateMenu(true);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q) && uiGameController.ComboBarPlayer.CheckComboBar())
+        //{
+        //    OnComboBarFull?.Invoke();
+        //}
     }
     #endregion
 

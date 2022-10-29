@@ -64,7 +64,7 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action OnGrab;
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
-
+    public Func<bool> OnHableToActivateBerserk;
     #endregion
 
     #region PROPERTIES
@@ -74,20 +74,15 @@ public class Movement : MonoBehaviour, ICollidable
     #endregion
 
     #region UNITY_CALLS
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
     private void OnEnable()
     {
-        GameManager.OnComboBarFull += EnterBerserkMode;
+        //GameManager.OnComboBarFull += EnterBerserkMode;
         PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
-        GameManager.OnComboBarFull -= EnterBerserkMode;
+        //GameManager.OnComboBarFull -= EnterBerserkMode;
         PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
@@ -108,6 +103,8 @@ public class Movement : MonoBehaviour, ICollidable
             PlayerGrabLogic();
 
             PlayerPushLogic();
+
+            EnterBerserkMode();
         }
     }
     
@@ -121,6 +118,13 @@ public class Movement : MonoBehaviour, ICollidable
     #endregion
 
     #region PUBLIC_CALLS
+    public void Init(Func<bool> OnHableToActivateBerserk)
+    {
+        rb = GetComponent<Rigidbody>();
+
+        this.OnHableToActivateBerserk = OnHableToActivateBerserk;
+    }
+
     public void StopCharacter(bool state)
     {
         isMoving = state;
@@ -273,10 +277,13 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void EnterBerserkMode()
     {
-        if (!berserkMode)
+        if (Input.GetKeyDown(KeyCode.Q) && OnHableToActivateBerserk.Invoke())
         {
-            berserkMode = true;
-            StartCoroutine(BerserkMode());
+            if (!berserkMode)
+            {
+                berserkMode = true;
+                StartCoroutine(BerserkMode());
+            }
         }
     }
 

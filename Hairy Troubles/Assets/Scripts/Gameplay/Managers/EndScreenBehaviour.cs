@@ -42,13 +42,13 @@ public class EndScreenBehaviour : MonoBehaviour
         enableStars[i].SetActive(true);
         finalFrame.sprite = typesOfFrames[i];
 
-        if( i < 1)
+        if (i < 1)
         {
-            endgameSFX.clip =soundClips[0];
+            endgameSFX.clip = soundClips[0];
         }
         else
         {
-            endgameSFX.clip =soundClips[1];
+            endgameSFX.clip = soundClips[1];
         }
     }
 
@@ -60,6 +60,9 @@ public class EndScreenBehaviour : MonoBehaviour
     public void SetActive(bool state)
     {
         this.gameObject.SetActive(state);
+
+        Debug.Log("SetActive");
+
         endgameSFX.Play();
     }
     #endregion
