@@ -54,6 +54,7 @@ public class LevelSelectionManager : MonoBehaviour
         sceneTransition.ChangeAnimation(1, () => {
             ScenesLoaderHandler.LoadScene(listOfLevels[currentLevel].levelName);
         });
+        Debug.Log("Loading" + listOfLevels[currentLevel].levelName);
     }
 
     public void MenuButton()
