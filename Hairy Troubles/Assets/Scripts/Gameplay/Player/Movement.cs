@@ -6,31 +6,32 @@ using System;
 public class Movement : MonoBehaviour, ICollidable
 {
     #region EXPOSED_METHODS
+    [SerializeField] private Animator anim;
+
     [Space(10f)]
     [Header("-- Movement --")]
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float smoothRotation;
-    [SerializeField] private float jumpforce;
-    [SerializeField] private float pushforce;
-    [SerializeField] private float pushCooldown;
-    [SerializeField] private float pushCountdown;
-    [SerializeField] private float positionY;
+    [SerializeField] private float movementSpeed = 1.17f;
+    [SerializeField] private float smoothRotation = 0.2f;
+    [SerializeField] private float jumpforce = 14;
+    [SerializeField] private float pushforce = 7;
+    [SerializeField] private float pushCooldown = 1;
+    [SerializeField] private float pushCountdown = 0;
+    [SerializeField] private float positionY = 0;
     [SerializeField] private List<Transform> raycast;
-
-    [SerializeField] private Animator anim;
     [Space(10f)]
+    
     [Header("-- Push --")]
     [Space(20f)]
     [Range(0.01f, 1f)]
     [SerializeField] private float pushTime = 0.25f;
-    [SerializeField] private float frontForce = 1;
-    [SerializeField] private float upForce = 1;
+    [SerializeField] private float frontForce = 20;
+    [SerializeField] private float upForce = 30;
+
     [Space(10f)]
     [Header("-- Grab --")]
     [SerializeField] private float springForce = 1000;
     [SerializeField] private float pushDragThreshold = 20f;
     [SerializeField] private Transform anchorPoint;
-    bool invertMovement;
 
     [Space(10f)]
     [Header("-- Berserk Mode --")]
@@ -41,6 +42,7 @@ public class Movement : MonoBehaviour, ICollidable
     [SerializeField] private Color tint;
 
     [Header("-- Particles --")]
+    [SerializeField] private ParticleSystem fireParticle = null;
     [SerializeField] private ParticleSystem dustTrail = null;
     [SerializeField] private ParticleSystem slamDustTrail = null;
     #endregion
@@ -53,6 +55,7 @@ public class Movement : MonoBehaviour, ICollidable
     private float ver;
     private float yVelocity;
     
+    private bool invertMovement;
     private bool canJump = true;
     private bool isMoving = true;
     private bool isDirectionBlocked = true;
@@ -76,6 +79,8 @@ public class Movement : MonoBehaviour, ICollidable
     #region UNITY_CALLS
     private void OnEnable()
     {
+        BurningParticle(false);
+
         PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
@@ -112,6 +117,10 @@ public class Movement : MonoBehaviour, ICollidable
         {
             PlayerMovement();
         }
+        else if (isDirectionBlocked)
+        {
+            BlockedMovement();
+        }
     }
     #endregion
 
@@ -126,6 +135,24 @@ public class Movement : MonoBehaviour, ICollidable
     public void StopCharacter(bool state)
     {
         isMoving = state;
+    }
+
+    public void StopPlayerInertia()
+    {
+        anim.SetInteger("MovementVector", 0);
+        rb.velocity = Vector3.zero;
+    }
+
+    public void BurningParticle(bool status)
+    {
+        if(status)
+        {
+            fireParticle.Play();
+        }
+        else
+        {
+            fireParticle.Stop();
+        }
     }
     #endregion
 
@@ -311,10 +338,15 @@ public class Movement : MonoBehaviour, ICollidable
         berserkMode = false;
     }
 
-    public void StopPlayerInertia()
+    private void BlockedMovement()
     {
-        anim.SetInteger("MovementVector", 0);
-        rb.velocity = Vector3.zero;
+        dustTrail.gameObject.SetActive(true);
+
+        rb.velocity = new Vector3(transform.forward.x * movementSpeed, rb.velocity.y, transform.forward.z * movementSpeed);
+        anim.SetInteger("MovementVector", (int)rb.velocity.magnitude);
+
+        Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+        rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, smoothRotation);
     }
-    #endregion    
+    #endregion
 }

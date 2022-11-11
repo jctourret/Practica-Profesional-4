@@ -30,6 +30,8 @@ public class StatusEffects : MonoBehaviour
         StartCoroutine(State(time,
         () =>
         {
+            playerMovement.BurningParticle(true);
+
             playerMovement.IsMoving = false;
             playerMovement.IsDirectionBlocked = true;
 
@@ -38,6 +40,8 @@ public class StatusEffects : MonoBehaviour
         (t) => { },
         () =>
         {
+            playerMovement.BurningParticle(false);
+
             playerMovement.IsMoving = true;
             playerMovement.IsDirectionBlocked = false;
 

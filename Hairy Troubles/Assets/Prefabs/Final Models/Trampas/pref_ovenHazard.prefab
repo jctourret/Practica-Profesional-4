@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardCollider: {fileID: 3219638903711882161}
-  timerEffect: 3
+  timerEffect: 2
   enableTime: 3
   activeTime: 3
   timeToActivate: 3
