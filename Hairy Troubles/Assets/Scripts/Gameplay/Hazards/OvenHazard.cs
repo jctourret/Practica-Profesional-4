@@ -1,19 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OvenHazard : Hazard
 {
     #region EXPOSED_FIELD
+    [SerializeField] [Range(0,10)] private float enableTime = 3f;
     [SerializeField] [Range(0,10)] private float activeTime = 3f;
     [SerializeField] [Range(0,10)] private float timeToActivate = 3f;
 
-    [SerializeField] private OvenFire[] ovenParticles;
+    [SerializeField] private OvenParticles[] ovenParticles;
     #endregion
 
     #region PRIVATE_FIELD
     private float ovenTime = 0f;
     private bool active = false;
+    private bool enable = false;
     #endregion
 
     #region UNITY_CALLS
@@ -35,6 +35,18 @@ public class OvenHazard : Hazard
 
     private void Update()
     {
+        if(!enable)
+        {
+            ovenTime += Time.deltaTime;
+
+            if(ovenTime > enableTime)
+            {
+                enable = true;
+                ovenTime = 0;
+            }
+            return;
+        }
+
         ovenTime += Time.deltaTime;
 
         if (active)
@@ -42,7 +54,7 @@ public class OvenHazard : Hazard
             if (ovenTime > activeTime)
             {
                 active = false;
-                EnableCollider(active);
+                EnableCollider(true);
 
                 SwapParticles(active);
 
@@ -54,7 +66,7 @@ public class OvenHazard : Hazard
             if (ovenTime > timeToActivate)
             {
                 active = true;
-                EnableCollider(active);
+                EnableCollider(false);
 
                 SwapParticles(active);
 

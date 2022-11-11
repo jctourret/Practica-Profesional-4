@@ -158,3 +158,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardCollider: {fileID: 652839909995626478}
   timerEffect: 3
+  reloadTime: 3
+  starsPref: {fileID: 7431564963563616468, guid: 8f5f8bcca71855447b75dd7ef625cbda, type: 3}

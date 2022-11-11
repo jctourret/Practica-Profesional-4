@@ -1,13 +1,10 @@
-using System.Collections;
 using UnityEngine;
 
 public class MouseHazard : Hazard
 {
     #region EXPOSED_FIELD
-    [SerializeField][Range(0, 10)] private float reloadTime = 3f;
-    #endregion
-
-    #region PRIVATE_FIELD
+    [Header("Particle Splash")]
+    [SerializeField] private GameObject starsPref = null;
     #endregion
 
     #region UNITY_CALLS
@@ -17,7 +14,11 @@ public class MouseHazard : Hazard
         {
             player.TrappedState(timerEffect);
 
-            StartCoroutine(ReloadHazard());
+            EnableCollider(false);
+
+            Vector3 newPosition = other.ClosestPoint(new Vector3(this.transform.position.x, other.transform.position.y, this.transform.position.z));
+            GameObject go = Instantiate(starsPref, newPosition, starsPref.transform.rotation);
+            Destroy(go, 3f);
         }
     }
     #endregion
@@ -26,25 +27,6 @@ public class MouseHazard : Hazard
     protected override void TriggerEvent()
     {
 
-    }
-    #endregion
-
-    #region PRIVATE_CALLS
-    private IEnumerator ReloadHazard()
-    {
-        float time = 0f;
-        float finalTime = timerEffect + reloadTime;
-
-        EnableCollider(false);
-
-        while (time <= finalTime)
-        {
-            time += Time.deltaTime;
-
-            yield return null;
-        }
-
-        EnableCollider(true);
     }
     #endregion
 }

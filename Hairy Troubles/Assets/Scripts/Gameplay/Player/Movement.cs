@@ -76,13 +76,11 @@ public class Movement : MonoBehaviour, ICollidable
     #region UNITY_CALLS
     private void OnEnable()
     {
-        //GameManager.OnComboBarFull += EnterBerserkMode;
         PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
-        //GameManager.OnComboBarFull -= EnterBerserkMode;
         PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
@@ -162,7 +160,6 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerMovement()
     {
-
         if (invertMovement)
         {
             rb.velocity = new Vector3(-hor * movementSpeed, rb.velocity.y, -ver * movementSpeed);
@@ -316,6 +313,7 @@ public class Movement : MonoBehaviour, ICollidable
 
     public void StopPlayerInertia()
     {
+        anim.SetInteger("MovementVector", 0);
         rb.velocity = Vector3.zero;
     }
     #endregion    
