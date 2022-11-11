@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class SkinSlot : MonoBehaviour
 {
+    public static SkinSlot singleton;
     enum skinStates
     {
         Locked,
@@ -16,21 +17,31 @@ public class SkinSlot : MonoBehaviour
     [SerializeField] private SO_Skin skin;
     [SerializeField] private TextMeshProUGUI tmp;
     [Header("Buttons")]
-    List<GameObject> buttons;
+    [SerializeField] List<GameObject> buttons;
     skinStates currentState = skinStates.Locked;
 
     private void Awake()
     {
+        if(singleton == null)
+        {
+            singleton = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         tmp.text = skin.starsRequired.ToString();
     }
 
     private void OnEnable()
     {
+
         SkinsManager.OnSkinChange += checkUnequipped;
     }
     private void OnDisable()
     {
-        SkinsManager.OnSkinChange += checkUnequipped;
+        SkinsManager.OnSkinChange -= checkUnequipped;
     }
 
     private void Start()

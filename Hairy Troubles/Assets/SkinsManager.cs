@@ -15,15 +15,16 @@ public class SkinsManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.OnSaveStars += SaveStars;
         SkinSlot.OnGetCurrentStars += SendStars;
         SkinSlot.OnSkinEquipped += SkinChange; 
     }
     private void OnDisable()
     {
+        GameManager.OnSaveStars -= SaveStars;
         SkinSlot.OnGetCurrentStars -= SendStars;
         SkinSlot.OnSkinEquipped -= SkinChange;
     }
-
     int SendStars()
     {
         return currentStars;
@@ -43,5 +44,9 @@ public class SkinsManager : MonoBehaviour
                 break;
         }
         OnSkinChange?.Invoke(skin);
+    }
+    void SaveStars(int savedStars)
+    {
+        currentStars += savedStars;
     }
 }

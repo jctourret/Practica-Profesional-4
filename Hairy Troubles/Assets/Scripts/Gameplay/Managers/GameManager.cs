@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     #region PUBLIC_METHODS
     public static Action OnComboBarFull;
-
+    public static Action<int> OnSaveStars;
     public enum MissionsState
     {
         None, First, Medium, Final
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
             uiGameController.OnActivateStar?.Invoke(2);
             missionsState = MissionsState.Final;
         }
+        OnSaveStars?.Invoke((int)missionsState);
     }
     #endregion
 }
