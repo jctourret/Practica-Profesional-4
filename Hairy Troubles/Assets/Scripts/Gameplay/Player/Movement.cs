@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour, ICollidable
     private bool invertMovement;
     private bool canJump = true;
     private bool isMoving = true;
-    private bool isDirectionBlocked = true;
+    private bool isDirectionBlocked = false;
     private bool berserkMode;
     #endregion
 
@@ -119,6 +119,7 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (isDirectionBlocked)
         {
+            Debug.Log("BlockedDirection");
             BlockedMovement();
         }
     }
