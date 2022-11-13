@@ -1961,6 +1961,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &1634135372045138658
 GameObject:
   m_ObjectHideFlags: 0
@@ -5538,6 +5539,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &5869866954555135721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6483,6 +6485,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &6702171661187873881
 GameObject:
   m_ObjectHideFlags: 0
@@ -7678,6 +7681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7521677999061954068}
   - component: {fileID: 1684033185727138552}
+  - component: {fileID: -8105050492090590963}
   m_Layer: 0
   m_Name: Silla_Destruction
   m_TagString: Untagged
@@ -7801,6 +7805,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8105050492090590963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7145399400050013358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c62b98620af1d54eac150c33e44f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7221798829475064299
 GameObject:
   m_ObjectHideFlags: 0
@@ -7955,6 +7971,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &7474633875310690486
 GameObject:
   m_ObjectHideFlags: 0
@@ -8674,6 +8691,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &7908655322497257963
 GameObject:
   m_ObjectHideFlags: 0
@@ -9377,6 +9395,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &9026380480078691333
 GameObject:
   m_ObjectHideFlags: 0

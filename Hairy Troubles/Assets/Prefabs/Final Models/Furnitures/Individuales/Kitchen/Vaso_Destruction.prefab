@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5229445759562700871}
   - component: {fileID: 5229445759562700872}
   - component: {fileID: 1784298379138538422}
+  - component: {fileID: -3807094205060154795}
   m_Layer: 0
   m_Name: Vaso_Destruction
   m_TagString: Untagged
@@ -237,6 +238,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3807094205060154795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229445759562700870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c62b98620af1d54eac150c33e44f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4923508511994028930
 PrefabInstance:
   m_ObjectHideFlags: 0

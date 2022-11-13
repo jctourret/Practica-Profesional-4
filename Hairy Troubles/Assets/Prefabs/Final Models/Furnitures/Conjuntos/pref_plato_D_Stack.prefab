@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5521468653864339765}
   - component: {fileID: 6314273231438506209}
   - component: {fileID: 847123255572329540}
+  - component: {fileID: -3322995016698727945}
   m_Layer: 0
   m_Name: pref_plato_D_Stack
   m_TagString: Untagged
@@ -202,6 +203,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3322995016698727945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314273231438506208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c62b98620af1d54eac150c33e44f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6584728698062068654
 PrefabInstance:
   m_ObjectHideFlags: 0

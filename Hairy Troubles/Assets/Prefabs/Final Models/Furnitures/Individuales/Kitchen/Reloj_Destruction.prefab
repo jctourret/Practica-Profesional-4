@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1499069146095034985}
   - component: {fileID: 1499069146095034984}
   - component: {fileID: -6500150425421468873}
+  - component: {fileID: 4587786174978386689}
   m_Layer: 0
   m_Name: Reloj_Destruction
   m_TagString: Untagged
@@ -237,6 +238,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4587786174978386689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499069146095034986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c62b98620af1d54eac150c33e44f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1732947576165726658
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5540674120528492173}
   - component: {fileID: 1683943699}
   - component: {fileID: 1876805593083241089}
+  - component: {fileID: -1415972734280848551}
   m_Layer: 0
   m_Name: Olla_Destruction
   m_TagString: Untagged
@@ -237,6 +238,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1415972734280848551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874308986003840701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c62b98620af1d54eac150c33e44f942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6027815524213482710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -488,6 +501,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -6703291475246722865, guid: a59ff7088839b6046a5a96d5762ccecf, type: 3}
   m_PrefabInstance: {fileID: 6027815524213482710}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2383084251183837835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8265636696510928477, guid: a59ff7088839b6046a5a96d5762ccecf, type: 3}
+  m_PrefabInstance: {fileID: 6027815524213482710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &499609763233629306 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3077680213542313812, guid: a59ff7088839b6046a5a96d5762ccecf, type: 3}
@@ -526,11 +544,6 @@ GameObject:
 --- !u!1 &7626949153408593250 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4215166463611685300, guid: a59ff7088839b6046a5a96d5762ccecf, type: 3}
-  m_PrefabInstance: {fileID: 6027815524213482710}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2383084251183837835 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8265636696510928477, guid: a59ff7088839b6046a5a96d5762ccecf, type: 3}
   m_PrefabInstance: {fileID: 6027815524213482710}
   m_PrefabAsset: {fileID: 0}
 --- !u!54 &1045504547
