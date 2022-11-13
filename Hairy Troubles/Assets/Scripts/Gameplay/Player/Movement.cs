@@ -6,40 +6,43 @@ using System;
 public class Movement : MonoBehaviour, ICollidable
 {
     #region EXPOSED_METHODS
-    [SerializeField] private List<AudioClip> audioClips;
-    [SerializeField] private AudioSource footstepsSFX;
-    [SerializeField] private AudioSource SFX;
+    [SerializeField] private Animator anim;
+
     [Space(10f)]
     [Header("-- Movement --")]
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float rotationSpeed;
-    [SerializeField] private float jumpforce;
-    [SerializeField] private float pushforce;
-    [SerializeField] private float pushCooldown;
-    [SerializeField] private float pushCountdown;
-    [SerializeField] private float positionY;
+    [SerializeField] private float movementSpeed = 1.17f;
+    [SerializeField] private float smoothRotation = 0.2f;
+    [SerializeField] private float jumpforce = 14;
+    [SerializeField] private float pushforce = 7;
+    [SerializeField] private float pushCooldown = 1;
+    [SerializeField] private float pushCountdown = 0;
+    [SerializeField] private float positionY = 0;
     [SerializeField] private List<Transform> raycast;
-
-    [SerializeField] private Animator anim;
     [Space(10f)]
+    
     [Header("-- Push --")]
     [Space(20f)]
     [Range(0.01f, 1f)]
     [SerializeField] private float pushTime = 0.25f;
-    [SerializeField] private float frontForce = 1;
-    [SerializeField] private float upForce = 1;
+    [SerializeField] private float frontForce = 20;
+    [SerializeField] private float upForce = 30;
 
+    [Space(10f)]
+    [Header("-- Grab --")]
+    [SerializeField] private float springForce = 1000;
+    [SerializeField] private float pushDragThreshold = 20f;
+    [SerializeField] private Transform anchorPoint;
+
+    [Space(10f)]
     [Header("-- Berserk Mode --")]
     [SerializeField] private Renderer bodyRend;
     [SerializeField] private Renderer eyesRend;
     [SerializeField] private float duration;
     [SerializeField] private float jumpForceBuff = 1;
-    [SerializeField] private float scaling = 2;
-    [SerializeField] private float scalingSpeed = 1;
     [SerializeField] private Color tint;
-    [SerializeField] private float tintChangeDelay = 1;
 
     [Header("-- Particles --")]
+    [SerializeField] private ParticleSystem fireParticle = null;
     [SerializeField] private ParticleSystem dustTrail = null;
     [SerializeField] private ParticleSystem slamDustTrail = null;
     #endregion
@@ -50,38 +53,40 @@ public class Movement : MonoBehaviour, ICollidable
     private Vector3 movementDirection;
     private float hor;
     private float ver;
+    private float yVelocity;
     
+    private bool invertMovement;
     private bool canJump = true;
     private bool isMoving = true;
+    private bool isDirectionBlocked = false;
     private bool berserkMode;
-    enum PlayerAction
-    {
-        push,
-        jump
-    }
-    PlayerAction playerAction;
     #endregion
 
     #region ACTIONS
     public static Action<float, float, float> IsPushing;
+    public static Action OnGrab;
     public static Action onHighlightRequest;
     public static Action OnBerserkModeEnd;
+    public Func<bool> OnHableToActivateBerserk;
+    #endregion
+
+    #region PROPERTIES
+    public bool IsMoving { get => isMoving; set => isMoving = value; }
+    public bool IsDirectionBlocked { get => isDirectionBlocked; set => isDirectionBlocked = value; }
+    public Rigidbody Rb { get => rb; }
     #endregion
 
     #region UNITY_CALLS
-    void Awake()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
     private void OnEnable()
     {
-        GameManager.OnComboBarFull += EnterBerserkMode;
+        BurningParticle(false);
+
+        PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
-        GameManager.OnComboBarFull -= EnterBerserkMode;
+        PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
     void Update()
@@ -94,18 +99,15 @@ public class Movement : MonoBehaviour, ICollidable
             movementDirection = new Vector3(hor, 0, ver);
             movementDirection.Normalize();
 
-            if (movementDirection != Vector3.zero)
-            {
-                if (!footstepsSFX.isPlaying)
-                    footstepsSFX.Play();
-            }
-            else
-                footstepsSFX.Stop();
             PlayerJumpLogic();
 
             PlayerHighlightRequest();
 
+            PlayerGrabLogic();
+
             PlayerPushLogic();
+
+            EnterBerserkMode();
         }
     }
     
@@ -115,13 +117,43 @@ public class Movement : MonoBehaviour, ICollidable
         {
             PlayerMovement();
         }
+        else if (isDirectionBlocked)
+        {
+            Debug.Log("BlockedDirection");
+            BlockedMovement();
+        }
     }
     #endregion
 
     #region PUBLIC_CALLS
+    public void Init(Func<bool> OnHableToActivateBerserk)
+    {
+        rb = GetComponent<Rigidbody>();
+
+        this.OnHableToActivateBerserk = OnHableToActivateBerserk;
+    }
+
     public void StopCharacter(bool state)
     {
         isMoving = state;
+    }
+
+    public void StopPlayerInertia()
+    {
+        anim.SetInteger("MovementVector", 0);
+        rb.velocity = Vector3.zero;
+    }
+
+    public void BurningParticle(bool status)
+    {
+        if(status)
+        {
+            fireParticle.Play();
+        }
+        else
+        {
+            fireParticle.Stop();
+        }
     }
     #endregion
 
@@ -156,15 +188,24 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void PlayerMovement()
     {
-        rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);        
+        if (invertMovement)
+        {
+            rb.velocity = new Vector3(-hor * movementSpeed, rb.velocity.y, -ver * movementSpeed);
+        }
+        else
+        {
+            rb.velocity = new Vector3(hor * movementSpeed, rb.velocity.y, ver * movementSpeed);
+        }  
         anim.SetInteger("MovementVector", (int)movementDirection.magnitude);
 
         if (movementDirection != Vector3.zero)
         {
             dustTrail.gameObject.SetActive(true);
-
-            Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
+            float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
+            rb.rotation = Quaternion.Euler(0f,angle,0f);
+            //Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            //rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
         else
         {
@@ -178,7 +219,6 @@ public class Movement : MonoBehaviour, ICollidable
         {
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
-            SFX.PlayOneShot(audioClips[(int)PlayerAction.jump]);
             //slamDustTrail.gameObject.SetActive(canJump);
             anim.SetTrigger("Jump");
         }
@@ -191,6 +231,60 @@ public class Movement : MonoBehaviour, ICollidable
         positionY = transform.position.y;
     }
 
+    private void PlayerGrabLogic()
+    {
+        SpringJoint joint;
+        gameObject.TryGetComponent<SpringJoint>(out joint);
+        if(joint != null)
+        {
+            joint.connectedBody.gameObject.TryGetComponent<DestroySetsOfComponents>(out DestroySetsOfComponents sets);
+            joint.connectedBody.gameObject.TryGetComponent<MeshCollider>(out MeshCollider mesh);
+            if ((mesh !=null &&!mesh.enabled) || joint.connectedBody == null || (sets!=null && sets.groupDestroyed))
+            {
+                Destroy(joint);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if(joint == null)
+            {
+                OnGrab?.Invoke();
+            }
+            else
+            {
+                if (joint != null)
+                {
+                    Rigidbody grabbed = joint.connectedBody;
+                    Destroy(joint);
+                    Debug.Log("Throwing Grabbed Object");
+                    grabbed.AddForce(new Vector3(transform.forward.x * frontForce, upForce, transform.forward.z * frontForce), ForceMode.Impulse);
+                    invertMovement = false;
+                }
+            }
+        }
+    }
+
+    private void RecieveGrabbed(Rigidbody grabbedObject)
+    {
+        if (!gameObject.GetComponent<SpringJoint>())
+        {
+            SpringJoint joint = gameObject.AddComponent<SpringJoint>();
+            joint.anchor = transform.InverseTransformPoint(anchorPoint.position);
+            joint.spring = springForce;
+           
+            joint.connectedBody = grabbedObject;
+            if (grabbedObject.mass >= pushDragThreshold)
+            {
+                invertMovement = true;
+            }
+            else
+            {
+                invertMovement = false;
+            }
+        }
+        Debug.Log("Recieved grabbable");
+    }
+
     private void PlayerPushLogic()
     {
         if (pushCountdown >= 0)
@@ -199,8 +293,8 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (Input.GetKeyDown(KeyCode.E))
         {
+
             anim.SetTrigger("Push");
-            SFX.PlayOneShot(audioClips[(int)PlayerAction.push]);
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
         }
@@ -208,10 +302,13 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void EnterBerserkMode()
     {
-        if (!berserkMode)
+        if (Input.GetKeyDown(KeyCode.Q) && OnHableToActivateBerserk.Invoke())
         {
-            berserkMode = true;
-            StartCoroutine(BerserkMode());
+            if (!berserkMode)
+            {
+                berserkMode = true;
+                StartCoroutine(BerserkMode());
+            }
         }
     }
 
@@ -241,5 +338,16 @@ public class Movement : MonoBehaviour, ICollidable
         }
         berserkMode = false;
     }
-    #endregion    
+
+    private void BlockedMovement()
+    {
+        dustTrail.gameObject.SetActive(true);
+
+        rb.velocity = new Vector3(transform.forward.x * movementSpeed, rb.velocity.y, transform.forward.z * movementSpeed);
+        anim.SetInteger("MovementVector", (int)rb.velocity.magnitude);
+
+        Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
+        rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, smoothRotation);
+    }
+    #endregion
 }

@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Kitchen Prototype.unity
     guid: a5bf15e6de58c644d8187dcb51991072
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SecondLevel.unity
     guid: 2482b2154f016f34492856d398d35d38
   - enabled: 0

@@ -27,6 +27,7 @@ public class UiGameController : MonoBehaviour
     [SerializeField] private PauseBehaviour pauseBehaviour = null;
     [SerializeField] private EndScreenBehaviour endScreenBehaviour = null;
     [SerializeField] private PercentageStarsHolder percentageStarsHolder = null;
+    [SerializeField] private ComboBarPlayer comboBarPlayer = null;
 
     [Header("Transitioner")]
     [SerializeField] private SceneTransition transitioner = null;
@@ -39,7 +40,7 @@ public class UiGameController : MonoBehaviour
     #endregion
 
     #region PROPERTIES
-
+    public ComboBarPlayer ComboBarPlayer { get => comboBarPlayer; }
     #endregion
 
     #region ACTIONS
