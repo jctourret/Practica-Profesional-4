@@ -28,7 +28,7 @@ public class StatusEffects : MonoBehaviour
         }
 
         StartCoroutine(State(time,
-        () =>
+        start: () =>
         {
             playerMovement.BurningParticle(true);
 
@@ -37,8 +37,8 @@ public class StatusEffects : MonoBehaviour
 
             isBurning = true;
         },
-        (t) => { },
-        () =>
+        update: (t) => { },
+        end: () =>
         {
             playerMovement.BurningParticle(false);
 
@@ -52,13 +52,13 @@ public class StatusEffects : MonoBehaviour
     public void UpsideDownState(float force, Vector3 direction, float time)
     {
         StartCoroutine(State(time,
-        () =>
+        start: () =>
         {
             playerMovement.IsMoving = false;
             PlayerThrow(force, direction);
         },
-        (t) => { },
-        () =>
+        update: (t) => { },
+        end: () =>
         {
             playerMovement.IsMoving = true;
         }));
@@ -67,13 +67,13 @@ public class StatusEffects : MonoBehaviour
     public void TrappedState(float time)
     {
         StartCoroutine(State(time, 
-        () => 
+        start: () => 
         {
             playerMovement.StopPlayerInertia();
             playerMovement.IsMoving = false;
         },
-        (t) => { }, 
-        () => 
+        update: (t) => { }, 
+        end: () => 
         {
             playerMovement.IsMoving = true;            
         }));
