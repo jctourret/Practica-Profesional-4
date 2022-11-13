@@ -13,30 +13,22 @@ public class SkinSlot : MonoBehaviour
     }
     static public Func<int> OnGetCurrentStars;
     static public Action<SO_Skin> OnSkinEquipped;
+    static public Action<SO_Skin> OnSkinUnequipped;
     [Header("Slotted Skin")]
     [SerializeField] private SO_Skin skin;
     [SerializeField] private TextMeshProUGUI tmp;
     [Header("Buttons")]
     [SerializeField] List<GameObject> buttons;
-    skinStates currentState = skinStates.Locked;
+    [Header("State")]
+    [SerializeField] skinStates currentState = skinStates.Locked;
 
     private void Awake()
     {
-        if(singleton == null)
-        {
-            singleton = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
         tmp.text = skin.starsRequired.ToString();
     }
 
     private void OnEnable()
     {
-
         SkinsManager.OnSkinChange += checkUnequipped;
     }
     private void OnDisable()
@@ -54,18 +46,7 @@ public class SkinSlot : MonoBehaviour
         {
             currentState = skinStates.Locked;
         }
-        for (int i = 0; i >= buttons.Count; i++)
-        {
-            if (i != ((int)currentState))
-            {
-                gameObject.SetActive(false);
-            }
-            else
-            {
-                gameObject.SetActive(true);
-            }
-        }
-
+        RefreshButtons();
     }
 
     void checkUnequipped(SO_Skin checkedSkin)
@@ -75,16 +56,38 @@ public class SkinSlot : MonoBehaviour
             if (checkedSkin != skin)
             {
                 currentState = skinStates.Unlocked;
+                RefreshButtons();
             }
         }
     }
 
+    void RefreshButtons()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            if (i != ((int)currentState))
+            {
+                buttons[i].SetActive(false);
+            }
+            else
+            {
+                buttons[i].SetActive(true);
+            }
+        }
+    }
+    public void UnequipSkin()
+    {
+        currentState = skinStates.Unlocked;
+        RefreshButtons();
+        OnSkinUnequipped?.Invoke(skin);
+    }
     public void EquipSkin()
     {
         int currentStars = (int)OnGetCurrentStars?.Invoke();
         if (currentState == skinStates.Unlocked && currentStars >= skin.starsRequired)
         {
             currentState = skinStates.Equipped;
+            RefreshButtons();
             OnSkinEquipped?.Invoke(skin);
         }
         else

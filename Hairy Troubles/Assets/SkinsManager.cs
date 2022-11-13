@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SkinsManager : MonoBehaviour
 {
+    public static SkinsManager singleton;
     static public Action OnSendCurrentStars;
     static public Action<SO_Skin> OnSkinChange;
     [Header("Stars")]
@@ -12,35 +13,81 @@ public class SkinsManager : MonoBehaviour
     [SerializeField] private SO_Skin currentEyesSkin;
     [SerializeField] private SO_Skin currentHatSkin;
     [SerializeField] private SO_Skin currentBodySkin;
-
+    private void Awake()
+    {
+        if (singleton == null)
+        {
+            singleton = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnEnable()
     {
+        PlayerSkin.OnRecieveSkin += LoadSelectedSkins;
         GameManager.OnSaveStars += SaveStars;
         SkinSlot.OnGetCurrentStars += SendStars;
-        SkinSlot.OnSkinEquipped += SkinChange; 
+        SkinSlot.OnSkinEquipped += SkinChange;
     }
     private void OnDisable()
     {
+        PlayerSkin.OnRecieveSkin -= LoadSelectedSkins;
         GameManager.OnSaveStars -= SaveStars;
         SkinSlot.OnGetCurrentStars -= SendStars;
+        UI_CurrentStars.OnGetCurrentStars -= SendStars;
         SkinSlot.OnSkinEquipped -= SkinChange;
+        SkinSlot.OnSkinUnequipped -= SkinChange;
     }
     int SendStars()
     {
         return currentStars;
     }
+
+    List<SO_Skin> LoadSelectedSkins()
+    {
+        List<SO_Skin> skins = new List<SO_Skin>();
+        skins.Add(currentEyesSkin);
+        skins.Add(currentHatSkin);
+        skins.Add(currentBodySkin);
+        return skins;
+    }
+
     void SkinChange(SO_Skin skin)
     {
         switch (skin.skinSlot)
         {
             case SO_Skin.SkinSlot.eyes:
-                currentEyesSkin = skin;
+                if(skin == currentEyesSkin)
+                {
+                    currentEyesSkin = null;
+                }
+                else
+                {
+                    currentEyesSkin = skin;
+                }
                 break;
             case SO_Skin.SkinSlot.hat:
-                currentHatSkin = skin;
+                if (skin == currentHatSkin)
+                {
+                    currentHatSkin = null;
+                }
+                else
+                {
+                    currentHatSkin = skin;
+                }
                 break;
             case SO_Skin.SkinSlot.body:
-                currentBodySkin = skin;
+                if (skin == currentBodySkin)
+                {
+                    currentBodySkin = null;
+                }
+                else
+                {
+                    currentBodySkin = skin;
+                }
                 break;
         }
         OnSkinChange?.Invoke(skin);
