@@ -237,11 +237,18 @@ public class Movement : MonoBehaviour, ICollidable
         gameObject.TryGetComponent<SpringJoint>(out joint);
         if(joint != null)
         {
-            joint.connectedBody.gameObject.TryGetComponent<DestroySetsOfComponents>(out DestroySetsOfComponents sets);
-            joint.connectedBody.gameObject.TryGetComponent<MeshCollider>(out MeshCollider mesh);
-            if ((mesh !=null &&!mesh.enabled) || joint.connectedBody == null || (sets!=null && sets.groupDestroyed))
+            if(joint.connectedBody == null)
             {
                 Destroy(joint);
+            }
+            else
+            {
+                joint.connectedBody.gameObject.TryGetComponent<DestroySetsOfComponents>(out DestroySetsOfComponents sets);
+                joint.connectedBody.gameObject.TryGetComponent<MeshCollider>(out MeshCollider mesh);
+                if ((mesh != null && !mesh.enabled) || (sets != null && sets.groupDestroyed))
+                {
+                    Destroy(joint);
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.F))
