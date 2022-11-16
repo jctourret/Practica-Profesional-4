@@ -235,6 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8167609827571413759}
+  - component: {fileID: 589169247}
   m_Layer: 8
   m_Name: palo_lamp_Shatter
   m_TagString: Untagged
@@ -262,6 +263,28 @@ Transform:
   m_Father: {fileID: 7774366061153259769}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589169247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031408770313881264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 2491193452104428131}
+  - {fileID: 5080275315456137321}
+  - {fileID: 7845330669069650087}
+  - {fileID: 5251995191059978901}
+  - {fileID: 3469166838342621333}
+  - {fileID: 3303833724814769192}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &1048407777344496954
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,6 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 0}
   meshRenderer: {fileID: 6588268732993603926}
   fracturedObj: {fileID: 4890024243402512048}
   points: 0
@@ -641,6 +665,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &2491193452104428131
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,6 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4645400348659009873}
+  - component: {fileID: 2115127079}
   m_Layer: 8
   m_Name: campana_lamp_Shatter
   m_TagString: Untagged
@@ -794,6 +820,32 @@ Transform:
   m_Father: {fileID: 4846935912082172081}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115127079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2783089322226482998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 5781193739703928577}
+  - {fileID: 5902278553447844759}
+  - {fileID: 8857293228906754595}
+  - {fileID: 6086182331820186820}
+  - {fileID: 5541162320675756754}
+  - {fileID: 118803867197438134}
+  - {fileID: 8892280920382228221}
+  - {fileID: 1919621007846171797}
+  - {fileID: 7136177865479321}
+  - {fileID: 9046295981215761802}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &3064370220898856975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 0}
   meshRenderer: {fileID: 1761292824479547852}
   fracturedObj: {fileID: 2783089322226482998}
   points: 0
@@ -1044,6 +1097,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &3303833724814769192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,9 +1590,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4244972392306495364}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.75, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.65, z: 1}
   m_Children:
   - {fileID: 5342256532072454255}
   - {fileID: 7774366061153259769}
@@ -1782,6 +1836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7680180115218518205}
+  - component: {fileID: 1431756737}
   m_Layer: 8
   m_Name: foco_lamp_Shatter
   m_TagString: Untagged
@@ -1808,6 +1863,27 @@ Transform:
   m_Father: {fileID: 6631782285177082661}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431756737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890024243402512048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 3579860648216205008}
+  - {fileID: 4487657033741874969}
+  - {fileID: 6700400600742929933}
+  - {fileID: 4922721487209805721}
+  - {fileID: 3064370220898856975}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &4922721487209805721
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,6 +2910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849166348202807168}
+  - component: {fileID: 746381103}
   m_Layer: 8
   m_Name: base_lamp_Shatter
   m_TagString: Untagged
@@ -2861,6 +2938,28 @@ Transform:
   m_Father: {fileID: 5342256532072454255}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &746381103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7913592271561549040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectType: 0
+  fragments:
+  - {fileID: 4404423838071303469}
+  - {fileID: 1048407777344496954}
+  - {fileID: 9194062854826229503}
+  - {fileID: 9093810974826141745}
+  - {fileID: 8187034414860752843}
+  - {fileID: 8593609161828204807}
+  direction: {x: 0, y: 0, z: 0}
+  force: 0
 --- !u!1 &8187034414860752843
 GameObject:
   m_ObjectHideFlags: 0
@@ -3117,6 +3216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXAudio: {fileID: 0}
   meshRenderer: {fileID: 61084012991322817}
   fracturedObj: {fileID: 1031408770313881264}
   points: 0
@@ -3127,6 +3227,7 @@ MonoBehaviour:
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
   isDestoyed: 0
+  fixedJoint: {fileID: 0}
 --- !u!1 &8593609161828204807
 GameObject:
   m_ObjectHideFlags: 0
