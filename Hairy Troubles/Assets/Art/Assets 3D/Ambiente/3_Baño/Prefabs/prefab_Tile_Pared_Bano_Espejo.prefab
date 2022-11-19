@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7155795952597091494}
   - component: {fileID: 668604109184528607}
   - component: {fileID: 6989671267687841225}
-  - component: {fileID: 8966189583915729443}
   m_Layer: 0
   m_Name: prefab_Tile_Pared_Bano_Espejo
   m_TagString: Untagged
@@ -82,16 +81,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8966189583915729443
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8710412435315805579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0009999, y: 1.4014, z: 0.20170775}
-  m_Center: {x: -0.50049996, y: 0.7007, z: -0.099346116}

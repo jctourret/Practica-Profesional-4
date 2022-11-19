@@ -88,7 +88,7 @@ public class DestructibleComponent : MonoBehaviour
             }
             if (rig != null && disableRigidbodyWhenDestroy)
             {
-                rig.isKinematic = true;
+                //rig.isKinematic = true;
             }
 
             OnDestruction?.Invoke(points);

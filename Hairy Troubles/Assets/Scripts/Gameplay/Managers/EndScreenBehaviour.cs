@@ -59,9 +59,7 @@ public class EndScreenBehaviour : MonoBehaviour
 
     public void SetActive(bool state)
     {
-        this.gameObject.SetActive(state);
-
-        Debug.Log("SetActive");
+        gameObject.SetActive(state);
 
         endgameSFX.Play();
     }

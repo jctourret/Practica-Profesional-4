@@ -57,7 +57,7 @@ public class Movement : MonoBehaviour, ICollidable
     
     private bool invertMovement;
     private bool canJump = true;
-    private bool isMoving = true;
+    private bool isMoving = false;
     private bool isDirectionBlocked = false;
     private bool berserkMode;
     #endregion
@@ -119,7 +119,6 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (isDirectionBlocked)
         {
-            Debug.Log("BlockedDirection");
             BlockedMovement();
         }
     }
@@ -131,6 +130,8 @@ public class Movement : MonoBehaviour, ICollidable
         rb = GetComponent<Rigidbody>();
 
         this.OnHableToActivateBerserk = OnHableToActivateBerserk;
+
+        isMoving = false;
     }
 
     public void StopCharacter(bool state)
@@ -204,8 +205,6 @@ public class Movement : MonoBehaviour, ICollidable
             float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
             rb.rotation = Quaternion.Euler(0f,angle,0f);
-            //Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            //rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
         else
         {
@@ -298,9 +297,8 @@ public class Movement : MonoBehaviour, ICollidable
         {
             pushCountdown -= Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0))
         {
-
             anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
