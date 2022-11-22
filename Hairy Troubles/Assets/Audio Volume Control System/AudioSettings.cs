@@ -85,14 +85,23 @@ public class AudioSettings : MonoBehaviour
     }
     public void ChangeMuteMusic(Toggle tg)
     {
-        if(tg.isOn)
+        
+
+        if (tg.isOn)
         {
+            foreach (AudioSource a in musicAudioSources)
+            {
+                a.mute = true;
+            }
             musicMute = 0;
             PlayerPrefs.SetInt(musicMuteDataName, musicMute);
         }
         else
         {
-            musicMute = 1;
+            foreach (AudioSource a in musicAudioSources)
+            {
+                a.mute = false;
+            }
             PlayerPrefs.SetInt(musicMuteDataName, musicMute);
         }
     }
@@ -100,11 +109,19 @@ public class AudioSettings : MonoBehaviour
     {
         if (tg.isOn == true)
         {
+            foreach (AudioSource a in sfxAudioSources)
+            {
+                a.mute = true;
+            }
             sfxMute = 0;
             PlayerPrefs.SetInt(sfxMuteDataName, sfxMute);
         }
         else
         {
+            foreach (AudioSource a in sfxAudioSources)
+            {
+                a.mute = false;
+            }
             sfxMute = 1;
             PlayerPrefs.SetInt(sfxMuteDataName, sfxMute);
         }
@@ -113,6 +130,7 @@ public class AudioSettings : MonoBehaviour
     {
         foreach (AudioSource a in audioSources)
         {
+            a.mute = false;
             a.volume = volume;
         }
     }
