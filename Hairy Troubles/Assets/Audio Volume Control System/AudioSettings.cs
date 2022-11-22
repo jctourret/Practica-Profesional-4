@@ -51,21 +51,21 @@ public class AudioSettings : MonoBehaviour
     {
         musicMute = PlayerPrefs.GetInt(musicMuteDataName, musicDefaultMute);
         
-        if(musicMute == 1)
-        {
-            Debug.Log("true "+ musicMute.ToString());
-            musicVolume = 0;
-
-        }
-        else
+        //if(musicMute == 1)
+        //{
+        //    Debug.Log("true "+ musicMute.ToString());
+        //    musicVolume = 0;
+        //
+        //}
+        //else
             musicVolume = PlayerPrefs.GetFloat(musicVolumeDataName,musicDefaultVolume);
 
-        sfxMute = PlayerPrefs.GetInt(sfxMuteDataName, sfxDefaultMute);
-        if (sfxMute == 1)
-        {
-            sfxVolume = 0;
-        }
-        else
+        //sfxMute = PlayerPrefs.GetInt(sfxMuteDataName, sfxDefaultMute);
+        //if (sfxMute == 1)
+        //{
+        //    sfxVolume = 0;
+        //}
+        //else
             sfxVolume = PlayerPrefs.GetFloat(sfxVolumeDataName, sfxDefaultVolume);
     }
 
