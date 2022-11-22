@@ -15,11 +15,17 @@ public class AudioSettings : MonoBehaviour
     float musicDefaultVolume=0.7f;
     float sfxDefaultVolume = 0.9f;
 
+    int musicDefaultMute = 0;
+    int sfxDefaultMute = 0;
+
     string musicAudioSourcesTag ="Music-AudioSource";
     string sfxAudioSourcesTag="SFX-AudioSource";
 
     string musicVolumeDataName = "music-volume";
     string sfxVolumeDataName = "sfx-volume";
+
+    string musicMuteDataName = "music-mute";
+    string sfxMuteDataName = "sfx-mute";
 
     List<AudioSource> musicAudioSources;
     List<AudioSource> sfxAudioSources;
@@ -28,6 +34,10 @@ public class AudioSettings : MonoBehaviour
     private int musicAudioSourcesCount=0;
     [SerializeField]
     private int sfxAudioSourcesCount = 0;
+    [SerializeField]
+    private int musicMute = 1; //actually bool
+    [SerializeField]
+    private int sfxMute = 1; //actually bool
 
     private void Awake()
     {
@@ -39,9 +49,24 @@ public class AudioSettings : MonoBehaviour
 
     void LoadSavedSettings()
     {
-        musicVolume = PlayerPrefs.GetFloat(musicVolumeDataName,musicDefaultVolume);
-        sfxVolume = PlayerPrefs.GetFloat(sfxVolumeDataName, sfxDefaultVolume);
+        musicMute = PlayerPrefs.GetInt(musicMuteDataName, musicDefaultMute);
+        
+        if(musicMute == 1)
+        {
+            Debug.Log("true "+ musicMute.ToString());
+            musicVolume = 0;
 
+        }
+        else
+            musicVolume = PlayerPrefs.GetFloat(musicVolumeDataName,musicDefaultVolume);
+
+        sfxMute = PlayerPrefs.GetInt(sfxMuteDataName, sfxDefaultMute);
+        if (sfxMute == 1)
+        {
+            sfxVolume = 0;
+        }
+        else
+            sfxVolume = PlayerPrefs.GetFloat(sfxVolumeDataName, sfxDefaultVolume);
     }
 
     public void ChangeMusicVolume(float newVolume)
@@ -58,7 +83,32 @@ public class AudioSettings : MonoBehaviour
         PlayerPrefs.SetFloat(sfxVolumeDataName, sfxVolume);
         SetVolumeToAudioSources(sfxAudioSources, sfxVolume);
     }
-
+    public void ChangeMuteMusic(Toggle tg)
+    {
+        if(tg.isOn)
+        {
+            musicMute = 0;
+            PlayerPrefs.SetInt(musicMuteDataName, musicMute);
+        }
+        else
+        {
+            musicMute = 1;
+            PlayerPrefs.SetInt(musicMuteDataName, musicMute);
+        }
+    }
+    public void ChangeMuteSFX(Toggle tg)
+    {
+        if (tg.isOn == true)
+        {
+            sfxMute = 0;
+            PlayerPrefs.SetInt(sfxMuteDataName, sfxMute);
+        }
+        else
+        {
+            sfxMute = 1;
+            PlayerPrefs.SetInt(sfxMuteDataName, sfxMute);
+        }
+    }
     void SetVolumeToAudioSources(List<AudioSource> audioSources, float volume)
     {
         foreach (AudioSource a in audioSources)
