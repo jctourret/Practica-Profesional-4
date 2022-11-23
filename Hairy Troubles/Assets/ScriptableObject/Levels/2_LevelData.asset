@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1351e8a0b7207c24a900da10c66d5d7b, type: 3}
-  m_Name: ThirdLevel
+  m_Name: 2_LevelData
   m_EditorClassIdentifier: 
-  levelName: ThirdLevel
-  sceneIndex: 4
+  levelName: 2_Level
+  sceneIndex: 3
   starsAchieved: 0
   starsRequired: 0
   image: {fileID: 0}

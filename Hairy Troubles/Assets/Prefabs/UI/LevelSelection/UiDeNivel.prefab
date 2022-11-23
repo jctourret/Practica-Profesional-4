@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8854820674314353429}
   - component: {fileID: 8854820674314353428}
   m_Layer: 5
-  m_Name: Imagen de nivel
+  m_Name: img_levelFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 8854820674382445026}
   - component: {fileID: 8854820674382445025}
   m_Layer: 5
-  m_Name: Descripcion del nivel
+  m_Name: txt_levelDescripcion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 8854820674421687616}
   - component: {fileID: 8854820674421687618}
   m_Layer: 5
-  m_Name: Izquierda
+  m_Name: btn_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,9 +314,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 9f7a7e7ecc568d64bbce5947876f8a20, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 04de7306d1c5c774aa9067498a3cb564, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 04de7306d1c5c774aa9067498a3cb564, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 04de7306d1c5c774aa9067498a3cb564, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: d98f6343c95e5324c9b3066398ec88c4, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: d98f6343c95e5324c9b3066398ec88c4, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -365,7 +365,7 @@ GameObject:
   - component: {fileID: 8854820674713104361}
   - component: {fileID: 8854820674713104360}
   m_Layer: 5
-  m_Name: Image
+  m_Name: img_percentajeHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 8854820674841593983}
   - component: {fileID: 8854820674841593982}
   m_Layer: 5
-  m_Name: Panel de nivel
+  m_Name: levelFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,13 +464,13 @@ RectTransform:
   - {fileID: 8854820674713104375}
   - {fileID: 8854820675715959411}
   m_Father: {fileID: 8854820676145077465}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100.72}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -22.287949}
   m_SizeDelta: {x: 125, y: 150}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8854820674841593983
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -521,7 +521,7 @@ GameObject:
   - component: {fileID: 8854820674897196698}
   - component: {fileID: 8854820674897196697}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: txt_percentaje
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -655,7 +655,7 @@ GameObject:
   - component: {fileID: 8854820675548726813}
   - component: {fileID: 8854820675548726812}
   m_Layer: 5
-  m_Name: Image
+  m_Name: img_starsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 8854820675715959413}
   - component: {fileID: 8854820675715959412}
   m_Layer: 5
-  m_Name: Button
+  m_Name: btn_play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,9 +823,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: b01c8ad4028264a4e86736a3f7872249, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 642987bbd2b9c71409ffd26aba64ffc6, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 642987bbd2b9c71409ffd26aba64ffc6, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 642987bbd2b9c71409ffd26aba64ffc6, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: b01c8ad4028264a4e86736a3f7872249, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: b01c8ad4028264a4e86736a3f7872249, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -875,7 +875,7 @@ GameObject:
   - component: {fileID: 8854820675910613036}
   - component: {fileID: 8854820675910613038}
   m_Layer: 5
-  m_Name: Derecha
+  m_Name: btn_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -967,9 +967,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 9f7a7e7ecc568d64bbce5947876f8a20, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 5831d16091ba4964182fbe002c325a37, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 5831d16091ba4964182fbe002c325a37, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 5831d16091ba4964182fbe002c325a37, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 9f7a7e7ecc568d64bbce5947876f8a20, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 9f7a7e7ecc568d64bbce5947876f8a20, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1018,7 +1018,7 @@ GameObject:
   - component: {fileID: 8854820675993750335}
   - component: {fileID: 8854820675993750334}
   m_Layer: 5
-  m_Name: Marcador de nivel
+  m_Name: arrowsFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,13 +1038,13 @@ RectTransform:
   - {fileID: 8854820674421687631}
   - {fileID: 8854820675910613035}
   m_Father: {fileID: 8854820676145077465}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 60, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 26.743973}
+  m_SizeDelta: {x: -160, y: 20}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8854820675993750335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1112,8 +1112,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8854820675993750333}
   - {fileID: 8854820674841593981}
+  - {fileID: 8854820675993750333}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1,14 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UI_LevelController : MonoBehaviour
 {
+    #region EXPOSED_FIELDS
     [SerializeField] private SO_Level level;
     [SerializeField] private GameObject panel;
     [SerializeField] private GameObject marker;
     [SerializeField] private GameObject right;
     [SerializeField] private GameObject left;
+    #endregion
+
+    #region UNITY_CALLS
     private void OnEnable()
     {
         LevelSelectionManager.OnStart += ChangePanel;
@@ -24,8 +26,10 @@ public class UI_LevelController : MonoBehaviour
         LevelSelectionManager.OnLevelchange -= ChangePanel;
         LevelSelectionManager.OnLevelchange -= ChangeMarker;
     }
+    #endregion
 
-    void ChangePanel(SO_Level currentLevel)
+    #region PRIVATE_CALLS
+    private void ChangePanel(SO_Level currentLevel)
     {
         if (level == currentLevel)
         {
@@ -36,7 +40,8 @@ public class UI_LevelController : MonoBehaviour
             panel.SetActive(false);
         }
     }
-    void ChangeMarker(SO_Level currentLevel)
+
+    private void ChangeMarker(SO_Level currentLevel)
     {
         if (level == currentLevel)
         {
@@ -49,4 +54,5 @@ public class UI_LevelController : MonoBehaviour
             left.SetActive(false);
         }
     }
+    #endregion
 }
