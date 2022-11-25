@@ -15,13 +15,13 @@ public class PlayerSkin : MonoBehaviour
 
     void ApplySkins(List<SO_Skin> skins)
     {
-        if(skins != null)
-        {
-            for (int i = 0; i < skins.Count; i++)
-            {
-                skinSlots[i].sharedMesh = skins[i].mesh;
-                skinSlots[i].material = skins[i].material;
-            }
+        if(skins != null)
+        {
+            for (int i = 0; i < skins.Count; i++)
+            {
+                skinSlots[i].sharedMesh = skins[i].mesh;
+                skinSlots[i].material = skins[i].material;
+            }
         }
     }
 }
