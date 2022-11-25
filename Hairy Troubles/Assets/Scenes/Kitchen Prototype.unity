@@ -696,17 +696,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5306674938538489827, guid: 91c71e317218da546aa3b9729a5142a8, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5306674938538489827, guid: 91c71e317218da546aa3b9729a5142a8, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: d5048cb704a95694ab728d215e24ed15, type: 3}
-    - target: {fileID: 5306674938538489827, guid: 91c71e317218da546aa3b9729a5142a8, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: f6d48dbfd0bdcac428ff1ba747791c0a, type: 3}
     - target: {fileID: 5306674938538489829, guid: 91c71e317218da546aa3b9729a5142a8, type: 3}
       propertyPath: m_Name
       value: Music1
