@@ -31,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6200374685558108407}
+  - {fileID: 430434078578520844}
   - {fileID: 1631931874}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6200374685558108407
 Transform:
   m_ObjectHideFlags: 0
@@ -163,6 +164,72 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &176639836945929447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6200374683803999373}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.015778042
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01847269
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.02407194
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d531fafdd1d18974191ad7b75e29c975, type: 2}
+    - target: {fileID: 919132149155446097, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+      propertyPath: m_Name
+      value: trampa_charco
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+--- !u!4 &430434078578520844 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d821d6d293a65ac4d8625addc123b6b8, type: 3}
+  m_PrefabInstance: {fileID: 176639836945929447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2202489470714313280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2202489472303740834, guid: adb7b8d7eec28ee4bb09cbf040bad0b6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2202489472303740834, guid: adb7b8d7eec28ee4bb09cbf040bad0b6, type: 3}
       propertyPath: m_LocalPosition.x
