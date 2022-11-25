@@ -66,6 +66,7 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action<float, float, float> IsPushing;
     public static Action OnGrab;
     public static Action onHighlightRequest;
+    public static Action OnBerserkModeStart;
     public static Action OnBerserkModeEnd;
     public Func<bool> OnHableToActivateBerserk;
     #endregion
