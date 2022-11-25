@@ -6,7 +6,7 @@ public class SFXAudioSource : MonoBehaviour
     AudioSource audioSource;
     AudioSettings audioSettings;
 
-    void Start()
+    void Awake()
     {
         audioSettings = AudioSettings.audioSettings;
         audioSource = GetComponent<AudioSource>();
