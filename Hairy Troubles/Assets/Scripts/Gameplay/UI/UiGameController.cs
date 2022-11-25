@@ -54,14 +54,14 @@ public class UiGameController : MonoBehaviour
     #region UNITY_CALLS
     private void OnEnable()
     {
-        Movement.OnBerserkModeStart += ChangeBerserkUI;
+        Movement.OnBerserkModeEnd += ChangeBerserkUI;
         OnPlayButton += countdownTimer.StartCountdown;
         OnActivateStar += endScreenBehaviour.ActivateFinalStars;
     }
 
     private void OnDisable()
     {
-        Movement.OnBerserkModeStart += ChangeBerserkUI;
+        Movement.OnBerserkModeEnd -= ChangeBerserkUI;
         OnPlayButton -= countdownTimer.StartCountdown;
         OnActivateStar -= endScreenBehaviour.ActivateFinalStars;
     }

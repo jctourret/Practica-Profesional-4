@@ -7,7 +7,6 @@ public class UI_BerserkPromp : MonoBehaviour
 
     private void OnEnable()
     {
-
         Movement.OnBerserkModeStart += activatePromp;
     }
 
