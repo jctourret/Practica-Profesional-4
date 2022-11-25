@@ -85,7 +85,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_05935315b98e48aa9de7ddb076b2386d: 7
-    - Vector1_7e1c11fd34a3409396086d2ff75a2e23: 0.5
+    - Vector1_7e1c11fd34a3409396086d2ff75a2e23: 0.614
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -103,8 +103,8 @@ Material:
     - _LightProbeContribution: 3.5
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _OutlineDepthSensitivity: 4.58
-    - _OutlineNormalsSensitivity: 0.6
+    - _OutlineDepthSensitivity: 10
+    - _OutlineNormalsSensitivity: 1
     - _OutlineThickness: 1.5
     - _Parallax: 0.005
     - _QueueOffset: 0

@@ -2719,6 +2719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: pref_CameraHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 7448080768490534589, guid: b360081ec8593794181c36fbc74edd67, type: 3}
+      propertyPath: far clip plane
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7448080768490534592, guid: b360081ec8593794181c36fbc74edd67, type: 3}
       propertyPath: player
       value: 

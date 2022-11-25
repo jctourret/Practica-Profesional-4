@@ -54,12 +54,14 @@ public class UiGameController : MonoBehaviour
     #region UNITY_CALLS
     private void OnEnable()
     {
+        Movement.OnBerserkModeStart += ChangeBerserkUI;
         OnPlayButton += countdownTimer.StartCountdown;
         OnActivateStar += endScreenBehaviour.ActivateFinalStars;
     }
 
     private void OnDisable()
     {
+        Movement.OnBerserkModeStart += ChangeBerserkUI;
         OnPlayButton -= countdownTimer.StartCountdown;
         OnActivateStar -= endScreenBehaviour.ActivateFinalStars;
     }
@@ -126,6 +128,11 @@ public class UiGameController : MonoBehaviour
     #endregion
 
     #region PRIVATE_CALLS
+
+    private void ChangeBerserkUI()
+    {
+        ComboBarPlayer.changeBerserkUI();
+    }
     private void DisablePause()
     {
         pauseState = !pauseState;
