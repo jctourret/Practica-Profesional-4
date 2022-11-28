@@ -123,6 +123,10 @@ public class GameManager : MonoBehaviour
             }
 
             uiGameController.ComboBarPlayer.UpdateGrownState();
+            if (uiGameController.ComboBarPlayer.CheckComboBar())
+            {
+                OnComboBarFull?.Invoke();
+            }
             uiGameController.UpdateTimer(timer);
         }
     }

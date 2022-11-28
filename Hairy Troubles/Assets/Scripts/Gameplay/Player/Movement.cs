@@ -81,12 +81,13 @@ public class Movement : MonoBehaviour, ICollidable
     private void OnEnable()
     {
         BurningParticle(false);
-
+        GameManager.OnComboBarFull += EnableBerserkMode;
         PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
+        GameManager.OnComboBarFull -= EnableBerserkMode;
         PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
@@ -291,7 +292,10 @@ public class Movement : MonoBehaviour, ICollidable
         }
         Debug.Log("Recieved grabbable");
     }
-
+    private void EnableBerserkMode()
+    {
+        berserkMode = true;
+    }
     private void PlayerPushLogic()
     {
         if (pushCountdown >= 0)
@@ -308,14 +312,11 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void EnterBerserkMode()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && OnHableToActivateBerserk.Invoke())
+        if (Input.GetKeyDown(KeyCode.Q) && berserkMode)
         {
-            if (!berserkMode)
-            {
-                berserkMode = true;
-                OnBerserkModeStart?.Invoke();
-                StartCoroutine(BerserkMode());
-            }
+            berserkMode = false;
+            OnBerserkModeStart?.Invoke();
+            StartCoroutine(BerserkMode());
         }
     }
 
@@ -343,7 +344,6 @@ public class Movement : MonoBehaviour, ICollidable
             transform.localScale = Vector3.Lerp(transform.localScale, startScale, timer / duration);
             yield return null;
         }
-        berserkMode = false;
     }
 
     private void BlockedMovement()
