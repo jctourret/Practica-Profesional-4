@@ -10,7 +10,6 @@ public class PlayerSkin : MonoBehaviour
 
     private void Start()
     {
-        skinSlots = new List<SkinnedMeshRenderer>();
         ApplySkins(OnRecieveSkin?.Invoke());
     }
 
