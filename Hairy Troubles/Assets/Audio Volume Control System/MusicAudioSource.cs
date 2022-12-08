@@ -6,7 +6,7 @@ public class MusicAudioSource : MonoBehaviour
     AudioSource audioSource;
     AudioSettings audioSettings;
 
-    void Awake()
+    void Start()
     {
         audioSettings = AudioSettings.audioSettings;
         audioSource = GetComponent<AudioSource>();
