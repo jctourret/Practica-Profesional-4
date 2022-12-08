@@ -2142,6 +2142,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &860538056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860538057}
+  m_Layer: 0
+  m_Name: GaphicVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860538057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860538056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6865602, y: 1.5476519, z: -0.9269774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &864718920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6779,10 +6809,6 @@ PrefabInstance:
     - target: {fileID: 7448080767974039643, guid: b360081ec8593794181c36fbc74edd67, type: 3}
       propertyPath: m_Name
       value: Camera Holder
-      objectReference: {fileID: 0}
-    - target: {fileID: 7448080768490534589, guid: b360081ec8593794181c36fbc74edd67, type: 3}
-      propertyPath: far clip plane
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7448080768490534592, guid: b360081ec8593794181c36fbc74edd67, type: 3}
       propertyPath: player
