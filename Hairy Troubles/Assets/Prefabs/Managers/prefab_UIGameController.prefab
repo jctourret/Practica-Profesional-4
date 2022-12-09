@@ -47,7 +47,7 @@ MonoBehaviour:
   percentageBar: {fileID: 0}
   percentageText: {fileID: 0}
   timerText: {fileID: 0}
-  sceneMenu: MainMenu
+  sceneMenu: LevelSelection
   hubGame: {fileID: 0}
   objectivesWindow: {fileID: 0}
   countdownTimer: {fileID: 0}
