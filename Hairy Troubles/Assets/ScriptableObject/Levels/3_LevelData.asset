@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 3_LevelData
   m_EditorClassIdentifier: 
   levelName: 3_Level
+  levelNumber: 3
   sceneIndex: 4
   starsAchieved: 0
-  starsRequired: 0
+  starsRequired: 2
   image: {fileID: 0}
   description: 

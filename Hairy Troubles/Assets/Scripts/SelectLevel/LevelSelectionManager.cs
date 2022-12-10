@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectionManager : MonoBehaviour
 {
-    public static Action<SO_Level> OnStart;
+    public static Action<SO_Level,HairyTroublesData> OnStart;
     public static Action<SO_Level> OnLevelSelection;
-    public static Action<SO_Level> OnLevelchange;
+    public static Action<SO_Level, HairyTroublesData> OnLevelchange;
 
     [Header("Transitioner")]
     [SerializeField] private SceneTransition sceneTransition;
@@ -22,7 +22,8 @@ public class LevelSelectionManager : MonoBehaviour
 
     private void Start()
     {
-        OnStart?.Invoke(listOfLevels[currentLevel]);
+        OnStart?.Invoke(listOfLevels[currentLevel], SaveManager.singleton.data);
+        currentStars = SaveManager.singleton.data._stars;
     }
     public void LeftButton()
     {
@@ -33,7 +34,7 @@ public class LevelSelectionManager : MonoBehaviour
             {
                 currentLevel = 0;
             }
-            OnLevelchange?.Invoke(listOfLevels[currentLevel]);
+            OnLevelchange?.Invoke(listOfLevels[currentLevel],SaveManager.singleton.data);
         }
     }
     public void RightButton()
@@ -45,7 +46,7 @@ public class LevelSelectionManager : MonoBehaviour
             {
                 currentLevel = 0;
             }
-            OnLevelchange?.Invoke(listOfLevels[currentLevel]);
+            OnLevelchange?.Invoke(listOfLevels[currentLevel],SaveManager.singleton.data);
         }
     }
 

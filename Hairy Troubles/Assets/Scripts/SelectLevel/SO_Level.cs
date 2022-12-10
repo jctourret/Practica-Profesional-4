@@ -6,6 +6,7 @@ using UnityEngine;
 public class SO_Level : ScriptableObject
 {
     [SerializeField] public string levelName;
+    public int levelNumber;
     public int sceneIndex;
     [SerializeField] private int starsAchieved;
     public int starsRequired;

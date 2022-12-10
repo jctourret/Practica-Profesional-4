@@ -112,7 +112,10 @@ public class UiGameController : MonoBehaviour
         endScreenBehaviour.SetActive(state);
         hubGame.SetActive(!state);
     }
-
+    public int GetActiveSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
     public void SetMaximumProgress(float value)
     {
         maxPercentage = value;

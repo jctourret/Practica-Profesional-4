@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 1_LevelData
   m_EditorClassIdentifier: 
   levelName: 1_Level
+  levelNumber: 1
   sceneIndex: 2
   starsAchieved: 0
   starsRequired: 0

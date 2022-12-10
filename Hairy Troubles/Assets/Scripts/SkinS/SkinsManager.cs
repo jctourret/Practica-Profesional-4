@@ -41,6 +41,10 @@ public class SkinsManager : MonoBehaviour
         SkinSlot.OnSkinEquipped -= SkinChange;
         SkinSlot.OnSkinUnequipped -= SkinChange;
     }
+    private void Start()
+    {
+        currentStars = SaveManager.singleton.data._stars;
+    }
     int SendStars()
     {
         return currentStars;

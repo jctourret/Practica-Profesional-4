@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SaveManager : MonoBehaviour
 {
-    HairyTroublesData data;
-    static SaveManager singleton;
+    public HairyTroublesData data;
+    public static SaveManager singleton;
     private void Awake()
     {
         if (singleton == null)
@@ -17,19 +17,21 @@ public class SaveManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnEnable()
+    public void SaveProgress(int starsEarned, int progressMade, int levelIndex)
     {
-        GameManager.OnSaveStars += SaveProgress;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnSaveStars -= SaveProgress;
-    }
-
-    void SaveProgress(int stars)
-    {
-        data._stars += stars;
+        if(starsEarned != 0)
+        {
+            data._levelClear[levelIndex] = true;
+        }
+        if (data._levelStars[levelIndex] < starsEarned)
+        {
+            data._levelStars[levelIndex] = starsEarned;
+        }
+        if (data._levelProgress[levelIndex] < progressMade)
+        {
+            data._levelProgress[levelIndex] = progressMade;
+        }
+        data._stars += starsEarned;
         SaveSystem.SaveGame(data);
     }
 }

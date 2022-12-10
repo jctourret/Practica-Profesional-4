@@ -183,6 +183,7 @@ public class GameManager : MonoBehaviour
             uiGameController.OnActivateStar?.Invoke(2);
             missionsState = MissionsState.Final;
         }
+        SaveManager.singleton.SaveProgress((int)missionsState,(int)actualPoints,uiGameController.GetActiveSceneIndex());
         OnSaveStars?.Invoke((int)missionsState);
     }
     #endregion
