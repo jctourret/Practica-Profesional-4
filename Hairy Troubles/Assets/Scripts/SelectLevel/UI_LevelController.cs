@@ -5,6 +5,7 @@ using TMPro;
 
 public class UI_LevelController : MonoBehaviour
 {
+    const int levelArrayOffset = 1;
     #region EXPOSED_FIELDS
     [SerializeField] private SO_Level level;
     [SerializeField] private GameObject panel;
@@ -23,6 +24,7 @@ public class UI_LevelController : MonoBehaviour
         LevelSelectionManager.OnStart += UpdateUI;
         LevelSelectionManager.OnStart += ChangePanel;
         LevelSelectionManager.OnStart += ChangeMarker;
+        LevelSelectionManager.OnLevelchange += UpdateUI;
         LevelSelectionManager.OnLevelchange += ChangePanel;
         LevelSelectionManager.OnLevelchange += ChangeMarker;
     }
@@ -32,6 +34,7 @@ public class UI_LevelController : MonoBehaviour
         LevelSelectionManager.OnStart -= UpdateUI;
         LevelSelectionManager.OnStart -= ChangePanel;
         LevelSelectionManager.OnStart -= ChangeMarker;
+        LevelSelectionManager.OnLevelchange -= UpdateUI;
         LevelSelectionManager.OnLevelchange -= ChangePanel;
         LevelSelectionManager.OnLevelchange -= ChangeMarker;
     }
@@ -66,7 +69,8 @@ public class UI_LevelController : MonoBehaviour
 
     private void UpdateUI(SO_Level currentLevel, HairyTroublesData data)
     {
-        if (data._levelClear[currentLevel.levelNumber])
+        Debug.Log("Update UI");
+        if (data._levelClear[level.levelNumber- levelArrayOffset])
         {
             brokenHouse.enabled = true;
             house.enabled = false;
@@ -76,8 +80,8 @@ public class UI_LevelController : MonoBehaviour
             brokenHouse.enabled = false;
             house.enabled = true;
         }
-        progress.text = data._levelProgress.ToString()+"%";
-        for(int i = 0; i == data._levelStars[currentLevel.levelNumber]; i++)
+        progress.text = data._levelProgress[level.levelNumber - levelArrayOffset].ToString()+"%";
+        for(int i = 0; i < data._levelStars[level.levelNumber - levelArrayOffset]; i++)
         {
             Stars[i].enabled = true;
         }

@@ -37,9 +37,7 @@ public class SkinsManager : MonoBehaviour
         PlayerSkin.OnRecieveSkin -= LoadSelectedSkins;
         GameManager.OnSaveStars -= SaveStars;
         SkinSlot.OnGetCurrentStars -= SendStars;
-        UI_CurrentStars.OnGetCurrentStars -= SendStars;
         SkinSlot.OnSkinEquipped -= SkinChange;
-        SkinSlot.OnSkinUnequipped -= SkinChange;
     }
     private void Start()
     {

@@ -151,6 +151,9 @@ public class GameManager : MonoBehaviour
         player.IsMoving = playing;
 
         CalculatePercentage();
+        int percentage = (int)((actualPoints * 100) / scenePoints);
+        SaveManager.singleton.SaveProgress((int)missionsState, percentage, uiGameController.GetActiveSceneIndex());
+        OnSaveStars?.Invoke((int)missionsState);
         uiGameController.ActivateMenu(true);
     }
 
@@ -183,8 +186,6 @@ public class GameManager : MonoBehaviour
             uiGameController.OnActivateStar?.Invoke(2);
             missionsState = MissionsState.Final;
         }
-        SaveManager.singleton.SaveProgress((int)missionsState,(int)actualPoints,uiGameController.GetActiveSceneIndex());
-        OnSaveStars?.Invoke((int)missionsState);
     }
     #endregion
 }

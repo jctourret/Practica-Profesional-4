@@ -7,6 +7,7 @@ public class UI_CurrentStars : MonoBehaviour
     TextMeshProUGUI text;
     private void Start()
     {
-        text.text = OnGetCurrentStars?.Invoke().ToString();
+        text = GetComponent<TextMeshProUGUI>();
+        text.text = SaveManager.singleton.data._stars.ToString();
     }
 }

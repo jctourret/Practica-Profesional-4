@@ -505,10 +505,10 @@ RectTransform:
   m_Father: {fileID: 4584244533685676584}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 15, y: -5}
-  m_SizeDelta: {x: 100, y: 100.000015}
+  m_AnchorMin: {x: 0.47112146, y: 0.8036844}
+  m_AnchorMax: {x: 0.5622462, y: 0.99112827}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7139113967164321228
 CanvasRenderer:
@@ -997,6 +997,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127234681905763822, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6952244731844372228, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
       propertyPath: m_Name
       value: Skin slot Lentes
@@ -1012,6 +1040,34 @@ PrefabInstance:
     - target: {fileID: 7659938568048916067, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
       propertyPath: m_fontSizeBase
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998179801307913778, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8573707202696571261, guid: d26939f0f7157804ba9db8755e87866e, type: 3}
       propertyPath: m_IsActive
