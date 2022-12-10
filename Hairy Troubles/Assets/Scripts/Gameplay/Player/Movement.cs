@@ -29,7 +29,8 @@ public class Movement : MonoBehaviour, ICollidable
 
     [Space(10f)]
     [Header("-- Grab --")]
-    [SerializeField] private float springForce = 1000;
+    [SerializeField] private float springForce = 100000000;
+    [SerializeField] private float dragForce = 10;
     [SerializeField] private float pushDragThreshold = 20f;
     [SerializeField] private Transform anchorPoint;
 
@@ -279,7 +280,7 @@ public class Movement : MonoBehaviour, ICollidable
             SpringJoint joint = gameObject.AddComponent<SpringJoint>();
             joint.anchor = transform.InverseTransformPoint(anchorPoint.position);
             joint.spring = springForce;
-           
+            joint.connectedMassScale = dragForce;
             joint.connectedBody = grabbedObject;
             if (grabbedObject.mass >= pushDragThreshold)
             {
