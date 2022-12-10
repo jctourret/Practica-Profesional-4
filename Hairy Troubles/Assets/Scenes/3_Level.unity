@@ -3103,7 +3103,7 @@ PrefabInstance:
       objectReference: {fileID: 1562178779}
     - target: {fileID: 3275394712590343055, guid: f1b215a9306c26c4fa64d28abee7014c, type: 3}
       propertyPath: sceneTime
-      value: 10
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3275394712590343055, guid: f1b215a9306c26c4fa64d28abee7014c, type: 3}
       propertyPath: uiGameController
