@@ -62,9 +62,13 @@ public class GameManager : MonoBehaviour
         scenePoints = 0;
         actualPoints = 0;
 
-        uiGameController.Initialize();
-
         player.Init(() => { return uiGameController.ComboBarPlayer.CheckComboBar(); });
+
+        uiGameController.Initialize(onAwakePlayer:() =>
+        {
+            player.IsMoving = true;
+        });
+        uiGameController.UpdateTimer(timer);
     }
 
     private void OnEnable()
@@ -101,37 +105,30 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(playing)
+        if(playing && uiGameController.StartGame)
         {
+            uiGameController.PauseInput();
+            
             timer -= Time.deltaTime;
 
-            if (timer < 0)
+            if (timer <= 0)
             {
                 timer = 0f;
-
-                playing = false;
-                player.IsMoving = playing;
-
-                CalculatePercentage();
+                EndGame();
             }
-
-            uiGameController.PauseInput();
-            uiGameController.ComboBarPlayer.UpdateGrownState();
-            uiGameController.UpdateTimer(timer);
             
             if(missionsState == MissionsState.Final)
             {
-                playing = false;
-                player.IsMoving = playing;
-
-                uiGameController.ActivateMenu(true);
+                EndGame();
             }
-        }
 
-        //if (Input.GetKeyDown(KeyCode.Q) && uiGameController.ComboBarPlayer.CheckComboBar())
-        //{
-        //    OnComboBarFull?.Invoke();
-        //}
+            uiGameController.ComboBarPlayer.UpdateGrownState();
+            if (uiGameController.ComboBarPlayer.CheckComboBar())
+            {
+                OnComboBarFull?.Invoke();
+            }
+            uiGameController.UpdateTimer(timer);
+        }
     }
     #endregion
 
@@ -148,6 +145,18 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region PRIVATE_CALLS
+    private void EndGame()
+    {
+        playing = false;
+        player.IsMoving = playing;
+
+        CalculatePercentage();
+        int percentage = (int)((actualPoints * 100) / scenePoints);
+        SaveManager.singleton.SaveProgress((int)missionsState, percentage, uiGameController.GetActiveSceneIndex());
+        OnSaveStars?.Invoke((int)missionsState);
+        uiGameController.ActivateMenu(true);
+    }
+
     private void ChargeComboBar(int i)
     {
         uiGameController.ComboBarPlayer.ChargeComboBar(targetDestructibles);
@@ -177,7 +186,6 @@ public class GameManager : MonoBehaviour
             uiGameController.OnActivateStar?.Invoke(2);
             missionsState = MissionsState.Final;
         }
-        OnSaveStars?.Invoke((int)missionsState);
     }
     #endregion
 }

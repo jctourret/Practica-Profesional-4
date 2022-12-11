@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -13,17 +14,26 @@ public class CountdownTimer : MonoBehaviour
     private float cdTimer = 4;
     #endregion
 
+    #region ACTIONS
+    private Action onEnd = null;
+    #endregion
+
     #region UNITY_CALLS
     private void Awake()
     {
-       this.gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
     #endregion
 
     #region PUBLIC_CALLS
+    public void Initialize(Action onEnd)
+    {
+        this.onEnd = onEnd;
+    }
+
     public void StartCountdown()
     {
-        this.gameObject.SetActive(true);
+        gameObject.SetActive(true);
 
         animator.SetTrigger("cdNow");
         StartCoroutine(Countdown());
@@ -56,7 +66,8 @@ public class CountdownTimer : MonoBehaviour
             
             yield return null;
         }
-        Time.timeScale = 1f;
+
+        onEnd?.Invoke();
     }
     #endregion
 }

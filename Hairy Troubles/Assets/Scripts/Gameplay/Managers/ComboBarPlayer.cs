@@ -8,6 +8,9 @@ public class ComboBarPlayer : MonoBehaviour
 {
     #region EXPOSED_FIELD
     [SerializeField] private Slider comboBar;
+    [SerializeField] private GameObject peludoNormal;
+    [SerializeField] private GameObject peludoBerserk;
+    [SerializeField] private ParticleSystem smoke;
     [SerializeField] private float depleteRate;
     #endregion
 
@@ -41,7 +44,16 @@ public class ComboBarPlayer : MonoBehaviour
             SetDeclineLock(true);
         }
     }
-
+    public void changeBerserkUI()
+    {
+        peludoNormal.SetActive(peludoNormal.activeSelf);
+        smoke.gameObject.SetActive(peludoNormal.activeSelf);
+        if (!smoke.isPlaying)
+        {
+            smoke.Play();
+        }
+        peludoBerserk.SetActive(peludoNormal.activeSelf);
+    }
     public bool CheckComboBar()
     {
         if (comboBar.value >= comboBar.maxValue)

@@ -594,7 +594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122171097875520729}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
+  m_Script: {fileID: 11500000, guid: 547852c30e55311449b9106ea1b31774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SFXAudio: {fileID: 1523934409}
@@ -607,8 +607,9 @@ MonoBehaviour:
   destructionTime: 3
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
-  isDestoyed: 0
-  fixedJoint: {fileID: 0}
+  fractureLimit: 0.3
+  objSurface: 0
+  destroyByPlayerCollision: 0
 --- !u!82 &1523934409
 AudioSource:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 0
+  objectType: 1
   fragments:
   - {fileID: 4348739036223019505}
   - {fileID: 5372487385714166973}
@@ -2240,7 +2241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115e3911fbb6bf645908e52d228be059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 0
+  objectType: 1
   fragments:
   - {fileID: 2501855026954363190}
   - {fileID: 7535650816644994702}
@@ -2717,7 +2718,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6667278973831879247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05850fd957cac094d928d058921ffe62, type: 3}
+  m_Script: {fileID: 11500000, guid: 547852c30e55311449b9106ea1b31774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SFXAudio: {fileID: 1564175277}
@@ -2730,8 +2731,9 @@ MonoBehaviour:
   destructionTime: 3
   disableColliderWhenDestroy: 1
   disableRigidbodyWhenDestroy: 1
-  isDestoyed: 0
-  fixedJoint: {fileID: 0}
+  fractureLimit: 0.3
+  objSurface: 0
+  destroyByPlayerCollision: 0
 --- !u!82 &1564175277
 AudioSource:
   m_ObjectHideFlags: 0

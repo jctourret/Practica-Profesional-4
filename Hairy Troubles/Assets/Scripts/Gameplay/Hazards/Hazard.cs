@@ -6,7 +6,7 @@ public class Hazard : MonoBehaviour
 {
     #region EXPOSED_FIELD
     [SerializeField] protected Collider hazardCollider = null;
-    [SerializeField] [Range(1, 10)] protected float timerEffect = 3f;
+    [SerializeField] [Range(0, 10)] protected float timerEffect = 3f;
     #endregion
 
     #region UNITY_CALLS

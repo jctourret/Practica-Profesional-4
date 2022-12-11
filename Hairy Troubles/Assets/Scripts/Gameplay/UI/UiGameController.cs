@@ -36,11 +36,14 @@ public class UiGameController : MonoBehaviour
     #region PRIVATE_FIELD
     private float currentPercentage = 0f;
     private float maxPercentage = 100f;
-    private bool pauseState = true;
+    private bool pauseState = false;
+
+    private bool startGame = false;
     #endregion
 
     #region PROPERTIES
     public ComboBarPlayer ComboBarPlayer { get => comboBarPlayer; }
+    public bool StartGame { get => startGame; }
     #endregion
 
     #region ACTIONS
@@ -51,32 +54,35 @@ public class UiGameController : MonoBehaviour
     #region UNITY_CALLS
     private void OnEnable()
     {
+        GameManager.OnComboBarFull += ChangeBerserkUI;
+        Movement.OnBerserkModeEnd += ChangeBerserkUI;
         OnPlayButton += countdownTimer.StartCountdown;
         OnActivateStar += endScreenBehaviour.ActivateFinalStars;
     }
 
     private void OnDisable()
     {
+        GameManager.OnComboBarFull -= ChangeBerserkUI;
+        Movement.OnBerserkModeEnd -= ChangeBerserkUI;
         OnPlayButton -= countdownTimer.StartCountdown;
         OnActivateStar -= endScreenBehaviour.ActivateFinalStars;
-    }
-
-    private void Start()
-    {
-        Time.timeScale = 0f;
     }
     #endregion
 
     #region PUBLIC_CALLS
-    public void Initialize()
+    public void Initialize(Action onAwakePlayer)
     {
-        DisablePause();
-
         hubGame.SetActive(false);
 
         objectivesWindow.Initialize(() => { 
             OnPlayButton?.Invoke();
             hubGame.SetActive(true);
+        });
+
+        countdownTimer.Initialize(onEnd: () => 
+        {
+            startGame = true;
+            onAwakePlayer?.Invoke();
         });
         pauseBehaviour.Initialize(DisablePause, OnRestartScene, OnGoToScene);
         endScreenBehaviour.Initialize(OnRestartScene, OnGoToScene);
@@ -90,7 +96,7 @@ public class UiGameController : MonoBehaviour
 
     public void PauseInput()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && startGame)
         {
             DisablePause();
         }
@@ -106,7 +112,10 @@ public class UiGameController : MonoBehaviour
         endScreenBehaviour.SetActive(state);
         hubGame.SetActive(!state);
     }
-
+    public int GetActiveSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
     public void SetMaximumProgress(float value)
     {
         maxPercentage = value;
@@ -124,6 +133,11 @@ public class UiGameController : MonoBehaviour
     #endregion
 
     #region PRIVATE_CALLS
+
+    private void ChangeBerserkUI()
+    {
+        ComboBarPlayer.changeBerserkUI();
+    }
     private void DisablePause()
     {
         pauseState = !pauseState;

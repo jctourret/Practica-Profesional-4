@@ -29,7 +29,8 @@ public class Movement : MonoBehaviour, ICollidable
 
     [Space(10f)]
     [Header("-- Grab --")]
-    [SerializeField] private float springForce = 1000;
+    [SerializeField] private float springForce = 100000000;
+    [SerializeField] private float dragForce = 10;
     [SerializeField] private float pushDragThreshold = 20f;
     [SerializeField] private Transform anchorPoint;
 
@@ -57,7 +58,7 @@ public class Movement : MonoBehaviour, ICollidable
     
     private bool invertMovement;
     private bool canJump = true;
-    private bool isMoving = true;
+    private bool isMoving = false;
     private bool isDirectionBlocked = false;
     private bool berserkMode;
     #endregion
@@ -66,6 +67,7 @@ public class Movement : MonoBehaviour, ICollidable
     public static Action<float, float, float> IsPushing;
     public static Action OnGrab;
     public static Action onHighlightRequest;
+    public static Action OnBerserkModeStart;
     public static Action OnBerserkModeEnd;
     public Func<bool> OnHableToActivateBerserk;
     #endregion
@@ -80,12 +82,13 @@ public class Movement : MonoBehaviour, ICollidable
     private void OnEnable()
     {
         BurningParticle(false);
-
+        GameManager.OnComboBarFull += EnableBerserkMode;
         PushCollider.OnObjectGrabbed += RecieveGrabbed;
     }
 
     private void OnDisable()
     {
+        GameManager.OnComboBarFull -= EnableBerserkMode;
         PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
 
@@ -119,7 +122,6 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (isDirectionBlocked)
         {
-            Debug.Log("BlockedDirection");
             BlockedMovement();
         }
     }
@@ -131,6 +133,8 @@ public class Movement : MonoBehaviour, ICollidable
         rb = GetComponent<Rigidbody>();
 
         this.OnHableToActivateBerserk = OnHableToActivateBerserk;
+
+        isMoving = false;
     }
 
     public void StopCharacter(bool state)
@@ -204,8 +208,6 @@ public class Movement : MonoBehaviour, ICollidable
             float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
             rb.rotation = Quaternion.Euler(0f,angle,0f);
-            //Quaternion rotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            //rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed);
         }
         else
         {
@@ -278,7 +280,7 @@ public class Movement : MonoBehaviour, ICollidable
             SpringJoint joint = gameObject.AddComponent<SpringJoint>();
             joint.anchor = transform.InverseTransformPoint(anchorPoint.position);
             joint.spring = springForce;
-           
+            joint.connectedMassScale = dragForce;
             joint.connectedBody = grabbedObject;
             if (grabbedObject.mass >= pushDragThreshold)
             {
@@ -291,16 +293,18 @@ public class Movement : MonoBehaviour, ICollidable
         }
         Debug.Log("Recieved grabbable");
     }
-
+    private void EnableBerserkMode()
+    {
+        berserkMode = true;
+    }
     private void PlayerPushLogic()
     {
         if (pushCountdown >= 0)
         {
             pushCountdown -= Time.deltaTime;
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+        else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0))
         {
-
             anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
@@ -309,13 +313,11 @@ public class Movement : MonoBehaviour, ICollidable
 
     private void EnterBerserkMode()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && OnHableToActivateBerserk.Invoke())
+        if (Input.GetKeyDown(KeyCode.Q) && berserkMode)
         {
-            if (!berserkMode)
-            {
-                berserkMode = true;
-                StartCoroutine(BerserkMode());
-            }
+            berserkMode = false;
+            OnBerserkModeStart?.Invoke();
+            StartCoroutine(BerserkMode());
         }
     }
 
@@ -343,7 +345,6 @@ public class Movement : MonoBehaviour, ICollidable
             transform.localScale = Vector3.Lerp(transform.localScale, startScale, timer / duration);
             yield return null;
         }
-        berserkMode = false;
     }
 
     private void BlockedMovement()

@@ -85,8 +85,6 @@ public class AudioSettings : MonoBehaviour
     }
     public void ChangeMuteMusic(Toggle tg)
     {
-        
-
         if (tg.isOn)
         {
             foreach (AudioSource a in musicAudioSources)

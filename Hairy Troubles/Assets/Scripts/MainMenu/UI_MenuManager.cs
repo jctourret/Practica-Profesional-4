@@ -7,7 +7,8 @@ public class UI_MenuManager : MonoBehaviour
 {
     #region EXPOSED_CALLS
     [Header("Transitioner")]
-    [SerializeField] private SceneTransition sceneTransition;
+    [SerializeField] private SceneTransition sceneTransition = null;
+    [SerializeField] private StoryView storyView = null;
 
     [Header("Buttons")]
     [SerializeField] private Button btnPlay;
@@ -20,7 +21,9 @@ public class UI_MenuManager : MonoBehaviour
     #region UNITY_CALLS
     private void Awake()
     {
-        btnPlay.onClick.AddListener(OnLoadLevel);
+        storyView.Initialize(OnLoadLevel);
+
+        btnPlay.onClick.AddListener(storyView.StartAnimation);
         btnExit.onClick.AddListener(OnExitGame);
     }
     #endregion
