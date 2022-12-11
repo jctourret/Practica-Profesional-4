@@ -69,7 +69,7 @@ public class UI_LevelController : MonoBehaviour
 
     private void UpdateUI(SO_Level currentLevel, HairyTroublesData data)
     {
-        Debug.Log("Update UI");
+        //Debug.Log("Update UI");
         if (data._levelClear[level.levelNumber- levelArrayOffset])
         {
             brokenHouse.enabled = true;

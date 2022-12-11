@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.6, y: 7.8056}
-  m_SizeDelta: {x: 56.66, y: 56.66}
+  m_AnchoredPosition: {x: 45.2, y: 4.4}
+  m_SizeDelta: {x: 62.84, y: 65.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9014888060836307999
 CanvasRenderer:
@@ -67,7 +67,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 68598fbe079ef1f49af1a7460e87ce3a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.31, y: 4.4106}
-  m_SizeDelta: {x: 61.82, y: 63.45}
+  m_AnchoredPosition: {x: -45.5, y: 2.7}
+  m_SizeDelta: {x: 68.24, y: 81.32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3642733491555370543
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: a11ffa8116b092548b81337e64f98bf5, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -259,8 +259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000064373, y: 7.8056}
-  m_SizeDelta: {x: 71.09, y: 74.635}
+  m_AnchoredPosition: {x: 0.2, y: 5.9}
+  m_SizeDelta: {x: 78.61, y: 93.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2794148080065821641
 CanvasRenderer:
@@ -292,7 +292,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8c14ac7bcb6570740b84ce21ce234507, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -335,8 +335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.10259507, y: 0.6634539}
   m_AnchorMax: {x: 0.89414454, y: 0.91893005}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: 0}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8854820674314353429
 CanvasRenderer:
@@ -556,7 +556,7 @@ RectTransform:
   m_AnchorMin: {x: 0.10017507, y: 0.043206226}
   m_AnchorMax: {x: 0.8998249, y: 0.33508724}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -26, y: -8.000006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8854820674713104361
 CanvasRenderer:
@@ -634,8 +634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16507998, y: 0.5876755}
   m_AnchorMax: {x: 0.7255619, y: 1.0419439}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 7.07, y: 0}
+  m_SizeDelta: {x: 14.14, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8854820674841593983
 CanvasRenderer:
@@ -844,10 +844,10 @@ RectTransform:
   m_Father: {fileID: 8854820674841593981}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.10017507, y: 0.34092483}
-  m_AnchorMax: {x: 0.8998249, y: 0.6328058}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -3.1}
+  m_SizeDelta: {x: -28.93824, y: 56.385555}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8854820675548726813
 CanvasRenderer:
@@ -879,7 +879,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 70ac7bca25e7cb44c98a955d345a3fd4, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1211,7 +1211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6270167, y: 0.036171753}
   m_AnchorMax: {x: 0.90991396, y: 0.08676166}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 12.9869995}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8854820675993750335
@@ -1302,12 +1302,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11fe8c91bc239b1488c5de130be64cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: fb9f78163c4781f4fb99adbbb2bd62a1, type: 2}
+  level: {fileID: 11400000, guid: c890b7db40bd60d4ab1b79319fc797fb, type: 2}
   panel: {fileID: 8854820674841593980}
   house: {fileID: 0}
   brokenHouse: {fileID: 0}
-  Stars: []
-  progress: {fileID: 0}
+  Stars:
+  - {fileID: 7311710729578030296}
+  - {fileID: 1807594459598833071}
+  - {fileID: 5674298816178329426}
+  progress: {fileID: 8854820674897196697}
   marker: {fileID: 8854820675993750332}
   right: {fileID: 8854820674421687630}
   left: {fileID: 8854820675910613034}
