@@ -57,8 +57,23 @@ public class UI_LevelController : MonoBehaviour
     {
         if (level == currentLevel)
         {
-            right.SetActive(true);
-            left.SetActive(true);
+            if(data._levelClear[currentLevel.levelNumber - levelArrayOffset])
+            {
+                right.SetActive(true);
+            }
+            else
+            {
+                right.SetActive(false);
+            }
+            int index = (currentLevel.levelNumber - 1 - levelArrayOffset) % data._levelClear.Length;
+            if (index >= 0 && data._levelClear[index])
+            {
+                left.SetActive(true);
+            }
+            else
+            {
+                left.SetActive(false);
+            }
         }
         else
         {
@@ -69,8 +84,9 @@ public class UI_LevelController : MonoBehaviour
 
     private void UpdateUI(SO_Level currentLevel, HairyTroublesData data)
     {
-        //Debug.Log("Update UI");
-        if (data._levelClear[level.levelNumber- levelArrayOffset])
+        Debug.Log("Update UI");
+        int index = level.levelNumber - levelArrayOffset % data._levelClear.Length;
+        if (data._levelClear[index])
         {
             brokenHouse.enabled = true;
             house.enabled = false;
@@ -80,8 +96,8 @@ public class UI_LevelController : MonoBehaviour
             brokenHouse.enabled = false;
             house.enabled = true;
         }
-        progress.text = data._levelProgress[level.levelNumber - levelArrayOffset].ToString()+"%";
-        for(int i = 0; i < data._levelStars[level.levelNumber - levelArrayOffset]; i++)
+        progress.text = data._levelProgress[index].ToString()+"%";
+        for(int i = 0; i < data._levelStars[index]; i++)
         {
             Stars[i].enabled = true;
         }

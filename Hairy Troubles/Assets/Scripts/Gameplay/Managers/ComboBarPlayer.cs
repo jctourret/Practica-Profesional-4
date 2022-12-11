@@ -16,6 +16,7 @@ public class ComboBarPlayer : MonoBehaviour
 
     #region PRIVATE_FIELD
     private bool growthLock = false;
+    private bool comboBarJustFilled = false;
     private bool declineLock = false;
     #endregion
 
@@ -29,6 +30,7 @@ public class ComboBarPlayer : MonoBehaviour
         else if (growthLock && comboBar.value <= 0.0f)
         {
             SetGrowthLock(false);
+            comboBarJustFilled = false;
         }
     }
 
@@ -46,18 +48,19 @@ public class ComboBarPlayer : MonoBehaviour
     }
     public void changeBerserkUI()
     {
-        peludoNormal.SetActive(peludoNormal.activeSelf);
-        smoke.gameObject.SetActive(peludoNormal.activeSelf);
-        if (!smoke.isPlaying)
+        peludoNormal.SetActive(!peludoNormal.activeSelf);
+        smoke.gameObject.SetActive(!peludoBerserk.activeSelf);
+        if (smoke.gameObject.activeSelf && !smoke.isPlaying)
         {
             smoke.Play();
         }
-        peludoBerserk.SetActive(peludoNormal.activeSelf);
+        peludoBerserk.SetActive(!peludoBerserk.activeSelf);
     }
     public bool CheckComboBar()
     {
-        if (comboBar.value >= comboBar.maxValue)
+        if (growthLock && !comboBarJustFilled)
         {
+            comboBarJustFilled = true;
             return true;
         }
         else
