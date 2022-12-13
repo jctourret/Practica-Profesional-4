@@ -1,5 +1,5 @@
 <p align="center">
-<img src="logo.png" alt="Hairy Troubles"/>
+<img src="Logo.png" alt="Hairy Troubles"/>
 </p>
 
 # Hairy Troubles
