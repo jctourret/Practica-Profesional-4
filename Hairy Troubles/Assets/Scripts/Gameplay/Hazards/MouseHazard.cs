@@ -21,6 +21,7 @@ public class MouseHazard : Hazard
     {
         if (other.TryGetComponent(out StatusEffects player))
         {
+            SFX.Play();
             player.TrappedState(timerEffect);
 
             EnableCollider(false);

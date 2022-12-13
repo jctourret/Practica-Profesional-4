@@ -7,7 +7,17 @@ public class Movement : MonoBehaviour, ICollidable
 {
     #region EXPOSED_METHODS
     [SerializeField] private Animator anim;
-
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource steps;
+    [SerializeField] private List<AudioClip> sfxsClips;
+    enum SfxName
+    {
+        jump,
+        steps,
+        fireInjure,
+        atack
+    }
+    SfxName sfxName;
     [Space(10f)]
     [Header("-- Movement --")]
     [SerializeField] private float movementSpeed = 1.17f;
@@ -91,7 +101,10 @@ public class Movement : MonoBehaviour, ICollidable
         GameManager.OnComboBarFull -= EnableBerserkMode;
         PushCollider.OnObjectGrabbed -= RecieveGrabbed;
     }
-
+    private void Start()
+    {
+        
+    }
     void Update()
     {
         if (isMoving)
@@ -204,6 +217,14 @@ public class Movement : MonoBehaviour, ICollidable
 
         if (movementDirection != Vector3.zero)
         {
+            if(!canJump)
+                steps.Stop();
+            else
+            {
+                if(!steps.isPlaying)
+                    steps.Play();
+            }
+
             dustTrail.gameObject.SetActive(true);
             float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
@@ -219,6 +240,10 @@ public class Movement : MonoBehaviour, ICollidable
     {
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
+            sfxSource.pitch = 1.5f;
+            sfxSource.PlayOneShot(sfxsClips[(int)SfxName.jump]);
+            sfxSource.pitch = 1;
+
             rb.AddForce(new Vector3(0, jumpforce, 0), ForceMode.Impulse);
             canJump = false;
             //slamDustTrail.gameObject.SetActive(canJump);
@@ -255,8 +280,9 @@ public class Movement : MonoBehaviour, ICollidable
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if(joint == null)
+            if (joint == null)
             {
+                sfxSource.PlayOneShot(sfxsClips[(int)SfxName.atack]);
                 OnGrab?.Invoke();
             }
             else
@@ -305,6 +331,7 @@ public class Movement : MonoBehaviour, ICollidable
         }
         else if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Mouse0))
         {
+            sfxSource.PlayOneShot(sfxsClips[(int)SfxName.atack]);
             anim.SetTrigger("Push");
             IsPushing?.Invoke(pushTime, frontForce, upForce);
             pushCountdown = pushCooldown;
@@ -356,6 +383,10 @@ public class Movement : MonoBehaviour, ICollidable
 
         Quaternion rotation = Quaternion.LookRotation(transform.forward, Vector3.up);
         rb.rotation = Quaternion.RotateTowards(transform.rotation, rotation, smoothRotation);
+    }
+    public void BurningSFX()
+    {
+        sfxSource.PlayOneShot(sfxsClips[(int)SfxName.fireInjure]);
     }
     #endregion
 }

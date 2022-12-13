@@ -34,6 +34,7 @@ public class StatusEffects : MonoBehaviour
 
             playerMovement.IsMoving = false;
             playerMovement.IsDirectionBlocked = true;
+            playerMovement.BurningSFX();
 
             isBurning = true;
         },

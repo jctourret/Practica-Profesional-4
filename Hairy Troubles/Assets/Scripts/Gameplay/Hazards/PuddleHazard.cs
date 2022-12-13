@@ -20,6 +20,7 @@ public class PuddleHazard : Hazard
     {
         if (other.TryGetComponent(out StatusEffects player))
         {
+            SFX.Play();
             int degreesY = Random.Range(0, ANGLE_DEGREES_Y);
 
             Vector3 direction = Quaternion.Euler(-throwAngleX, degreesY, 0) * Vector3.forward;
