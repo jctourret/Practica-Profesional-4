@@ -53,6 +53,7 @@ public class OvenHazard : Hazard
         {
             if (ovenTime > activeTime)
             {
+                SFX.Play();
                 active = false;
                 EnableCollider(true);
 

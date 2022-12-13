@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hazard : MonoBehaviour
 {
     #region EXPOSED_FIELD
+    [SerializeField] protected AudioSource SFX;
     [SerializeField] protected Collider hazardCollider = null;
     [SerializeField] [Range(0, 10)] protected float timerEffect = 3f;
     #endregion
@@ -27,6 +28,7 @@ public class Hazard : MonoBehaviour
     protected void EnableCollider(bool state)
     {
         hazardCollider.enabled = state;
+
     }
     #endregion
 }
