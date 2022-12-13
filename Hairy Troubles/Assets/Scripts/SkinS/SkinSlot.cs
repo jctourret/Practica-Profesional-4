@@ -14,6 +14,7 @@ public class SkinSlot : MonoBehaviour
     static public Func<int> OnGetCurrentStars;
     static public Action<SO_Skin> OnSkinEquipped;
     static public Action<SO_Skin> OnSkinUnequipped;
+    static public Func<List<SO_Skin>> OnGetSkins;
     [Header("Slotted Skin")]
     [SerializeField] private SO_Skin skin;
     [SerializeField] private TextMeshProUGUI tmp;
@@ -46,6 +47,14 @@ public class SkinSlot : MonoBehaviour
         {
             currentState = skinStates.Locked;
         }
+        List<SO_Skin> equippedSkins = OnGetSkins?.Invoke();
+        for (int i = 0; i <equippedSkins.Count; i++)
+        {
+            if(skin == equippedSkins[i])
+            {
+                currentState = skinStates.Equipped;
+            }
+        }
         RefreshButtons();
     }
 
@@ -60,7 +69,6 @@ public class SkinSlot : MonoBehaviour
             }
         }
     }
-
     void RefreshButtons()
     {
         for (int i = 0; i < buttons.Count; i++)

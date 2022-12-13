@@ -5016,6 +5016,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1333143535}
     m_Modifications:
+    - target: {fileID: 2978682573989571193, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 2520878766056949190, guid: 4f5c2993b2745f94e97f3e10b78863c7, type: 3}
     - target: {fileID: 4305059816762700224, guid: ab7eb6c4a4428b5409fb704df561b288, type: 3}
       propertyPath: m_Name
       value: Player_Prototipe
