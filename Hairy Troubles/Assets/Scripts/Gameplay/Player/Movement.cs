@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour, ICollidable
     #region EXPOSED_METHODS
     [SerializeField] private Animator anim;
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource steps;
     [SerializeField] private List<AudioClip> sfxsClips;
     enum SfxName
     {
@@ -216,7 +217,14 @@ public class Movement : MonoBehaviour, ICollidable
 
         if (movementDirection != Vector3.zero)
         {
-            //sfxSource.PlayOneShot(sfxsClips[(int)SfxName.steps]);
+            if(!canJump)
+                steps.Stop();
+            else
+            {
+                if(!steps.isPlaying)
+                    steps.Play();
+            }
+
             dustTrail.gameObject.SetActive(true);
             float targetAngle = Mathf.Atan2(movementDirection.x, movementDirection.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref yVelocity, smoothRotation);
