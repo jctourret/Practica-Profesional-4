@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerSkin : MonoBehaviour
 {
     [Header("Skin Slots")]
-    [SerializeField] List<SkinnedMeshRenderer> skinSlots;
+    [SerializeField] List<MeshFilter> skinSlotsMesh;
+    [SerializeField] List<MeshRenderer> skinSlotsMaterial;
     public static Func<List<SO_Skin>> OnRecieveSkin;
 
     private void Start()
@@ -21,13 +22,13 @@ public class PlayerSkin : MonoBehaviour
             {
                 if (skins[i] != null)
                 {
-                    skinSlots[i].sharedMesh = skins[i].mesh;
-                    skinSlots[i].material = skins[i].material;
+                    skinSlotsMesh[i].mesh = skins[i].mesh;
+                    skinSlotsMaterial[i].material = skins[i].material;
                 }
                 else
                 {
-                    skinSlots[i].sharedMesh = null;
-                    skinSlots[i].material = null;
+                    skinSlotsMesh[i].mesh = null;
+                    skinSlotsMaterial[i].material = null;
                 }
             }
         }

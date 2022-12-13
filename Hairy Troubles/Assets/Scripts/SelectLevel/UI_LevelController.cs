@@ -8,14 +8,21 @@ public class UI_LevelController : MonoBehaviour
     const int levelArrayOffset = 1;
     #region EXPOSED_FIELDS
     [SerializeField] private SO_Level level;
-    [SerializeField] private GameObject panel;
-    [SerializeField] private Image house;
-    [SerializeField] private Image brokenHouse;
-    [SerializeField] private List<Image> Stars;
-    [SerializeField] private TextMeshProUGUI progress;
-    [SerializeField] private GameObject marker;
-    [SerializeField] private GameObject right;
-    [SerializeField] private GameObject left;
+
+    [Header("In Prefab Obj")]
+    [SerializeField] private GameObject panel = null;
+    [SerializeField] private List<Image> Stars = null;
+    [SerializeField] private TextMeshProUGUI progress = null;
+    [SerializeField] private GameObject marker = null;
+    [SerializeField] private GameObject right = null;
+    [SerializeField] private GameObject left = null;
+    [SerializeField] private GameObject flagsHolder = null;
+    [SerializeField] private Image flag = null;
+    [SerializeField] private Image brokenFlag = null;
+
+    [Header("In Scene Obj")]
+    [SerializeField] private Image house = null;
+    [SerializeField] private Image brokenHouse = null;
     #endregion
 
     #region UNITY_CALLS
@@ -46,10 +53,12 @@ public class UI_LevelController : MonoBehaviour
         if (level == currentLevel)
         {
             panel.SetActive(true);
+            flagsHolder.SetActive(true);
         }
         else
         {
             panel.SetActive(false);
+            flagsHolder.SetActive(false);
         }
     }
 
@@ -57,8 +66,23 @@ public class UI_LevelController : MonoBehaviour
     {
         if (level == currentLevel)
         {
-            right.SetActive(true);
-            left.SetActive(true);
+            if(data._levelClear[currentLevel.levelNumber - levelArrayOffset])
+            {
+                right.SetActive(true);
+            }
+            else
+            {
+                right.SetActive(false);
+            }
+            int index = (currentLevel.levelNumber - 1 - levelArrayOffset) % data._levelClear.Length;
+            if (index >= 0 && data._levelClear[index])
+            {
+                left.SetActive(true);
+            }
+            else
+            {
+                left.SetActive(false);
+            }
         }
         else
         {
@@ -69,19 +93,25 @@ public class UI_LevelController : MonoBehaviour
 
     private void UpdateUI(SO_Level currentLevel, HairyTroublesData data)
     {
-        Debug.Log("Update UI");
-        if (data._levelClear[level.levelNumber- levelArrayOffset])
+        int index = level.levelNumber - levelArrayOffset % data._levelClear.Length;
+        
+        if (data._levelClear[index])
         {
             brokenHouse.enabled = true;
             house.enabled = false;
+            brokenFlag.enabled = true;
+            flag.enabled = false;
         }
         else
         {
             brokenHouse.enabled = false;
             house.enabled = true;
+            brokenFlag.enabled = false;
+            flag.enabled = true;
         }
-        progress.text = data._levelProgress[level.levelNumber - levelArrayOffset].ToString()+"%";
-        for(int i = 0; i < data._levelStars[level.levelNumber - levelArrayOffset]; i++)
+
+        progress.text = data._levelProgress[index].ToString()+"%";
+        for(int i = 0; i < data._levelStars[index]; i++)
         {
             Stars[i].enabled = true;
         }

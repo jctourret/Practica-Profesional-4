@@ -123,10 +123,7 @@ public class GameManager : MonoBehaviour
             }
 
             uiGameController.ComboBarPlayer.UpdateGrownState();
-            if (uiGameController.ComboBarPlayer.CheckComboBar())
-            {
-                OnComboBarFull?.Invoke();
-            }
+            
             uiGameController.UpdateTimer(timer);
         }
     }
@@ -160,6 +157,10 @@ public class GameManager : MonoBehaviour
     private void ChargeComboBar(int i)
     {
         uiGameController.ComboBarPlayer.ChargeComboBar(targetDestructibles);
+        if (uiGameController.ComboBarPlayer.CheckComboBar())
+        {
+            OnComboBarFull?.Invoke();
+        }
     }
 
     private void UnlockComboBar()
